@@ -4,7 +4,7 @@ using ObjCRuntime;
 namespace iOSCharts
 {
 	[Native]
-	public enum ChartDataSetRounding : nint
+	public enum ChartDataSetRounding : ulong
 	{
 		Up = 0,
 		Down = 1,
@@ -12,7 +12,7 @@ namespace iOSCharts
 	}
 
 	[Native]
-	public enum ChartEasingOption : nint
+	public enum ChartEasingOption : ulong
 	{
 		Linear = 0,
 		EaseInQuad = 1,
@@ -48,7 +48,7 @@ namespace iOSCharts
 	}
 
 	[Native]
-	public enum ChartLimitLabelPosition : nint
+	public enum ChartLimitLabelPosition : ulong
 	{
 		TopLeft = 0,
 		TopRight = 1,
@@ -57,7 +57,7 @@ namespace iOSCharts
 	}
 
 	[Native]
-	public enum CombinedChartDrawOrder : nint
+	public enum CombinedChartDrawOrder : ulong
 	{
 		Bar = 0,
 		Bubble = 1,
@@ -67,7 +67,7 @@ namespace iOSCharts
 	}
 
 	[Native]
-	public enum ChartFillType : nint
+	public enum ChartFillType : ulong
 	{
 		Empty = 0,
 		Color = 1,
@@ -79,7 +79,7 @@ namespace iOSCharts
 	}
 
 	[Native]
-	public enum ChartLegendForm : nint
+	public enum ChartLegendForm : ulong
 	{
 		None = 0,
 		Empty = 1,
@@ -90,7 +90,7 @@ namespace iOSCharts
 	}
 
 	[Native]
-	public enum ChartLegendHorizontalAlignment : nint
+	public enum ChartLegendHorizontalAlignment : ulong
 	{
 		Left = 0,
 		Center = 1,
@@ -98,7 +98,7 @@ namespace iOSCharts
 	}
 
 	[Native]
-	public enum ChartLegendVerticalAlignment : nint
+	public enum ChartLegendVerticalAlignment : ulong
 	{
 		Top = 0,
 		Center = 1,
@@ -106,21 +106,21 @@ namespace iOSCharts
 	}
 
 	[Native]
-	public enum ChartLegendOrientation : nint
+	public enum ChartLegendOrientation : ulong
 	{
 		Horizontal = 0,
 		Vertical = 1
 	}
 
 	[Native]
-	public enum ChartLegendDirection : nint
+	public enum ChartLegendDirection : ulong
 	{
 		LeftToRight = 0,
 		RightToLeft = 1
 	}
 
 	[Native]
-	public enum LineChartMode : nint
+	public enum LineChartMode : ulong
 	{
 		Linear = 0,
 		Stepped = 1,
@@ -129,14 +129,14 @@ namespace iOSCharts
 	}
 
 	[Native]
-	public enum PieChartValuePosition : nint
+	public enum PieChartValuePosition : ulong
 	{
 		InsideSlice = 0,
 		OutsideSlice = 1
 	}
 
 	[Native]
-	public enum ScatterShape : nint
+	public enum ScatterShape : ulong
 	{
 		Square = 0,
 		Circle = 1,
@@ -148,7 +148,7 @@ namespace iOSCharts
 	}
 
 	[Native]
-	public enum XAxisLabelPosition : nint
+	public enum XAxisLabelPosition : ulong
 	{
 		Top = 0,
 		Bottom = 1,
@@ -158,14 +158,14 @@ namespace iOSCharts
 	}
 
 	[Native]
-	public enum YAxisLabelPosition : nint
+	public enum YAxisLabelPosition : ulong
 	{
 		OutsideChart = 0,
 		InsideChart = 1
 	}
 
 	[Native]
-	public enum AxisDependency : nint
+	public enum AxisDependency : ulong
 	{
 		Left = 0,
 		Right = 1
