@@ -48,7 +48,8 @@
     <NativeReference Include="Native References/Charts.framework">
       <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
-      <Frameworks>Foundation UIKit</Frameworks>
+      <Frameworks>Foundation CoreGraphics QuartzCore UIKit</Frameworks>
+      <LinkerFlags>-lxml2 -ObjC</LinkerFlags>
     </NativeReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
