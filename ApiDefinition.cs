@@ -23,7 +23,7 @@ namespace iOSCharts
     }
 
     // @interface AnimatedViewPortJob : ChartViewPortJob
-    [BaseType(typeof(ChartViewPortJob), Name = "_TtC6Charts19AnimatedViewPortJob")]
+    [BaseType(typeof(ChartViewPortJob))]
     interface AnimatedViewPortJob
     {
         // -(instancetype _Nonnull)initWithViewPortHandler:(ChartViewPortHandler * _Nonnull)viewPortHandler xValue:(double)xValue yValue:(double)yValue transformer:(ChartTransformer * _Nonnull)transformer view:(ChartViewBase * _Nonnull)view xOrigin:(CGFloat)xOrigin yOrigin:(CGFloat)yOrigin duration:(NSTimeInterval)duration easing:(double(^ _Nullable)(NSTimeInterval, NSTimeInterval))easing __attribute__((objc_designated_initializer));
@@ -45,7 +45,7 @@ namespace iOSCharts
     }
 
     // @interface AnimatedMoveViewJob : AnimatedViewPortJob
-    [BaseType(typeof(AnimatedViewPortJob), Name = "_TtC6Charts19AnimatedMoveViewJob")]
+    [BaseType(typeof(AnimatedViewPortJob))]
     interface AnimatedMoveViewJob
     {
         // -(instancetype _Nonnull)initWithViewPortHandler:(ChartViewPortHandler * _Nonnull)viewPortHandler xValue:(double)xValue yValue:(double)yValue transformer:(ChartTransformer * _Nonnull)transformer view:(ChartViewBase * _Nonnull)view xOrigin:(CGFloat)xOrigin yOrigin:(CGFloat)yOrigin duration:(NSTimeInterval)duration easing:(double(^ _Nullable)(NSTimeInterval, NSTimeInterval))easing __attribute__((objc_designated_initializer));
@@ -55,7 +55,7 @@ namespace iOSCharts
     }
 
     // @interface AnimatedZoomViewJob : AnimatedViewPortJob
-    [BaseType(typeof(AnimatedViewPortJob), Name = "_TtC6Charts19AnimatedZoomViewJob")]
+    [BaseType(typeof(AnimatedViewPortJob))]
     interface AnimatedZoomViewJob
     {
         // -(instancetype _Nonnull)initWithViewPortHandler:(ChartViewPortHandler * _Nonnull)viewPortHandler transformer:(ChartTransformer * _Nonnull)transformer view:(ChartViewBase * _Nonnull)view yAxis:(ChartYAxis * _Nonnull)yAxis xAxisRange:(double)xAxisRange scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY xOrigin:(CGFloat)xOrigin yOrigin:(CGFloat)yOrigin zoomCenterX:(CGFloat)zoomCenterX zoomCenterY:(CGFloat)zoomCenterY zoomOriginX:(CGFloat)zoomOriginX zoomOriginY:(CGFloat)zoomOriginY duration:(NSTimeInterval)duration easing:(double(^ _Nullable)(NSTimeInterval, NSTimeInterval))easing __attribute__((objc_designated_initializer));
@@ -438,7 +438,7 @@ namespace iOSCharts
     }
 
     // @interface ChartData : NSObject
-    [BaseType(typeof(NSObject), Name = "_TtC6Charts9ChartData")]
+    [BaseType(typeof(NSObject))]
     interface ChartData
     {
         // -(instancetype _Nonnull)initWithDataSets:(NSArray<id<IInterfaceChartDataSet>> * _Nullable)dataSets __attribute__((objc_designated_initializer));
@@ -617,7 +617,7 @@ namespace iOSCharts
     }
 
     // @interface BarLineScatterCandleBubbleChartData : ChartData
-    [BaseType(typeof(ChartData), Name = "_TtC6Charts35BarLineScatterCandleBubbleChartData")]
+    [BaseType(typeof(ChartData))]
     interface BarLineScatterCandleBubbleChartData
     {
         // -(instancetype _Nonnull)initWithDataSets:(NSArray<id<IInterfaceChartDataSet>> * _Nullable)dataSets __attribute__((objc_designated_initializer));
@@ -627,7 +627,7 @@ namespace iOSCharts
     }
 
     // @interface BarChartData : BarLineScatterCandleBubbleChartData
-    [BaseType(typeof(BarLineScatterCandleBubbleChartData), Name = "_TtC6Charts12BarChartData")]
+    [BaseType(typeof(BarLineScatterCandleBubbleChartData))]
     interface BarChartData
     {
         // -(instancetype _Nonnull)initWithDataSets:(NSArray<id<IInterfaceChartDataSet>> * _Nullable)dataSets __attribute__((objc_designated_initializer));
@@ -649,7 +649,7 @@ namespace iOSCharts
     }
 
     // @interface ChartDataEntryBase : NSObject
-    [BaseType(typeof(NSObject), Name = "_TtC6Charts18ChartDataEntryBase")]
+    [BaseType(typeof(NSObject))]
     interface ChartDataEntryBase
     {
         // @property(nonatomic) double y;
@@ -690,7 +690,7 @@ namespace iOSCharts
     }
 
     // @interface ChartDataEntry : ChartDataEntryBase
-    [BaseType(typeof(ChartDataEntryBase), Name = "_TtC6Charts14ChartDataEntry")]
+    [BaseType(typeof(ChartDataEntryBase))]
     interface ChartDataEntry
     {
         // @property(nonatomic) double x;
@@ -725,7 +725,7 @@ namespace iOSCharts
     }
 
     // @interface BarChartDataEntry : ChartDataEntry
-    [BaseType(typeof(ChartDataEntry), Name = "_TtC6Charts17BarChartDataEntry")]
+    [BaseType(typeof(ChartDataEntry))]
     interface BarChartDataEntry
     {
         // -(instancetype _Nonnull)initWithX:(double)x y:(double)y __attribute__((objc_designated_initializer));
@@ -1237,7 +1237,7 @@ namespace iOSCharts
     }
 
     // @interface ChartBaseDataSet : NSObject <IInterfaceChartDataSet>
-    [BaseType(typeof(NSObject), Name = "_TtC6Charts16ChartBaseDataSet")]
+    [BaseType(typeof(NSObject))]
     interface ChartBaseDataSet : InterfaceChartDataSet
     {
         // -(instancetype _Nonnull)initWithLabel:(NSString * _Nullable)label __attribute__((objc_designated_initializer));
@@ -1466,7 +1466,7 @@ namespace iOSCharts
     }
 
     // @interface ChartDataSet : ChartBaseDataSet
-    [BaseType(typeof(ChartBaseDataSet), Name = "_TtC6Charts12ChartDataSet")]
+    [BaseType(typeof(ChartBaseDataSet))]
     interface ChartDataSet
     {
         // -(instancetype _Nonnull)initWithLabel:(NSString * _Nullable)label __attribute__((objc_designated_initializer));
@@ -1586,7 +1586,7 @@ namespace iOSCharts
     }
 
     // @interface BarLineScatterCandleBubbleChartDataSet : ChartDataSet <IInterfaceBarLineScatterCandleBubbleChartDataSet>
-    [BaseType(typeof(ChartDataSet), Name = "_TtC6Charts38BarLineScatterCandleBubbleChartDataSet")]
+    [BaseType(typeof(ChartDataSet))]
     interface BarLineScatterCandleBubbleChartDataSet : InterfaceBarLineScatterCandleBubbleChartDataSet
     {
         // @property(nonatomic, strong) UIColor * _Nonnull highlightColor;
@@ -1617,7 +1617,7 @@ namespace iOSCharts
     }
 
     // @interface BarChartDataSet : BarLineScatterCandleBubbleChartDataSet <IInterfaceBarChartDataSet>
-    [BaseType(typeof(BarLineScatterCandleBubbleChartDataSet), Name = "_TtC6Charts15BarChartDataSet")]
+    [BaseType(typeof(BarLineScatterCandleBubbleChartDataSet))]
     interface BarChartDataSet : InterfaceBarChartDataSet
     {
         // -(instancetype _Nonnull)initWithValues:(NSArray<ChartDataEntry *> * _Nullable)values label:(NSString * _Nullable)label __attribute__((objc_designated_initializer));
@@ -1715,7 +1715,7 @@ namespace iOSCharts
     }
 
     // @interface BarChartRenderer : BarLineScatterCandleBubbleChartRenderer
-    [BaseType(typeof(BarLineScatterCandleBubbleChartRenderer), Name = "_TtC6Charts16BarChartRenderer")]
+    [BaseType(typeof(BarLineScatterCandleBubbleChartRenderer))]
     interface BarChartRenderer
     {
         // @property(nonatomic, weak) id<BarChartDataProvider> _Nullable dataProvider;
@@ -1757,7 +1757,7 @@ namespace iOSCharts
     }
 
     // @interface NSUIView : UIView
-    [BaseType(typeof(UIView), Name = "_TtC6Charts8NSUIView")]
+    [BaseType(typeof(UIView))]
     interface NSUIView
     {
         // -(void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
@@ -1808,7 +1808,7 @@ namespace iOSCharts
     }
 
     // @interface ChartViewBase : NSUIView <ChartDataProvider, ChartAnimatorDelegate>
-    [BaseType(typeof(NSUIView), Name = "_TtC6Charts13ChartViewBase")]
+    [BaseType(typeof(NSUIView))]
     interface ChartViewBase : IChartDataProvider, IChartAnimatorDelegate
     {
         // @property(readonly, nonatomic, strong) ChartXAxis * _Nonnull xAxis;
@@ -2132,7 +2132,7 @@ namespace iOSCharts
     }
 
     // @interface BarLineChartViewBase : ChartViewBase <BarLineScatterCandleBubbleChartDataProvider, UIGestureRecognizerDelegate>
-    [BaseType(typeof(ChartViewBase), Name = "_TtC6Charts20BarLineChartViewBase")]
+    [BaseType(typeof(ChartViewBase))]
     interface BarLineChartViewBase : BarLineScatterCandleBubbleChartDataProvider, IUIGestureRecognizerDelegate
     {
         // @property(nonatomic, strong) UIColor * _Nonnull gridBackgroundColor;
@@ -2524,7 +2524,7 @@ namespace iOSCharts
     }
 
     // @interface BarChartView : BarLineChartViewBase <BarChartDataProvider>
-    [BaseType(typeof(BarLineChartViewBase), Name = "_TtC6Charts12BarChartView")]
+    [BaseType(typeof(BarLineChartViewBase))]
     interface BarChartView : BarChartDataProvider
     {
         // -(ChartHighlight * _Nullable)getHighlightByTouchPoint:(CGPoint)pt;
@@ -2591,7 +2591,7 @@ namespace iOSCharts
 
     // @protocol IInterfaceChartHighlighter <NSObject>
     [Protocol, Model]
-    [BaseType(typeof(NSObject), Name = "IChartHighlighter")]
+    [BaseType(typeof(NSObject))]
     interface InterfaceChartHighlighter
     {
         // @required -(ChartHighlight * _Nullable)getHighlightWithX:(CGFloat)x y:(CGFloat)y;
@@ -2602,7 +2602,7 @@ namespace iOSCharts
     }
 
     // @interface ChartHighlighter : NSObject <IInterfaceChartHighlighter>
-    [BaseType(typeof(NSObject), Name = "_TtC6Charts16ChartHighlighter")]
+    [BaseType(typeof(NSObject))]
     [DisableDefaultCtor]
     interface ChartHighlighter : InterfaceChartHighlighter
     {
@@ -2659,7 +2659,7 @@ namespace iOSCharts
     }
 
     // @interface BubbleChartData : BarLineScatterCandleBubbleChartData
-    [BaseType(typeof(BarLineScatterCandleBubbleChartData), Name = "_TtC6Charts15BubbleChartData")]
+    [BaseType(typeof(BarLineScatterCandleBubbleChartData))]
     interface BubbleChartData
     {
         // -(instancetype _Nonnull)initWithDataSets:(NSArray<id<IInterfaceChartDataSet>> * _Nullable)dataSets __attribute__((objc_designated_initializer));
@@ -2673,7 +2673,7 @@ namespace iOSCharts
     }
 
     // @interface BubbleChartDataEntry : ChartDataEntry
-    [BaseType(typeof(ChartDataEntry), Name = "_TtC6Charts20BubbleChartDataEntry")]
+    [BaseType(typeof(ChartDataEntry))]
     interface BubbleChartDataEntry
     {
         // @property(nonatomic) CGFloat size;
@@ -2739,7 +2739,7 @@ namespace iOSCharts
     }
 
     // @interface BubbleChartDataSet : BarLineScatterCandleBubbleChartDataSet <IInterfaceBubbleChartDataSet>
-    [BaseType(typeof(BarLineScatterCandleBubbleChartDataSet), Name = "_TtC6Charts18BubbleChartDataSet")]
+    [BaseType(typeof(BarLineScatterCandleBubbleChartDataSet))]
     interface BubbleChartDataSet : InterfaceBubbleChartDataSet
     {
         // @property(readonly, nonatomic) CGFloat maxSize;
@@ -2772,7 +2772,7 @@ namespace iOSCharts
     }
 
     // @interface BubbleChartRenderer : BarLineScatterCandleBubbleChartRenderer
-    [BaseType(typeof(BarLineScatterCandleBubbleChartRenderer), Name = "_TtC6Charts19BubbleChartRenderer")]
+    [BaseType(typeof(BarLineScatterCandleBubbleChartRenderer))]
     interface BubbleChartRenderer
     {
         // @property(nonatomic, weak) id<BubbleChartDataProvider> _Nullable dataProvider;
@@ -2806,7 +2806,7 @@ namespace iOSCharts
     }
 
     // @interface BubbleChartView : BarLineChartViewBase <BubbleChartDataProvider>
-    [BaseType(typeof(BarLineChartViewBase), Name = "_TtC6Charts15BubbleChartView")]
+    [BaseType(typeof(BarLineChartViewBase))]
     interface BubbleChartView : IBubbleChartDataProvider
     {
         // -(void)initialize __attribute__((objc_method_family("none")));
@@ -2829,7 +2829,7 @@ namespace iOSCharts
     }
 
     // @interface CandleChartData : BarLineScatterCandleBubbleChartData
-    [BaseType(typeof(BarLineScatterCandleBubbleChartData), Name = "_TtC6Charts15CandleChartData")]
+    [BaseType(typeof(BarLineScatterCandleBubbleChartData))]
     interface CandleChartData
     {
         // -(instancetype _Nonnull)initWithDataSets:(NSArray<id<IInterfaceChartDataSet>> * _Nullable)dataSets __attribute__((objc_designated_initializer));
@@ -2839,7 +2839,7 @@ namespace iOSCharts
     }
 
     // @interface CandleChartDataEntry : ChartDataEntry
-    [BaseType(typeof(ChartDataEntry), Name = "_TtC6Charts20CandleChartDataEntry")]
+    [BaseType(typeof(ChartDataEntry))]
     interface CandleChartDataEntry
     {
         // @property(nonatomic) double high;
@@ -3010,7 +3010,7 @@ namespace iOSCharts
     }
 
     // @interface LineScatterCandleRadarChartDataSet : BarLineScatterCandleBubbleChartDataSet <IInterfaceLineScatterCandleRadarChartDataSet>
-    [BaseType(typeof(BarLineScatterCandleBubbleChartDataSet), Name = "_TtC6Charts34LineScatterCandleRadarChartDataSet")]
+    [BaseType(typeof(BarLineScatterCandleBubbleChartDataSet))]
     interface LineScatterCandleRadarChartDataSet : InterfaceLineScatterCandleRadarChartDataSet
     {
         // @property(nonatomic) BOOL drawHorizontalHighlightIndicatorEnabled;
@@ -3047,7 +3047,7 @@ namespace iOSCharts
     }
 
     // @interface CandleChartDataSet : LineScatterCandleRadarChartDataSet <IInterfaceCandleChartDataSet>
-    [BaseType(typeof(LineScatterCandleRadarChartDataSet), Name = "_TtC6Charts18CandleChartDataSet")]
+    [BaseType(typeof(LineScatterCandleRadarChartDataSet))]
     interface CandleChartDataSet : InterfaceCandleChartDataSet
     {
         // -(instancetype _Nonnull)initWithValues:(NSArray<ChartDataEntry *> * _Nullable)values label:(NSString * _Nullable)label __attribute__((objc_designated_initializer));
@@ -3125,7 +3125,7 @@ namespace iOSCharts
     }
 
     // @interface CandleStickChartRenderer : LineScatterCandleRadarChartRenderer
-    [BaseType(typeof(LineScatterCandleRadarChartRenderer), Name = "_TtC6Charts24CandleStickChartRenderer")]
+    [BaseType(typeof(LineScatterCandleRadarChartRenderer))]
     interface CandleStickChartRenderer
     {
         // @property(nonatomic, weak) id<CandleChartDataProvider> _Nullable dataProvider;
@@ -3159,7 +3159,7 @@ namespace iOSCharts
     }
 
     // @interface CandleStickChartView : BarLineChartViewBase <CandleChartDataProvider>
-    [BaseType(typeof(BarLineChartViewBase), Name = "_TtC6Charts20CandleStickChartView")]
+    [BaseType(typeof(BarLineChartViewBase))]
     interface CandleStickChartView : ICandleChartDataProvider
     {
         // @property(readonly, nonatomic, strong) CandleChartData * _Nullable candleData;
@@ -3178,7 +3178,7 @@ namespace iOSCharts
     }
 
     // @interface ChartColorTemplates : NSObject
-    [BaseType(typeof(NSObject), Name = "_TtC6Charts19ChartColorTemplates")]
+    [BaseType(typeof(NSObject))]
     interface ChartColorTemplates
     {
         // +(NSArray<UIColor *> * _Nonnull)liberty;
@@ -3218,7 +3218,7 @@ namespace iOSCharts
     }
 
     // @interface ChartLimitLine : ChartComponentBase
-    [BaseType(typeof(ChartComponentBase), Name = "_TtC6Charts14ChartLimitLine")]
+    [BaseType(typeof(ChartComponentBase))]
     interface ChartLimitLine
     {
         // @property(nonatomic) double limit;
@@ -3275,7 +3275,7 @@ namespace iOSCharts
     interface IChartViewDelegate { }
 
     // @protocol ChartViewDelegate
-    [BaseType(typeof(NSObject), Name = "_TtP6Charts17ChartViewDelegate_")]
+    [BaseType(typeof(NSObject))]
     [Protocol(Name = "_TtP6Charts17ChartViewDelegate_"), Model]
     interface ChartViewDelegate
     {
@@ -3300,35 +3300,35 @@ namespace iOSCharts
 
     // @protocol InterfaceShapeRenderer <NSObject>
     [Protocol, Model]
-    [BaseType(typeof(NSObject), Name = "_TtP6Charts14IShapeRenderer_")]
+    [BaseType(typeof(NSObject))]
     interface InterfaceShapeRenderer
     {
         //u-n-safe void DataSet(CGContextRef* context, IInterfaceScatterChartDataSet dataSet, ChartViewPortHandler viewPortHandler, CGPoint point, UIColor color);
     }
 
     // @interface ChevronDownShapeRenderer : NSObject <InterfaceShapeRenderer>
-    [BaseType(typeof(NSObject), Name = "_TtC6Charts24ChevronDownShapeRenderer")]
+    [BaseType(typeof(NSObject))]
     interface ChevronDownShapeRenderer : InterfaceShapeRenderer
     {
         //u-n-safe void RenderShapeWithContext(CGContextRef* context, IInterfaceScatterChartDataSet dataSet, ChartViewPortHandler viewPortHandler, CGPoint point, UIColor color);
     }
 
     // @interface ChevronUpShapeRenderer : NSObject <InterfaceShapeRenderer>
-    [BaseType(typeof(NSObject), Name = "_TtC6Charts22ChevronUpShapeRenderer")]
+    [BaseType(typeof(NSObject))]
     interface ChevronUpShapeRenderer : InterfaceShapeRenderer
     {
         //u-n-safe void RenderShapeWithContext(CGContextRef* context, IInterfaceScatterChartDataSet dataSet, ChartViewPortHandler viewPortHandler, CGPoint point, UIColor color);
     }
 
     // @interface CircleShapeRenderer : NSObject <InterfaceShapeRenderer>
-    [BaseType(typeof(NSObject), Name = "_TtC6Charts19CircleShapeRenderer")]
+    [BaseType(typeof(NSObject))]
     interface CircleShapeRenderer : InterfaceShapeRenderer
     {
         //u-n-safe void RenderShapeWithContext(CGContextRef* context, IInterfaceScatterChartDataSet dataSet, ChartViewPortHandler viewPortHandler, CGPoint point, UIColor color);
     }
 
     // @interface CombinedChartData : BarLineScatterCandleBubbleChartData
-    [BaseType(typeof(BarLineScatterCandleBubbleChartData), Name = "_TtC6Charts17CombinedChartData")]
+    [BaseType(typeof(BarLineScatterCandleBubbleChartData))]
     interface CombinedChartData
     {
         // -(instancetype _Nonnull)initWithDataSets:(NSArray<id<IInterfaceChartDataSet>> * _Nullable)dataSets __attribute__((objc_designated_initializer));
@@ -3440,7 +3440,7 @@ namespace iOSCharts
     }
 
     // @interface CombinedChartRenderer : ChartDataRendererBase
-    [BaseType(typeof(ChartDataRendererBase), Name = "_TtC6Charts21CombinedChartRenderer")]
+    [BaseType(typeof(ChartDataRendererBase))]
     interface CombinedChartRenderer
     {
         // @property(nonatomic, weak) CombinedChartView * _Nullable chart;
@@ -3499,7 +3499,7 @@ namespace iOSCharts
     }
 
     // @interface CombinedChartView : BarLineChartViewBase <CombinedChartDataProvider>
-    [BaseType(typeof(BarLineChartViewBase), Name = "_TtC6Charts17CombinedChartView")]
+    [BaseType(typeof(BarLineChartViewBase))]
     interface CombinedChartView : ICombinedChartDataProvider
     {
         // @property(nonatomic, strong) ChartData* _Nullable data;
@@ -3593,7 +3593,7 @@ namespace iOSCharts
     }
 
     // @interface CrossShapeRenderer : NSObject <InterfaceShapeRenderer>
-    [BaseType(typeof(NSObject), Name = "_TtC6Charts18CrossShapeRenderer")]
+    [BaseType(typeof(NSObject))]
     interface CrossShapeRenderer : InterfaceShapeRenderer
     {
         //u-n-safe void RenderShapeWithContext(CGContextRef* context, IInterfaceScatterChartDataSet dataSet, ChartViewPortHandler viewPortHandler, CGPoint point, UIColor color);
@@ -3612,7 +3612,7 @@ namespace iOSCharts
 
     // @protocol InterfaceChartAxisValueFormatter <NSObject>
     [Protocol, Model]
-    [BaseType(typeof(NSObject), Name = "IChartAxisValueFormatter")]
+    [BaseType(typeof(NSObject))]
     interface InterfaceChartAxisValueFormatter
     {
         // @required -(NSString * _Nonnull)stringForValue:(double)value axis:(ChartAxisBase * _Nullable)axis;
@@ -3703,7 +3703,7 @@ namespace iOSCharts
 
     // @protocol InterfaceChartValueFormatter <NSObject>
     [Protocol, Model]
-    [BaseType(typeof(NSObject), Name = "IChartValueFormatter")]
+    [BaseType(typeof(NSObject))]
     interface InterfaceChartValueFormatter
     {
         // @required -(NSString * _Nonnull)stringForValue:(double)value entry:(ChartDataEntry * _Nonnull)entry dataSetIndex:(NSInteger)dataSetIndex viewPortHandler:(ChartViewPortHandler * _Nullable)viewPortHandler;
@@ -3983,7 +3983,7 @@ namespace iOSCharts
     }
 
     // @interface HorizontalBarChartRenderer : BarChartRenderer
-    [BaseType(typeof(BarChartRenderer), Name = "_TtC6Charts26HorizontalBarChartRenderer")]
+    [BaseType(typeof(BarChartRenderer))]
     interface HorizontalBarChartRenderer
     {
         // -(instancetype _Nonnull)initWithDataProvider:(id<BarChartDataProvider> _Nullable)dataProvider animator:(ChartAnimator * _Nullable)animator viewPortHandler:(ChartViewPortHandler * _Nullable)viewPortHandler __attribute__((objc_designated_initializer));
@@ -4009,7 +4009,7 @@ namespace iOSCharts
     }
 
     // @interface HorizontalBarChartView : BarChartView
-    [BaseType(typeof(BarChartView), Name = "_TtC6Charts22HorizontalBarChartView")]
+    [BaseType(typeof(BarChartView))]
     interface HorizontalBarChartView
     {
         // -(CGPoint)getMarkerPositionWithHighlight:(ChartHighlight * _Nonnull)highlight;
@@ -4221,7 +4221,7 @@ namespace iOSCharts
 
     // @protocol InterfaceChartMarker <NSObject>
     [Protocol, Model]
-    [BaseType(typeof(NSObject), Name = "IChartMarker")]
+    [BaseType(typeof(NSObject))]
     interface InterfaceChartMarker
     {
         // @required @property(readonly, nonatomic) CGPoint offset;
@@ -4636,7 +4636,7 @@ namespace iOSCharts
     }
 
     // @interface LineChartData : ChartData
-    [BaseType(typeof(ChartData), Name = "_TtC6Charts13LineChartData")]
+    [BaseType(typeof(ChartData))]
     interface LineChartData
     {
         // -(instancetype _Nonnull)initWithDataSets:(NSArray<id<IInterfaceChartDataSet>> * _Nullable)dataSets __attribute__((objc_designated_initializer));
@@ -4646,7 +4646,7 @@ namespace iOSCharts
     }
 
     // @interface LineRadarChartDataSet : LineScatterCandleRadarChartDataSet <IInterfaceLineRadarChartDataSet>
-    [BaseType(typeof(LineScatterCandleRadarChartDataSet), Name = "_TtC6Charts21LineRadarChartDataSet")]
+    [BaseType(typeof(LineScatterCandleRadarChartDataSet))]
     interface LineRadarChartDataSet : InterfaceLineRadarChartDataSet
     {
         // @property(nonatomic, strong) UIColor * _Nonnull fillColor;
@@ -4687,7 +4687,7 @@ namespace iOSCharts
     }
 
     // @interface LineChartDataSet : LineRadarChartDataSet <IInterfaceLineChartDataSet>
-    [BaseType(typeof(LineRadarChartDataSet), Name = "_TtC6Charts16LineChartDataSet")]
+    [BaseType(typeof(LineRadarChartDataSet))]
     interface LineChartDataSet : InterfaceLineChartDataSet
     {
         // -(instancetype _Nonnull)initWithValues:(NSArray<ChartDataEntry *> * _Nullable)values label:(NSString * _Nullable)label __attribute__((objc_designated_initializer));
@@ -4786,7 +4786,7 @@ namespace iOSCharts
     }
 
     // @interface LineChartRenderer : LineRadarChartRenderer
-    [BaseType(typeof(LineRadarChartRenderer), Name = "_TtC6Charts17LineChartRenderer")]
+    [BaseType(typeof(LineRadarChartRenderer))]
     interface LineChartRenderer
     {
         // @property(nonatomic, weak) id<LineChartDataProvider> _Nullable dataProvider;
@@ -4832,7 +4832,7 @@ namespace iOSCharts
     }
 
     // @interface LineChartView : BarLineChartViewBase <LineChartDataProvider>
-    [BaseType(typeof(BarLineChartViewBase), Name = "_TtC6Charts13LineChartView")]
+    [BaseType(typeof(BarLineChartViewBase))]
     interface LineChartView : ILineChartDataProvider
     {
         // @property(readonly, nonatomic, strong) LineChartData * _Nullable lineData;
@@ -4937,7 +4937,7 @@ namespace iOSCharts
     }
 
     // @interface NSUIAccessibilityElement : UIAccessibilityElement
-    [BaseType(typeof(UIAccessibilityElement), Name = "_TtC6Charts24NSUIAccessibilityElement")]
+    [BaseType(typeof(UIAccessibilityElement))]
     [DisableDefaultCtor]
     interface NSUIAccessibilityElement
     {
@@ -4952,7 +4952,7 @@ namespace iOSCharts
     }
 
     // @interface PieChartData : ChartData
-    [BaseType(typeof(ChartData), Name = "_TtC6Charts12PieChartData")]
+    [BaseType(typeof(ChartData))]
     interface PieChartData
     {
         // -(instancetype _Nonnull)initWithDataSets:(NSArray<id<IInterfaceChartDataSet>> * _Nullable)dataSets __attribute__((objc_designated_initializer));
@@ -4993,7 +4993,7 @@ namespace iOSCharts
     }
 
     // @interface PieChartDataEntry : ChartDataEntry
-    [BaseType(typeof(ChartDataEntry), Name = "_TtC6Charts17PieChartDataEntry")]
+    [BaseType(typeof(ChartDataEntry))]
     interface PieChartDataEntry
     {
         // -(instancetype _Nonnull)initWithValue:(double)value label:(NSString * _Nullable)label;
@@ -5041,7 +5041,7 @@ namespace iOSCharts
     }
 
     // @interface PieChartDataSet : ChartDataSet <IInterfacePieChartDataSet>
-    [BaseType(typeof(ChartDataSet), Name = "_TtC6Charts15PieChartDataSet")]
+    [BaseType(typeof(ChartDataSet))]
     interface PieChartDataSet : InterfacePieChartDataSet
     {
         // -(instancetype _Nonnull)initWithValues:(NSArray<ChartDataEntry *> * _Nullable)values label:(NSString * _Nullable)label __attribute__((objc_designated_initializer));
@@ -5109,7 +5109,7 @@ namespace iOSCharts
     }
 
     // @interface PieChartRenderer : ChartDataRendererBase
-    [BaseType(typeof(ChartDataRendererBase), Name = "_TtC6Charts16PieChartRenderer")]
+    [BaseType(typeof(ChartDataRendererBase))]
     interface PieChartRenderer
     {
         // @property(nonatomic, weak) PieChartView * _Nullable chart;
@@ -5151,7 +5151,7 @@ namespace iOSCharts
     }
 
     // @interface PieRadarChartViewBase : ChartViewBase
-    [BaseType(typeof(ChartViewBase), Name = "_TtC6Charts21PieRadarChartViewBase")]
+    [BaseType(typeof(ChartViewBase))]
     interface PieRadarChartViewBase
     {
         // @property(nonatomic) BOOL rotationEnabled;
@@ -5270,7 +5270,7 @@ namespace iOSCharts
     }
 
     // @interface PieChartView : PieRadarChartViewBase
-    [BaseType(typeof(PieRadarChartViewBase), Name = "_TtC6Charts12PieChartView")]
+    [BaseType(typeof(PieRadarChartViewBase))]
     interface PieChartView
     {
         // -(instancetype _Nonnull)initWithFrame:(CGRect)frame __attribute__((objc_designated_initializer));
@@ -5448,7 +5448,7 @@ namespace iOSCharts
     }
 
     // @interface RadarChartData : ChartData
-    [BaseType(typeof(ChartData), Name = "_TtC6Charts14RadarChartData")]
+    [BaseType(typeof(ChartData))]
     interface RadarChartData
     {
         // @property(nonatomic, strong) UIColor * _Nonnull highlightColor;
@@ -5483,7 +5483,7 @@ namespace iOSCharts
     }
 
     // @interface RadarChartDataEntry : ChartDataEntry
-    [BaseType(typeof(ChartDataEntry), Name = "_TtC6Charts19RadarChartDataEntry")]
+    [BaseType(typeof(ChartDataEntry))]
     interface RadarChartDataEntry
     {
         // -(instancetype _Nonnull)initWithValue:(double)value data:(id _Nullable)data __attribute__((objc_designated_initializer));
@@ -5503,7 +5503,7 @@ namespace iOSCharts
     }
 
     // @interface RadarChartDataSet : LineRadarChartDataSet <IInterfaceRadarChartDataSet>
-    [BaseType(typeof(LineRadarChartDataSet), Name = "_TtC6Charts17RadarChartDataSet")]
+    [BaseType(typeof(LineRadarChartDataSet))]
     interface RadarChartDataSet : InterfaceRadarChartDataSet
     {
         // -(instancetype _Nonnull)initWithValues:(NSArray<ChartDataEntry *> * _Nullable)values label:(NSString * _Nullable)label __attribute__((objc_designated_initializer));
@@ -5545,7 +5545,7 @@ namespace iOSCharts
     }
 
     // @interface RadarChartRenderer : LineRadarChartRenderer
-    [BaseType(typeof(LineRadarChartRenderer), Name = "_TtC6Charts18RadarChartRenderer")]
+    [BaseType(typeof(LineRadarChartRenderer))]
     interface RadarChartRenderer
     {
         // @property(nonatomic, weak) RadarChartView * _Nullable chart;
@@ -5579,7 +5579,7 @@ namespace iOSCharts
     }
 
     // @interface RadarChartView : PieRadarChartViewBase
-    [BaseType(typeof(PieRadarChartViewBase), Name = "_TtC6Charts14RadarChartView")]
+    [BaseType(typeof(PieRadarChartViewBase))]
     interface RadarChartView
     {
         // @property(nonatomic) CGFloat webLineWidth;
@@ -5708,7 +5708,7 @@ namespace iOSCharts
     }
 
     // @interface ScatterChartData : BarLineScatterCandleBubbleChartData
-    [BaseType(typeof(BarLineScatterCandleBubbleChartData), Name = "_TtC6Charts16ScatterChartData")]
+    [BaseType(typeof(BarLineScatterCandleBubbleChartData))]
     interface ScatterChartData
     {
         // -(instancetype _Nonnull)initWithDataSets:(NSArray<id<IInterfaceChartDataSet>> * _Nullable)dataSets __attribute__((objc_designated_initializer));
@@ -5722,7 +5722,7 @@ namespace iOSCharts
     }
 
     // @interface ScatterChartDataSet : LineScatterCandleRadarChartDataSet <IInterfaceScatterChartDataSet>
-    [BaseType(typeof(LineScatterCandleRadarChartDataSet), Name = "_TtC6Charts19ScatterChartDataSet")]
+    [BaseType(typeof(LineScatterCandleRadarChartDataSet))]
     interface ScatterChartDataSet : InterfaceScatterChartDataSet
     {
         // @property(nonatomic) CGFloat scatterShapeSize;
@@ -5764,7 +5764,7 @@ namespace iOSCharts
     }
 
     // @interface ScatterChartRenderer : LineScatterCandleRadarChartRenderer
-    [BaseType(typeof(LineScatterCandleRadarChartRenderer), Name = "_TtC6Charts20ScatterChartRenderer")]
+    [BaseType(typeof(LineScatterCandleRadarChartRenderer))]
     interface ScatterChartRenderer
     {
         // @property(nonatomic, weak) id<ScatterChartDataProvider> _Nullable dataProvider;
@@ -5798,7 +5798,7 @@ namespace iOSCharts
     }
 
     // @interface ScatterChartView : BarLineChartViewBase <ScatterChartDataProvider>
-    [BaseType(typeof(BarLineChartViewBase), Name = "_TtC6Charts16ScatterChartView")]
+    [BaseType(typeof(BarLineChartViewBase))]
     interface ScatterChartView : IScatterChartDataProvider
     {
         // @property(readonly, nonatomic, strong) ScatterChartData * _Nullable scatterData;
@@ -5817,7 +5817,7 @@ namespace iOSCharts
     }
 
     // @interface SquareShapeRenderer : NSObject <InterfaceShapeRenderer>
-    [BaseType(typeof(NSObject), Name = "_TtC6Charts19SquareShapeRenderer")]
+    [BaseType(typeof(NSObject))]
     interface SquareShapeRenderer : InterfaceShapeRenderer
     {
         // -(void)renderShapeWithContext:(CGContext)context dataSet:(id<IScatterChartDataSet> _Nonnull)dataSet viewPortHandler:(ChartViewPortHandler * _Nonnull)viewPortHandler point:(CGPoint)point color:(UIColor * _Nonnull)color;
@@ -5879,7 +5879,7 @@ namespace iOSCharts
     }
 
     // @interface TriangleShapeRenderer : NSObject <InterfaceShapeRenderer>
-    [BaseType(typeof(NSObject), Name = "_TtC6Charts21TriangleShapeRenderer")]
+    [BaseType(typeof(NSObject))]
     interface TriangleShapeRenderer : InterfaceShapeRenderer
     {
         // -(void)renderShapeWithContext:(CGContext)context dataSet:(id<IScatterChartDataSet> _Nonnull)dataSet viewPortHandler:(ChartViewPortHandler * _Nonnull)viewPortHandler point:(CGPoint)point color:(UIColor * _Nonnull)color;
@@ -6299,7 +6299,7 @@ namespace iOSCharts
     }
 
     // @interface XAxisRendererHorizontalBarChart : ChartXAxisRenderer
-    [BaseType(typeof(ChartXAxisRenderer), Name = "_TtC6Charts31XAxisRendererHorizontalBarChart")]
+    [BaseType(typeof(ChartXAxisRenderer))]
     interface XAxisRendererHorizontalBarChart
     {
         // -(instancetype _Nonnull)initWithViewPortHandler:(ChartViewPortHandler * _Nullable)viewPortHandler xAxis:(ChartXAxis * _Nullable)xAxis transformer:(ChartTransformer * _Nullable)transformer chart:(BarChartView * _Nullable)chart __attribute__((objc_designated_initializer));
@@ -6344,7 +6344,7 @@ namespace iOSCharts
     }
 
     // @interface XAxisRendererRadarChart : ChartXAxisRenderer
-    [BaseType(typeof(ChartXAxisRenderer), Name = "_TtC6Charts23XAxisRendererRadarChart")]
+    [BaseType(typeof(ChartXAxisRenderer))]
     interface XAxisRendererRadarChart
     {
         // @property(nonatomic, weak) RadarChartView * _Nullable chart;
@@ -6370,7 +6370,7 @@ namespace iOSCharts
     }
 
     // @interface XShapeRenderer : NSObject <InterfaceShapeRenderer>
-    [BaseType(typeof(NSObject), Name = "_TtC6Charts14XShapeRenderer")]
+    [BaseType(typeof(NSObject))]
     interface XShapeRenderer : InterfaceShapeRenderer
     {
         // -(void)renderShapeWithContext:(CGContext)context dataSet:(id<IScatterChartDataSet> _Nonnull)dataSet viewPortHandler:(ChartViewPortHandler * _Nonnull)viewPortHandler point:(CGPoint)point color:(UIColor * _Nonnull)color;
@@ -6526,7 +6526,7 @@ namespace iOSCharts
     }
 
     // @interface YAxisRendererHorizontalBarChart : ChartYAxisRenderer
-    [BaseType(typeof(ChartYAxisRenderer), Name = "_TtC6Charts31YAxisRendererHorizontalBarChart")]
+    [BaseType(typeof(ChartYAxisRenderer))]
     interface YAxisRendererHorizontalBarChart
     {
         // -(instancetype _Nonnull)initWithViewPortHandler:(ChartViewPortHandler * _Nullable)viewPortHandler yAxis:(ChartYAxis * _Nullable)yAxis transformer:(ChartTransformer * _Nullable)transformer __attribute__((objc_designated_initializer));
@@ -6572,7 +6572,7 @@ namespace iOSCharts
     }
 
     // @interface YAxisRendererRadarChart : ChartYAxisRenderer
-    [BaseType(typeof(ChartYAxisRenderer), Name = "_TtC6Charts23YAxisRendererRadarChart")]
+    [BaseType(typeof(ChartYAxisRenderer))]
     interface YAxisRendererRadarChart
     {
         // -(instancetype _Nonnull)initWithViewPortHandler:(ChartViewPortHandler * _Nullable)viewPortHandler yAxis:(ChartYAxis * _Nullable)yAxis chart:(RadarChartView * _Nullable)chart __attribute__((objc_designated_initializer));
