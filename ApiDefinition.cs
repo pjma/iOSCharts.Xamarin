@@ -4218,7 +4218,7 @@ namespace iOSCharts
 
         // @required @property (nonatomic) CGFloat HighlightActiveDistance;
         [Abstract]
-        [Export("HighlightActiveDistance")]
+        [Export("highlightActiveDistance")]
         nfloat HighlightActiveDistance { get; set; }
     }
 
@@ -4770,7 +4770,7 @@ namespace iOSCharts
         IInterfaceChartFillFormatter FillFormatter { get; set; }
 
         // @property (nonatomic) CGFloat HighlightActiveDistance;
-        [Export("HighlightActiveDistance")]
+        [Export("highlightActiveDistance")]
         nfloat HighlightActiveDistance { get; set; }
         //u-n-safe NSObject CopyWithZone([NullAllowed] _NSZone* zone);
     }

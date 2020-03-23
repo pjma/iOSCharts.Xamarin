@@ -2596,13 +2596,13 @@ SWIFT_CLASS("_TtC6Charts19ChartColorTemplates")
 @end
 
 /// Determines how to round DataSet index values for <code>ChartDataSet.entryIndex(x, rounding)</code> when an exact x-value is not found.
-typedef SWIFT_ENUM(NSInteger, ChartDataSetRounding, open) {
+typedef SWIFT_ENUM(NSInteger, ChartDataSetRounding, closed) {
   ChartDataSetRoundingUp = 0,
   ChartDataSetRoundingDown = 1,
   ChartDataSetRoundingClosest = 2,
 };
 
-typedef SWIFT_ENUM(NSInteger, ChartEasingOption, open) {
+typedef SWIFT_ENUM(NSInteger, ChartEasingOption, closed) {
   ChartEasingOptionLinear = 0,
   ChartEasingOptionEaseInQuad = 1,
   ChartEasingOptionEaseOutQuad = 2,
@@ -2660,7 +2660,7 @@ SWIFT_CLASS("_TtC6Charts14ChartLimitLine")
 @property (nonatomic) CGFloat lineWidth;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ChartLimitLabelPosition, "LabelPosition", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ChartLimitLabelPosition, "LabelPosition", closed) {
   ChartLimitLabelPositionTopLeft = 0,
   ChartLimitLabelPositionTopRight = 1,
   ChartLimitLabelPositionBottomLeft = 2,
@@ -2847,7 +2847,7 @@ SWIFT_CLASS("_TtC6Charts17CombinedChartView")
 @end
 
 /// enum that allows to specify the order in which the different data objects for the combined-chart are drawn
-typedef SWIFT_ENUM_NAMED(NSInteger, CombinedChartDrawOrder, "DrawOrder", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, CombinedChartDrawOrder, "DrawOrder", closed) {
   CombinedChartDrawOrderBar = 0,
   CombinedChartDrawOrderBubble = 1,
   CombinedChartDrawOrderLine = 2,
@@ -3027,7 +3027,7 @@ SWIFT_CLASS_NAMED("Fill")
 - (void)fillPathWithContext:(CGContextRef _Nonnull)context rect:(CGRect)rect;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ChartFillType, "FillType", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ChartFillType, "FillType", closed) {
   ChartFillTypeEmpty = 0,
   ChartFillTypeColor = 1,
   ChartFillTypeLinearGradient = 2,
@@ -3248,7 +3248,7 @@ SWIFT_PROTOCOL("_TtP6Charts17ILineChartDataSet_")
 @property (nonatomic) CGLineCap lineCapType;
 /// Sets a custom IFillFormatter to the chart that handles the position of the filled-line for each DataSet. Set this to null to use the default logic.
 @property (nonatomic, strong) id <IChartFillFormatter> _Nullable fillFormatter;
-@property (nonatomic) CGFloat HighlightActiveDistance;
+@property (nonatomic) CGFloat highlightActiveDistance;
 @end
 
 
@@ -3448,7 +3448,7 @@ SWIFT_CLASS_NAMED("Legend")
 @property (nonatomic, readonly) BOOL isLegendCustom;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendForm, "Form", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendForm, "Form", closed) {
 /// Avoid drawing a form
   ChartLegendFormNone = 0,
 /// Do not draw the a form, but leave space for it
@@ -3463,24 +3463,24 @@ typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendForm, "Form", open) {
   ChartLegendFormLine = 5,
 };
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendHorizontalAlignment, "HorizontalAlignment", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendHorizontalAlignment, "HorizontalAlignment", closed) {
   ChartLegendHorizontalAlignmentLeft = 0,
   ChartLegendHorizontalAlignmentCenter = 1,
   ChartLegendHorizontalAlignmentRight = 2,
 };
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendVerticalAlignment, "VerticalAlignment", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendVerticalAlignment, "VerticalAlignment", closed) {
   ChartLegendVerticalAlignmentTop = 0,
   ChartLegendVerticalAlignmentCenter = 1,
   ChartLegendVerticalAlignmentBottom = 2,
 };
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendOrientation, "Orientation", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendOrientation, "Orientation", closed) {
   ChartLegendOrientationHorizontal = 0,
   ChartLegendOrientationVertical = 1,
 };
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendDirection, "Direction", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendDirection, "Direction", closed) {
   ChartLegendDirectionLeftToRight = 0,
   ChartLegendDirectionRightToLeft = 1,
 };
@@ -3631,11 +3631,11 @@ SWIFT_CLASS("_TtC6Charts16LineChartDataSet")
 @property (nonatomic, strong) id <IChartFillFormatter> _Nullable fillFormatter;
 /// Intensity for cubic lines (min = 0.05, max = 1)
 /// <em>default</em>: 0.2
-@property (nonatomic) CGFloat HighlightActiveDistance;
+@property (nonatomic) CGFloat highlightActiveDistance;
 - (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, LineChartMode, "Mode", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, LineChartMode, "Mode", closed) {
   LineChartModeLinear = 0,
   LineChartModeStepped = 1,
   LineChartModeCubicBezier = 2,
@@ -3869,7 +3869,7 @@ SWIFT_CLASS("_TtC6Charts15PieChartDataSet")
 - (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, PieChartValuePosition, "ValuePosition", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, PieChartValuePosition, "ValuePosition", closed) {
   PieChartValuePositionInsideSlice = 0,
   PieChartValuePositionOutsideSlice = 1,
 };
@@ -4238,7 +4238,7 @@ SWIFT_CLASS("_TtC6Charts19ScatterChartDataSet")
 - (nonnull instancetype)initWithEntries:(NSArray<ChartDataEntry *> * _Nullable)entries label:(NSString * _Nullable)label OBJC_DESIGNATED_INITIALIZER;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ScatterShape, "Shape", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ScatterShape, "Shape", closed) {
   ScatterShapeSquare = 0,
   ScatterShapeCircle = 1,
   ScatterShapeTriangle = 2,
@@ -4513,7 +4513,7 @@ SWIFT_CLASS_NAMED("XAxis")
 @property (nonatomic, readonly) BOOL isAvoidFirstLastClippingEnabled;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, XAxisLabelPosition, "LabelPosition", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, XAxisLabelPosition, "LabelPosition", closed) {
   XAxisLabelPositionTop = 0,
   XAxisLabelPositionBottom = 1,
   XAxisLabelPositionBothSided = 2,
@@ -4632,13 +4632,13 @@ SWIFT_CLASS_NAMED("YAxis")
 @property (nonatomic, readonly) BOOL isDrawTopYLabelEntryEnabled;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, YAxisLabelPosition, "LabelPosition", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, YAxisLabelPosition, "LabelPosition", closed) {
   YAxisLabelPositionOutsideChart = 0,
   YAxisLabelPositionInsideChart = 1,
 };
 
 /// Enum that specifies the axis a DataSet should be plotted against, either Left or Right.
-typedef SWIFT_ENUM(NSInteger, AxisDependency, open) {
+typedef SWIFT_ENUM(NSInteger, AxisDependency, closed) {
   AxisDependencyLeft = 0,
   AxisDependencyRight = 1,
 };
@@ -7299,13 +7299,13 @@ SWIFT_CLASS("_TtC6Charts19ChartColorTemplates")
 @end
 
 /// Determines how to round DataSet index values for <code>ChartDataSet.entryIndex(x, rounding)</code> when an exact x-value is not found.
-typedef SWIFT_ENUM(NSInteger, ChartDataSetRounding, open) {
+typedef SWIFT_ENUM(NSInteger, ChartDataSetRounding, closed) {
   ChartDataSetRoundingUp = 0,
   ChartDataSetRoundingDown = 1,
   ChartDataSetRoundingClosest = 2,
 };
 
-typedef SWIFT_ENUM(NSInteger, ChartEasingOption, open) {
+typedef SWIFT_ENUM(NSInteger, ChartEasingOption, closed) {
   ChartEasingOptionLinear = 0,
   ChartEasingOptionEaseInQuad = 1,
   ChartEasingOptionEaseOutQuad = 2,
@@ -7363,7 +7363,7 @@ SWIFT_CLASS("_TtC6Charts14ChartLimitLine")
 @property (nonatomic) CGFloat lineWidth;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ChartLimitLabelPosition, "LabelPosition", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ChartLimitLabelPosition, "LabelPosition", closed) {
   ChartLimitLabelPositionTopLeft = 0,
   ChartLimitLabelPositionTopRight = 1,
   ChartLimitLabelPositionBottomLeft = 2,
@@ -7550,7 +7550,7 @@ SWIFT_CLASS("_TtC6Charts17CombinedChartView")
 @end
 
 /// enum that allows to specify the order in which the different data objects for the combined-chart are drawn
-typedef SWIFT_ENUM_NAMED(NSInteger, CombinedChartDrawOrder, "DrawOrder", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, CombinedChartDrawOrder, "DrawOrder", closed) {
   CombinedChartDrawOrderBar = 0,
   CombinedChartDrawOrderBubble = 1,
   CombinedChartDrawOrderLine = 2,
@@ -7730,7 +7730,7 @@ SWIFT_CLASS_NAMED("Fill")
 - (void)fillPathWithContext:(CGContextRef _Nonnull)context rect:(CGRect)rect;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ChartFillType, "FillType", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ChartFillType, "FillType", closed) {
   ChartFillTypeEmpty = 0,
   ChartFillTypeColor = 1,
   ChartFillTypeLinearGradient = 2,
@@ -7951,7 +7951,7 @@ SWIFT_PROTOCOL("_TtP6Charts17ILineChartDataSet_")
 @property (nonatomic) CGLineCap lineCapType;
 /// Sets a custom IFillFormatter to the chart that handles the position of the filled-line for each DataSet. Set this to null to use the default logic.
 @property (nonatomic, strong) id <IChartFillFormatter> _Nullable fillFormatter;
-@property (nonatomic) CGFloat HighlightActiveDistance;
+@property (nonatomic) CGFloat highlightActiveDistance;
 @end
 
 
@@ -8151,7 +8151,7 @@ SWIFT_CLASS_NAMED("Legend")
 @property (nonatomic, readonly) BOOL isLegendCustom;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendForm, "Form", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendForm, "Form", closed) {
 /// Avoid drawing a form
   ChartLegendFormNone = 0,
 /// Do not draw the a form, but leave space for it
@@ -8166,24 +8166,24 @@ typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendForm, "Form", open) {
   ChartLegendFormLine = 5,
 };
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendHorizontalAlignment, "HorizontalAlignment", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendHorizontalAlignment, "HorizontalAlignment", closed) {
   ChartLegendHorizontalAlignmentLeft = 0,
   ChartLegendHorizontalAlignmentCenter = 1,
   ChartLegendHorizontalAlignmentRight = 2,
 };
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendVerticalAlignment, "VerticalAlignment", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendVerticalAlignment, "VerticalAlignment", closed) {
   ChartLegendVerticalAlignmentTop = 0,
   ChartLegendVerticalAlignmentCenter = 1,
   ChartLegendVerticalAlignmentBottom = 2,
 };
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendOrientation, "Orientation", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendOrientation, "Orientation", closed) {
   ChartLegendOrientationHorizontal = 0,
   ChartLegendOrientationVertical = 1,
 };
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendDirection, "Direction", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ChartLegendDirection, "Direction", closed) {
   ChartLegendDirectionLeftToRight = 0,
   ChartLegendDirectionRightToLeft = 1,
 };
@@ -8334,11 +8334,11 @@ SWIFT_CLASS("_TtC6Charts16LineChartDataSet")
 @property (nonatomic, strong) id <IChartFillFormatter> _Nullable fillFormatter;
 /// Intensity for cubic lines (min = 0.05, max = 1)
 /// <em>default</em>: 0.2
-@property (nonatomic) CGFloat HighlightActiveDistance;
+@property (nonatomic) CGFloat highlightActiveDistance;
 - (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, LineChartMode, "Mode", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, LineChartMode, "Mode", closed) {
   LineChartModeLinear = 0,
   LineChartModeStepped = 1,
   LineChartModeCubicBezier = 2,
@@ -8572,7 +8572,7 @@ SWIFT_CLASS("_TtC6Charts15PieChartDataSet")
 - (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, PieChartValuePosition, "ValuePosition", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, PieChartValuePosition, "ValuePosition", closed) {
   PieChartValuePositionInsideSlice = 0,
   PieChartValuePositionOutsideSlice = 1,
 };
@@ -8941,7 +8941,7 @@ SWIFT_CLASS("_TtC6Charts19ScatterChartDataSet")
 - (nonnull instancetype)initWithEntries:(NSArray<ChartDataEntry *> * _Nullable)entries label:(NSString * _Nullable)label OBJC_DESIGNATED_INITIALIZER;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, ScatterShape, "Shape", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, ScatterShape, "Shape", closed) {
   ScatterShapeSquare = 0,
   ScatterShapeCircle = 1,
   ScatterShapeTriangle = 2,
@@ -9216,7 +9216,7 @@ SWIFT_CLASS_NAMED("XAxis")
 @property (nonatomic, readonly) BOOL isAvoidFirstLastClippingEnabled;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, XAxisLabelPosition, "LabelPosition", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, XAxisLabelPosition, "LabelPosition", closed) {
   XAxisLabelPositionTop = 0,
   XAxisLabelPositionBottom = 1,
   XAxisLabelPositionBothSided = 2,
@@ -9335,13 +9335,13 @@ SWIFT_CLASS_NAMED("YAxis")
 @property (nonatomic, readonly) BOOL isDrawTopYLabelEntryEnabled;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, YAxisLabelPosition, "LabelPosition", open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, YAxisLabelPosition, "LabelPosition", closed) {
   YAxisLabelPositionOutsideChart = 0,
   YAxisLabelPositionInsideChart = 1,
 };
 
 /// Enum that specifies the axis a DataSet should be plotted against, either Left or Right.
-typedef SWIFT_ENUM(NSInteger, AxisDependency, open) {
+typedef SWIFT_ENUM(NSInteger, AxisDependency, closed) {
   AxisDependencyLeft = 0,
   AxisDependencyRight = 1,
 };
