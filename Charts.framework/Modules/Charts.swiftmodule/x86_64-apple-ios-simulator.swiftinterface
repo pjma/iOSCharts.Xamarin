@@ -1,0 +1,2937 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-module-flags: -target x86_64-apple-ios8.4-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Charts
+@_exported import Charts
+import CoreGraphics
+import Foundation
+import QuartzCore
+import Swift
+import UIKit
+@objc(ChartAnimatorDelegate) public protocol AnimatorDelegate {
+  @objc func animatorUpdated(_ animator: Charts.Animator)
+  @objc func animatorStopped(_ animator: Charts.Animator)
+}
+@objc(ChartAnimator) open class Animator : ObjectiveC.NSObject {
+  @objc weak open var delegate: Charts.AnimatorDelegate?
+  @objc open var updateBlock: (() -> Swift.Void)?
+  @objc open var stopBlock: (() -> Swift.Void)?
+  @objc open var phaseX: Swift.Double
+  @objc open var phaseY: Swift.Double
+  @objc override dynamic public init()
+  @objc deinit
+  @objc open func stop()
+  @objc open func animate(xAxisDuration: Foundation.TimeInterval, yAxisDuration: Foundation.TimeInterval, easingX: Charts.ChartEasingFunctionBlock?, easingY: Charts.ChartEasingFunctionBlock?)
+  @objc open func animate(xAxisDuration: Foundation.TimeInterval, yAxisDuration: Foundation.TimeInterval, easingOptionX: Charts.ChartEasingOption, easingOptionY: Charts.ChartEasingOption)
+  @objc open func animate(xAxisDuration: Foundation.TimeInterval, yAxisDuration: Foundation.TimeInterval, easing: Charts.ChartEasingFunctionBlock?)
+  @objc open func animate(xAxisDuration: Foundation.TimeInterval, yAxisDuration: Foundation.TimeInterval, easingOption: Charts.ChartEasingOption = .easeInOutSine)
+  @objc open func animate(xAxisDuration: Foundation.TimeInterval, easing: Charts.ChartEasingFunctionBlock?)
+  @objc open func animate(xAxisDuration: Foundation.TimeInterval, easingOption: Charts.ChartEasingOption = .easeInOutSine)
+  @objc open func animate(yAxisDuration: Foundation.TimeInterval, easing: Charts.ChartEasingFunctionBlock?)
+  @objc open func animate(yAxisDuration: Foundation.TimeInterval, easingOption: Charts.ChartEasingOption = .easeInOutSine)
+}
+@objc public enum ChartEasingOption : Swift.Int {
+  case linear
+  case easeInQuad
+  case easeOutQuad
+  case easeInOutQuad
+  case easeInCubic
+  case easeOutCubic
+  case easeInOutCubic
+  case easeInQuart
+  case easeOutQuart
+  case easeInOutQuart
+  case easeInQuint
+  case easeOutQuint
+  case easeInOutQuint
+  case easeInSine
+  case easeOutSine
+  case easeInOutSine
+  case easeInExpo
+  case easeOutExpo
+  case easeInOutExpo
+  case easeInCirc
+  case easeOutCirc
+  case easeInOutCirc
+  case easeInElastic
+  case easeOutElastic
+  case easeInOutElastic
+  case easeInBack
+  case easeOutBack
+  case easeInOutBack
+  case easeInBounce
+  case easeOutBounce
+  case easeInOutBounce
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public typealias ChartEasingFunctionBlock = ((Foundation.TimeInterval, Foundation.TimeInterval) -> Swift.Double)
+@objc open class BarChartView : Charts.BarLineChartViewBase, Charts.BarChartDataProvider {
+  @objc override open func getHighlightByTouchPoint(_ pt: CoreGraphics.CGPoint) -> Charts.Highlight?
+  @objc open func getBarBounds(entry e: Charts.BarChartDataEntry) -> CoreGraphics.CGRect
+  @objc open func groupBars(fromX: Swift.Double, groupSpace: Swift.Double, barSpace: Swift.Double)
+  @objc open func highlightValue(x: Swift.Double, dataSetIndex: Swift.Int, stackIndex: Swift.Int)
+  @objc open var drawValueAboveBarEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var drawBarShadowEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var fitBars: Swift.Bool
+  @objc open var highlightFullBarEnabled: Swift.Bool
+  @objc open var isHighlightFullBarEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var barData: Charts.BarChartData? {
+    @objc get
+  }
+  @objc open var isDrawValueAboveBarEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var isDrawBarShadowEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc open class BarLineChartViewBase : Charts.ChartViewBase, Charts.BarLineScatterCandleBubbleChartDataProvider, Charts.NSUIGestureRecognizerDelegate {
+  @objc open var gridBackgroundColor: Charts.NSUIColor
+  @objc open var borderColor: UIKit.UIColor
+  @objc open var borderLineWidth: CoreGraphics.CGFloat
+  @objc open var drawGridBackgroundEnabled: Swift.Bool
+  @objc open var drawBordersEnabled: Swift.Bool
+  @objc open var clipValuesToContentEnabled: Swift.Bool
+  @objc open var clipDataToContentEnabled: Swift.Bool
+  @objc open var minOffset: CoreGraphics.CGFloat
+  @objc open var keepPositionOnRotation: Swift.Bool
+  @objc open var leftAxis: Charts.YAxis {
+    get
+    }
+  @objc open var rightAxis: Charts.YAxis {
+    get
+    }
+  @objc open var leftYAxisRenderer: Charts.YAxisRenderer {
+    @objc get
+    @objc set
+  }
+  @objc open var rightYAxisRenderer: Charts.YAxisRenderer {
+    @objc get
+    @objc set
+  }
+  @objc open var xAxisRenderer: Charts.XAxisRenderer {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+  @objc override dynamic open func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
+  @objc override dynamic open func draw(_ rect: CoreGraphics.CGRect)
+  @objc override open func notifyDataSetChanged()
+  @objc open func stopDeceleration()
+  @objc override dynamic open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIKit.UIGestureRecognizer) -> Swift.Bool
+  @objc open func gestureRecognizer(_ gestureRecognizer: Charts.NSUIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: Charts.NSUIGestureRecognizer) -> Swift.Bool
+  @objc open func zoomIn()
+  @objc open func zoomOut()
+  @objc open func resetZoom()
+  @objc open func zoom(scaleX: CoreGraphics.CGFloat, scaleY: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat)
+  @objc open func zoom(scaleX: CoreGraphics.CGFloat, scaleY: CoreGraphics.CGFloat, xValue: Swift.Double, yValue: Swift.Double, axis: Charts.YAxis.AxisDependency)
+  @objc open func zoomToCenter(scaleX: CoreGraphics.CGFloat, scaleY: CoreGraphics.CGFloat)
+  @objc open func zoomAndCenterViewAnimated(scaleX: CoreGraphics.CGFloat, scaleY: CoreGraphics.CGFloat, xValue: Swift.Double, yValue: Swift.Double, axis: Charts.YAxis.AxisDependency, duration: Foundation.TimeInterval, easing: Charts.ChartEasingFunctionBlock?)
+  @objc open func zoomAndCenterViewAnimated(scaleX: CoreGraphics.CGFloat, scaleY: CoreGraphics.CGFloat, xValue: Swift.Double, yValue: Swift.Double, axis: Charts.YAxis.AxisDependency, duration: Foundation.TimeInterval, easingOption: Charts.ChartEasingOption)
+  @objc open func zoomAndCenterViewAnimated(scaleX: CoreGraphics.CGFloat, scaleY: CoreGraphics.CGFloat, xValue: Swift.Double, yValue: Swift.Double, axis: Charts.YAxis.AxisDependency, duration: Foundation.TimeInterval)
+  @objc open func fitScreen()
+  @objc open func setScaleMinima(_ scaleX: CoreGraphics.CGFloat, scaleY: CoreGraphics.CGFloat)
+  @objc open var visibleXRange: Swift.Double {
+    @objc get
+  }
+  @objc open func setVisibleXRangeMaximum(_ maxXRange: Swift.Double)
+  @objc open func setVisibleXRangeMinimum(_ minXRange: Swift.Double)
+  @objc open func setVisibleXRange(minXRange: Swift.Double, maxXRange: Swift.Double)
+  @objc open func setVisibleYRangeMaximum(_ maxYRange: Swift.Double, axis: Charts.YAxis.AxisDependency)
+  @objc open func setVisibleYRangeMinimum(_ minYRange: Swift.Double, axis: Charts.YAxis.AxisDependency)
+  @objc open func setVisibleYRange(minYRange: Swift.Double, maxYRange: Swift.Double, axis: Charts.YAxis.AxisDependency)
+  @objc open func moveViewToX(_ xValue: Swift.Double)
+  @objc open func moveViewToY(_ yValue: Swift.Double, axis: Charts.YAxis.AxisDependency)
+  @objc open func moveViewTo(xValue: Swift.Double, yValue: Swift.Double, axis: Charts.YAxis.AxisDependency)
+  @objc open func moveViewToAnimated(xValue: Swift.Double, yValue: Swift.Double, axis: Charts.YAxis.AxisDependency, duration: Foundation.TimeInterval, easing: Charts.ChartEasingFunctionBlock?)
+  @objc open func moveViewToAnimated(xValue: Swift.Double, yValue: Swift.Double, axis: Charts.YAxis.AxisDependency, duration: Foundation.TimeInterval, easingOption: Charts.ChartEasingOption)
+  @objc open func moveViewToAnimated(xValue: Swift.Double, yValue: Swift.Double, axis: Charts.YAxis.AxisDependency, duration: Foundation.TimeInterval)
+  @objc open func centerViewTo(xValue: Swift.Double, yValue: Swift.Double, axis: Charts.YAxis.AxisDependency)
+  @objc open func centerViewToAnimated(xValue: Swift.Double, yValue: Swift.Double, axis: Charts.YAxis.AxisDependency, duration: Foundation.TimeInterval, easing: Charts.ChartEasingFunctionBlock?)
+  @objc open func centerViewToAnimated(xValue: Swift.Double, yValue: Swift.Double, axis: Charts.YAxis.AxisDependency, duration: Foundation.TimeInterval, easingOption: Charts.ChartEasingOption)
+  @objc open func centerViewToAnimated(xValue: Swift.Double, yValue: Swift.Double, axis: Charts.YAxis.AxisDependency, duration: Foundation.TimeInterval)
+  @objc open func setViewPortOffsets(left: CoreGraphics.CGFloat, top: CoreGraphics.CGFloat, right: CoreGraphics.CGFloat, bottom: CoreGraphics.CGFloat)
+  @objc open func resetViewPortOffsets()
+  @objc open func getAxisRange(axis: Charts.YAxis.AxisDependency) -> Swift.Double
+  @objc open func getPosition(entry e: Charts.ChartDataEntry, axis: Charts.YAxis.AxisDependency) -> CoreGraphics.CGPoint
+  @objc open var dragEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isDragEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var dragXEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var dragYEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open func setScaleEnabled(_ enabled: Swift.Bool)
+  @objc open var scaleXEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var scaleYEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isScaleXEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var isScaleYEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var doubleTapToZoomEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isDoubleTapToZoomEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var highlightPerDragEnabled: Swift.Bool
+  @objc open var isHighlightPerDragEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var isDrawGridBackgroundEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var isDrawBordersEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open func valueForTouchPoint(point pt: CoreGraphics.CGPoint, axis: Charts.YAxis.AxisDependency) -> CoreGraphics.CGPoint
+  @objc open func pixelForValues(x: Swift.Double, y: Swift.Double, axis: Charts.YAxis.AxisDependency) -> CoreGraphics.CGPoint
+  @objc open func getEntryByTouchPoint(point pt: CoreGraphics.CGPoint) -> Charts.ChartDataEntry!
+  @objc open func getDataSetByTouchPoint(point pt: CoreGraphics.CGPoint) -> Charts.IBarLineScatterCandleBubbleChartDataSet?
+  @objc open var scaleX: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var scaleY: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var isFullyZoomedOut: Swift.Bool {
+    @objc get
+  }
+  @objc open func getAxis(_ axis: Charts.YAxis.AxisDependency) -> Charts.YAxis
+  @objc open var pinchZoomEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isPinchZoomEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open func setDragOffsetX(_ offset: CoreGraphics.CGFloat)
+  @objc open func setDragOffsetY(_ offset: CoreGraphics.CGFloat)
+  @objc open var hasNoDragOffset: Swift.Bool {
+    @objc get
+  }
+  @objc override open var chartYMax: Swift.Double {
+    @objc get
+  }
+  @objc override open var chartYMin: Swift.Double {
+    @objc get
+  }
+  @objc open var isAnyAxisInverted: Swift.Bool {
+    @objc get
+  }
+  @objc open var autoScaleMinMaxEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isAutoScaleMinMaxEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open func setYAxisMinWidth(_ axis: Charts.YAxis.AxisDependency, width: CoreGraphics.CGFloat)
+  @objc open func getYAxisMinWidth(_ axis: Charts.YAxis.AxisDependency) -> CoreGraphics.CGFloat
+  @objc open func setYAxisMaxWidth(_ axis: Charts.YAxis.AxisDependency, width: CoreGraphics.CGFloat)
+  @objc open func getYAxisMaxWidth(_ axis: Charts.YAxis.AxisDependency) -> CoreGraphics.CGFloat
+  @objc open func getYAxisWidth(_ axis: Charts.YAxis.AxisDependency) -> CoreGraphics.CGFloat
+  @objc open func getTransformer(forAxis axis: Charts.YAxis.AxisDependency) -> Charts.Transformer
+  @objc override open var maxVisibleCount: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc open func isInverted(axis: Charts.YAxis.AxisDependency) -> Swift.Bool
+  @objc open var lowestVisibleX: Swift.Double {
+    @objc get
+  }
+  @objc open var highestVisibleX: Swift.Double {
+    @objc get
+  }
+}
+@objc open class BubbleChartView : Charts.BarLineChartViewBase, Charts.BubbleChartDataProvider {
+  override open func initialize()
+  @objc open var bubbleData: Charts.BubbleChartData? {
+    @objc get
+  }
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc open class CandleStickChartView : Charts.BarLineChartViewBase, Charts.CandleChartDataProvider {
+  @objc open var candleData: Charts.CandleChartData? {
+    @objc get
+  }
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc public protocol ChartViewDelegate {
+  @objc optional func chartValueSelected(_ chartView: Charts.ChartViewBase, entry: Charts.ChartDataEntry, highlight: Charts.Highlight)
+  @objc optional func chartViewDidEndPanning(_ chartView: Charts.ChartViewBase)
+  @objc optional func chartValueNothingSelected(_ chartView: Charts.ChartViewBase)
+  @objc optional func chartScaled(_ chartView: Charts.ChartViewBase, scaleX: CoreGraphics.CGFloat, scaleY: CoreGraphics.CGFloat)
+  @objc optional func chartTranslated(_ chartView: Charts.ChartViewBase, dX: CoreGraphics.CGFloat, dY: CoreGraphics.CGFloat)
+  @objc optional func chartView(_ chartView: Charts.ChartViewBase, animatorDidStop animator: Charts.Animator)
+}
+@objc open class ChartViewBase : Charts.NSUIView, Charts.ChartDataProvider, Charts.AnimatorDelegate {
+  @objc open var xAxis: Charts.XAxis {
+    @objc get
+  }
+  @objc open var dragDecelerationEnabled: Swift.Bool
+  @objc open var chartDescription: Charts.Description?
+  @objc weak open var delegate: Charts.ChartViewDelegate?
+  @objc open var noDataText: Swift.String
+  @objc open var noDataFont: UIKit.UIFont
+  @objc open var noDataTextColor: Charts.NSUIColor
+  @objc open var noDataTextAlignment: UIKit.NSTextAlignment
+  @objc open var renderer: Charts.DataRenderer?
+  @objc open var highlighter: Charts.IHighlighter?
+  @objc open var drawMarkers: Swift.Bool
+  @objc open var isDrawMarkersEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var marker: Charts.IMarker?
+  @objc open var extraTopOffset: CoreGraphics.CGFloat
+  @objc open var extraRightOffset: CoreGraphics.CGFloat
+  @objc open var extraBottomOffset: CoreGraphics.CGFloat
+  @objc open var extraLeftOffset: CoreGraphics.CGFloat
+  @objc open func setExtraOffsets(left: CoreGraphics.CGFloat, top: CoreGraphics.CGFloat, right: CoreGraphics.CGFloat, bottom: CoreGraphics.CGFloat)
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+  @objc open var data: Charts.ChartData? {
+    @objc get
+    @objc set
+  }
+  @objc open func clear()
+  @objc open func clearValues()
+  @objc open func isEmpty() -> Swift.Bool
+  @objc open func notifyDataSetChanged()
+  @objc override dynamic open func draw(_ rect: CoreGraphics.CGRect)
+  @objc override dynamic open func accessibilityChildren() -> [Any]?
+  @objc open var highlighted: [Charts.Highlight] {
+    @objc get
+  }
+  @objc open var highlightPerTapEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isHighLightPerTapEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open func valuesToHighlight() -> Swift.Bool
+  @objc open func highlightValues(_ highs: [Charts.Highlight]?)
+  @objc open func highlightValue(x: Swift.Double, dataSetIndex: Swift.Int, dataIndex: Swift.Int = -1)
+  @objc open func highlightValue(x: Swift.Double, y: Swift.Double, dataSetIndex: Swift.Int, dataIndex: Swift.Int = -1)
+  @objc open func highlightValue(x: Swift.Double, dataSetIndex: Swift.Int, dataIndex: Swift.Int = -1, callDelegate: Swift.Bool)
+  @objc open func highlightValue(x: Swift.Double, y: Swift.Double, dataSetIndex: Swift.Int, dataIndex: Swift.Int = -1, callDelegate: Swift.Bool)
+  @objc open func highlightValue(_ highlight: Charts.Highlight?)
+  @objc open func highlightValue(_ highlight: Charts.Highlight?, callDelegate: Swift.Bool)
+  @objc open func getHighlightByTouchPoint(_ pt: CoreGraphics.CGPoint) -> Charts.Highlight?
+  @objc open var lastHighlighted: Charts.Highlight?
+  @objc open func getMarkerPosition(highlight: Charts.Highlight) -> CoreGraphics.CGPoint
+  @objc open var chartAnimator: Charts.Animator! {
+    @objc get
+  }
+  @objc open func animate(xAxisDuration: Foundation.TimeInterval, yAxisDuration: Foundation.TimeInterval, easingX: Charts.ChartEasingFunctionBlock?, easingY: Charts.ChartEasingFunctionBlock?)
+  @objc open func animate(xAxisDuration: Foundation.TimeInterval, yAxisDuration: Foundation.TimeInterval, easingOptionX: Charts.ChartEasingOption, easingOptionY: Charts.ChartEasingOption)
+  @objc open func animate(xAxisDuration: Foundation.TimeInterval, yAxisDuration: Foundation.TimeInterval, easing: Charts.ChartEasingFunctionBlock?)
+  @objc open func animate(xAxisDuration: Foundation.TimeInterval, yAxisDuration: Foundation.TimeInterval, easingOption: Charts.ChartEasingOption)
+  @objc open func animate(xAxisDuration: Foundation.TimeInterval, yAxisDuration: Foundation.TimeInterval)
+  @objc open func animate(xAxisDuration: Foundation.TimeInterval, easing: Charts.ChartEasingFunctionBlock?)
+  @objc open func animate(xAxisDuration: Foundation.TimeInterval, easingOption: Charts.ChartEasingOption)
+  @objc open func animate(xAxisDuration: Foundation.TimeInterval)
+  @objc open func animate(yAxisDuration: Foundation.TimeInterval, easing: Charts.ChartEasingFunctionBlock?)
+  @objc open func animate(yAxisDuration: Foundation.TimeInterval, easingOption: Charts.ChartEasingOption)
+  @objc open func animate(yAxisDuration: Foundation.TimeInterval)
+  @objc open var chartYMax: Swift.Double {
+    @objc get
+  }
+  @objc open var chartYMin: Swift.Double {
+    @objc get
+  }
+  @objc open var chartXMax: Swift.Double {
+    @objc get
+  }
+  @objc open var chartXMin: Swift.Double {
+    @objc get
+  }
+  @objc open var xRange: Swift.Double {
+    @objc get
+  }
+  @objc open var midPoint: CoreGraphics.CGPoint {
+    @objc get
+  }
+  @objc open var centerOffsets: CoreGraphics.CGPoint {
+    @objc get
+  }
+  @objc open var legend: Charts.Legend {
+    @objc get
+  }
+  @objc open var legendRenderer: Charts.LegendRenderer! {
+    @objc get
+  }
+  @objc open var contentRect: CoreGraphics.CGRect {
+    @objc get
+  }
+  @objc open var viewPortHandler: Charts.ViewPortHandler! {
+    @objc get
+  }
+  @objc open func getChartImage(transparent: Swift.Bool) -> Charts.NSUIImage?
+  public enum ImageFormat {
+    case jpeg
+    case png
+    public static func == (a: Charts.ChartViewBase.ImageFormat, b: Charts.ChartViewBase.ImageFormat) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  open func save(to path: Swift.String, format: Charts.ChartViewBase.ImageFormat, compressionQuality: Swift.Double) -> Swift.Bool
+  @objc override dynamic open func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
+  @objc open func removeViewportJob(_ job: Charts.ViewPortJob)
+  @objc open func clearAllViewportJobs()
+  @objc open func addViewportJob(_ job: Charts.ViewPortJob)
+  @objc open var isDragDecelerationEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var dragDecelerationFrictionCoef: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc open var maxHighlightDistance: CoreGraphics.CGFloat
+  @objc open var maxVisibleCount: Swift.Int {
+    @objc get
+  }
+  @objc open func animatorUpdated(_ chartAnimator: Charts.Animator)
+  @objc open func animatorStopped(_ chartAnimator: Charts.Animator)
+  @objc override dynamic open func nsuiTouchesBegan(_ touches: Swift.Set<Charts.NSUITouch>, withEvent event: Charts.NSUIEvent?)
+  @objc override dynamic open func nsuiTouchesMoved(_ touches: Swift.Set<Charts.NSUITouch>, withEvent event: Charts.NSUIEvent?)
+  @objc override dynamic open func nsuiTouchesEnded(_ touches: Swift.Set<Charts.NSUITouch>, withEvent event: Charts.NSUIEvent?)
+  @objc override dynamic open func nsuiTouchesCancelled(_ touches: Swift.Set<Charts.NSUITouch>?, withEvent event: Charts.NSUIEvent?)
+}
+@objc open class CombinedChartView : Charts.BarLineChartViewBase, Charts.CombinedChartDataProvider {
+  @objc(CombinedChartDrawOrder) public enum DrawOrder : Swift.Int {
+    case bar
+    case bubble
+    case line
+    case candle
+    case scatter
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  override open func initialize()
+  @objc override open var data: Charts.ChartData? {
+    @objc get
+    @objc set
+  }
+  @objc open var fillFormatter: Charts.IFillFormatter {
+    @objc get
+    @objc set
+  }
+  @objc override open func getHighlightByTouchPoint(_ pt: CoreGraphics.CGPoint) -> Charts.Highlight?
+  @objc open var combinedData: Charts.CombinedChartData? {
+    @objc get
+  }
+  @objc open var lineData: Charts.LineChartData? {
+    @objc get
+  }
+  @objc open var barData: Charts.BarChartData? {
+    @objc get
+  }
+  @objc open var scatterData: Charts.ScatterChartData? {
+    @objc get
+  }
+  @objc open var candleData: Charts.CandleChartData? {
+    @objc get
+  }
+  @objc open var bubbleData: Charts.BubbleChartData? {
+    @objc get
+  }
+  @objc open var drawValueAboveBarEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var drawBarShadowEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isDrawValueAboveBarEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var isDrawBarShadowEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var drawOrder: [Swift.Int] {
+    @objc get
+    @objc set
+  }
+  @objc open var highlightFullBarEnabled: Swift.Bool
+  @objc open var isHighlightFullBarEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc open class HorizontalBarChartView : Charts.BarChartView {
+  @objc override open func getMarkerPosition(highlight: Charts.Highlight) -> CoreGraphics.CGPoint
+  @objc override open func getBarBounds(entry e: Charts.BarChartDataEntry) -> CoreGraphics.CGRect
+  @objc override open func getPosition(entry e: Charts.ChartDataEntry, axis: Charts.YAxis.AxisDependency) -> CoreGraphics.CGPoint
+  @objc override open func getHighlightByTouchPoint(_ pt: CoreGraphics.CGPoint) -> Charts.Highlight?
+  @objc override open var lowestVisibleX: Swift.Double {
+    @objc get
+  }
+  @objc override open var highestVisibleX: Swift.Double {
+    @objc get
+  }
+  @objc override open func setVisibleXRangeMaximum(_ maxXRange: Swift.Double)
+  @objc override open func setVisibleXRangeMinimum(_ minXRange: Swift.Double)
+  @objc override open func setVisibleXRange(minXRange: Swift.Double, maxXRange: Swift.Double)
+  @objc override open func setVisibleYRangeMaximum(_ maxYRange: Swift.Double, axis: Charts.YAxis.AxisDependency)
+  @objc override open func setVisibleYRangeMinimum(_ minYRange: Swift.Double, axis: Charts.YAxis.AxisDependency)
+  @objc override open func setVisibleYRange(minYRange: Swift.Double, maxYRange: Swift.Double, axis: Charts.YAxis.AxisDependency)
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc open class LineChartView : Charts.BarLineChartViewBase, Charts.LineChartDataProvider {
+  @objc open var lineData: Charts.LineChartData? {
+    @objc get
+  }
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc open class PieChartView : Charts.PieRadarChartViewBase {
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic open func draw(_ rect: CoreGraphics.CGRect)
+  @objc override open func getMarkerPosition(highlight: Charts.Highlight) -> CoreGraphics.CGPoint
+  @objc open func needsHighlight(index: Swift.Int) -> Swift.Bool
+  @objc override open var xAxis: Charts.XAxis {
+    @objc get
+  }
+  @objc override open func indexForAngle(_ angle: CoreGraphics.CGFloat) -> Swift.Int
+  @objc open func dataSetIndexForIndex(_ xValue: Swift.Double) -> Swift.Int
+  @objc open var drawAngles: [CoreGraphics.CGFloat] {
+    @objc get
+  }
+  @objc open var absoluteAngles: [CoreGraphics.CGFloat] {
+    @objc get
+  }
+  @objc open var holeColor: Charts.NSUIColor? {
+    @objc get
+    @objc set
+  }
+  @objc open var drawSlicesUnderHoleEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isDrawSlicesUnderHoleEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var drawHoleEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isDrawHoleEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var centerText: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc open var centerAttributedText: Foundation.NSAttributedString? {
+    @objc get
+    @objc set
+  }
+  @objc open var centerTextOffset: CoreGraphics.CGPoint {
+    @objc get
+    @objc set
+  }
+  @objc open var drawCenterTextEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isDrawCenterTextEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc override open var radius: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var circleBox: CoreGraphics.CGRect {
+    @objc get
+  }
+  @objc open var centerCircleBox: CoreGraphics.CGPoint {
+    @objc get
+  }
+  @objc open var holeRadiusPercent: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc open var transparentCircleColor: Charts.NSUIColor? {
+    @objc get
+    @objc set
+  }
+  @objc open var transparentCircleRadiusPercent: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc open var entryLabelColor: Charts.NSUIColor? {
+    @objc get
+    @objc set
+  }
+  @objc open var entryLabelFont: Charts.NSUIFont? {
+    @objc get
+    @objc set
+  }
+  @objc open var drawEntryLabelsEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isDrawEntryLabelsEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var usePercentValuesEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isUsePercentValuesEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var centerTextRadiusPercent: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc open var maxAngle: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@objc open class PieRadarChartViewBase : Charts.ChartViewBase {
+  @objc open var rotationEnabled: Swift.Bool
+  @objc open var minOffset: CoreGraphics.CGFloat
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+  @objc override open var maxVisibleCount: Swift.Int {
+    @objc get
+  }
+  @objc override open func notifyDataSetChanged()
+  @objc open func angleForPoint(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> CoreGraphics.CGFloat
+  @objc open func getPosition(center: CoreGraphics.CGPoint, dist: CoreGraphics.CGFloat, angle: CoreGraphics.CGFloat) -> CoreGraphics.CGPoint
+  @objc open func distanceToCenter(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> CoreGraphics.CGFloat
+  @objc open func indexForAngle(_ angle: CoreGraphics.CGFloat) -> Swift.Int
+  @objc open var rotationAngle: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc open var rawRotationAngle: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var diameter: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var radius: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc override open var chartYMax: Swift.Double {
+    @objc get
+  }
+  @objc override open var chartYMin: Swift.Double {
+    @objc get
+  }
+  @objc open var isRotationEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var rotationWithTwoFingers: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isRotationWithTwoFingers: Swift.Bool {
+    @objc get
+  }
+  @objc open func spin(duration: Foundation.TimeInterval, fromAngle: CoreGraphics.CGFloat, toAngle: CoreGraphics.CGFloat, easing: Charts.ChartEasingFunctionBlock?)
+  @objc open func spin(duration: Foundation.TimeInterval, fromAngle: CoreGraphics.CGFloat, toAngle: CoreGraphics.CGFloat, easingOption: Charts.ChartEasingOption)
+  @objc open func spin(duration: Foundation.TimeInterval, fromAngle: CoreGraphics.CGFloat, toAngle: CoreGraphics.CGFloat)
+  @objc open func stopSpinAnimation()
+  @objc override dynamic open func nsuiTouchesBegan(_ touches: Swift.Set<Charts.NSUITouch>, withEvent event: Charts.NSUIEvent?)
+  @objc override dynamic open func nsuiTouchesMoved(_ touches: Swift.Set<Charts.NSUITouch>, withEvent event: Charts.NSUIEvent?)
+  @objc override dynamic open func nsuiTouchesEnded(_ touches: Swift.Set<Charts.NSUITouch>, withEvent event: Charts.NSUIEvent?)
+  @objc override dynamic open func nsuiTouchesCancelled(_ touches: Swift.Set<Charts.NSUITouch>?, withEvent event: Charts.NSUIEvent?)
+  @objc open func stopDeceleration()
+}
+@objc open class RadarChartView : Charts.PieRadarChartViewBase {
+  @objc open var webLineWidth: CoreGraphics.CGFloat
+  @objc open var innerWebLineWidth: CoreGraphics.CGFloat
+  @objc open var webColor: Charts.NSUIColor
+  @objc open var innerWebColor: Charts.NSUIColor
+  @objc open var webAlpha: CoreGraphics.CGFloat
+  @objc open var drawWeb: Swift.Bool
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override open func notifyDataSetChanged()
+  @objc override dynamic open func draw(_ rect: CoreGraphics.CGRect)
+  @objc open var factor: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var sliceAngle: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc override open func indexForAngle(_ angle: CoreGraphics.CGFloat) -> Swift.Int
+  @objc open var yAxis: Charts.YAxis {
+    @objc get
+  }
+  @objc open var skipWebLineCount: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc override open var radius: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc override open var chartYMax: Swift.Double {
+    @objc get
+  }
+  @objc override open var chartYMin: Swift.Double {
+    @objc get
+  }
+  @objc open var yRange: Swift.Double {
+    @objc get
+  }
+  @objc deinit
+}
+@objc open class ScatterChartView : Charts.BarLineChartViewBase, Charts.ScatterChartDataProvider {
+  override open func initialize()
+  @objc open var scatterData: Charts.ScatterChartData? {
+    @objc get
+  }
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc(ChartAxisBase) open class AxisBase : Charts.ComponentBase {
+  @objc override dynamic public init()
+  @objc open var labelFont: UIKit.UIFont
+  @objc open var labelTextColor: UIKit.UIColor
+  @objc open var axisLineColor: UIKit.UIColor
+  @objc open var axisLineWidth: CoreGraphics.CGFloat
+  @objc open var axisLineDashPhase: CoreGraphics.CGFloat
+  @objc open var axisLineDashLengths: [CoreGraphics.CGFloat]!
+  @objc open var gridColor: UIKit.UIColor
+  @objc open var gridLineWidth: CoreGraphics.CGFloat
+  @objc open var gridLineDashPhase: CoreGraphics.CGFloat
+  @objc open var gridLineDashLengths: [CoreGraphics.CGFloat]!
+  @objc open var gridLineCap: CoreGraphics.CGLineCap
+  @objc open var drawGridLinesEnabled: Swift.Bool
+  @objc open var drawAxisLineEnabled: Swift.Bool
+  @objc open var drawLabelsEnabled: Swift.Bool
+  @objc open var centerAxisLabelsEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isCenterAxisLabelsEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var drawLimitLinesBehindDataEnabled: Swift.Bool
+  @objc open var drawGridLinesBehindDataEnabled: Swift.Bool
+  @objc open var gridAntialiasEnabled: Swift.Bool
+  @objc open var entries: [Swift.Double]
+  @objc open var centeredEntries: [Swift.Double]
+  @objc open var entryCount: Swift.Int {
+    @objc get
+  }
+  @objc open var decimals: Swift.Int
+  @objc open var granularityEnabled: Swift.Bool
+  @objc open var granularity: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc open var isGranularityEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var forceLabelsEnabled: Swift.Bool
+  @objc open func getLongestLabel() -> Swift.String
+  @objc open func getFormattedLabel(_ index: Swift.Int) -> Swift.String
+  @objc open var valueFormatter: Charts.IAxisValueFormatter? {
+    @objc get
+    @objc set
+  }
+  @objc open var isDrawGridLinesEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var isDrawAxisLineEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var isDrawLabelsEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var isDrawLimitLinesBehindDataEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var isDrawGridLinesBehindDataEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var spaceMin: Swift.Double
+  @objc open var spaceMax: Swift.Double
+  @objc open var axisRange: Swift.Double
+  @objc open var axisMinLabels: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc open var axisMaxLabels: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc open var labelCount: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc open func setLabelCount(_ count: Swift.Int, force: Swift.Bool)
+  @objc open var isForceLabelsEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open func addLimitLine(_ line: Charts.ChartLimitLine)
+  @objc open func removeLimitLine(_ line: Charts.ChartLimitLine)
+  @objc open func removeAllLimitLines()
+  @objc open var limitLines: [Charts.ChartLimitLine] {
+    @objc get
+  }
+  @objc open func resetCustomAxisMin()
+  @objc open var isAxisMinCustom: Swift.Bool {
+    @objc get
+  }
+  @objc open func resetCustomAxisMax()
+  @objc open var isAxisMaxCustom: Swift.Bool {
+    @objc get
+  }
+  @objc open var axisMinimum: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc open var axisMaximum: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc open func calculate(min dataMin: Swift.Double, max dataMax: Swift.Double)
+  @objc deinit
+}
+@objc open class ChartLimitLine : Charts.ComponentBase {
+  @objc(ChartLimitLabelPosition) public enum LabelPosition : Swift.Int {
+    case topLeft
+    case topRight
+    case bottomLeft
+    case bottomRight
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc open var limit: Swift.Double
+  @objc open var lineColor: Charts.NSUIColor
+  @objc open var lineDashPhase: CoreGraphics.CGFloat
+  @objc open var lineDashLengths: [CoreGraphics.CGFloat]?
+  @objc open var valueTextColor: UIKit.UIColor
+  @objc open var valueFont: UIKit.UIFont
+  @objc open var drawLabelEnabled: Swift.Bool
+  @objc open var label: Swift.String
+  @objc open var labelPosition: Charts.ChartLimitLine.LabelPosition
+  @objc override dynamic public init()
+  @objc public init(limit: Swift.Double)
+  @objc public init(limit: Swift.Double, label: Swift.String)
+  @objc open var lineWidth: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@objc(ChartComponentBase) open class ComponentBase : ObjectiveC.NSObject {
+  @objc open var enabled: Swift.Bool
+  @objc open var xOffset: CoreGraphics.CGFloat
+  @objc open var yOffset: CoreGraphics.CGFloat
+  @objc override dynamic public init()
+  @objc open var isEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+}
+@objc(ChartDescription) open class Description : Charts.ComponentBase {
+  @objc override dynamic public init()
+  @objc open var text: Swift.String?
+  open var position: CoreGraphics.CGPoint?
+  @objc open var textAlign: UIKit.NSTextAlignment
+  @objc open var font: Charts.NSUIFont
+  @objc open var textColor: UIKit.UIColor
+  @objc deinit
+}
+@objc(IChartMarker) public protocol IMarker : AnyObject {
+  @objc var offset: CoreGraphics.CGPoint { get }
+  @objc func offsetForDrawing(atPoint: CoreGraphics.CGPoint) -> CoreGraphics.CGPoint
+  @objc func refreshContent(entry: Charts.ChartDataEntry, highlight: Charts.Highlight)
+  @objc func draw(context: CoreGraphics.CGContext, point: CoreGraphics.CGPoint)
+}
+@objc(ChartLegend) open class Legend : Charts.ComponentBase {
+  @objc(ChartLegendForm) public enum Form : Swift.Int {
+    case none
+    case empty
+    case `default`
+    case square
+    case circle
+    case line
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc(ChartLegendHorizontalAlignment) public enum HorizontalAlignment : Swift.Int {
+    case left
+    case center
+    case right
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc(ChartLegendVerticalAlignment) public enum VerticalAlignment : Swift.Int {
+    case top
+    case center
+    case bottom
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc(ChartLegendOrientation) public enum Orientation : Swift.Int {
+    case horizontal
+    case vertical
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc(ChartLegendDirection) public enum Direction : Swift.Int {
+    case leftToRight
+    case rightToLeft
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc open var entries: [Charts.LegendEntry]
+  @objc open var extraEntries: [Charts.LegendEntry]
+  @objc open var horizontalAlignment: Charts.Legend.HorizontalAlignment
+  @objc open var verticalAlignment: Charts.Legend.VerticalAlignment
+  @objc open var orientation: Charts.Legend.Orientation
+  @objc open var drawInside: Swift.Bool
+  @objc open var isDrawInsideEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var direction: Charts.Legend.Direction
+  @objc open var font: Charts.NSUIFont
+  @objc open var textColor: UIKit.UIColor
+  @objc open var form: Charts.Legend.Form
+  @objc open var formSize: CoreGraphics.CGFloat
+  @objc open var formLineWidth: CoreGraphics.CGFloat
+  @objc open var formLineDashPhase: CoreGraphics.CGFloat
+  @objc open var formLineDashLengths: [CoreGraphics.CGFloat]?
+  @objc open var xEntrySpace: CoreGraphics.CGFloat
+  @objc open var yEntrySpace: CoreGraphics.CGFloat
+  @objc open var formToTextSpace: CoreGraphics.CGFloat
+  @objc open var stackSpace: CoreGraphics.CGFloat
+  @objc open var calculatedLabelSizes: [CoreGraphics.CGSize]
+  @objc open var calculatedLabelBreakPoints: [Swift.Bool]
+  @objc open var calculatedLineSizes: [CoreGraphics.CGSize]
+  @objc override dynamic public init()
+  @objc public init(entries: [Charts.LegendEntry])
+  @objc open func getMaximumEntrySize(withFont font: Charts.NSUIFont) -> CoreGraphics.CGSize
+  @objc open var neededWidth: CoreGraphics.CGFloat
+  @objc open var neededHeight: CoreGraphics.CGFloat
+  @objc open var textWidthMax: CoreGraphics.CGFloat
+  @objc open var textHeightMax: CoreGraphics.CGFloat
+  @objc open var wordWrapEnabled: Swift.Bool
+  @objc open var isWordWrapEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var maxSizePercent: CoreGraphics.CGFloat
+  @objc open func calculateDimensions(labelFont: Charts.NSUIFont, viewPortHandler: Charts.ViewPortHandler)
+  @objc open func setCustom(entries: [Charts.LegendEntry])
+  @objc open func resetCustom()
+  @objc open var isLegendCustom: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+}
+public typealias NSUIGestureRecognizer = UIKit.UIGestureRecognizer
+public typealias NSUIGestureRecognizerState = UIKit.UIGestureRecognizer.State
+public typealias NSUIGestureRecognizerDelegate = UIKit.UIGestureRecognizerDelegate
+public typealias NSUITapGestureRecognizer = UIKit.UITapGestureRecognizer
+public typealias NSUIPanGestureRecognizer = UIKit.UIPanGestureRecognizer
+public typealias NSUIPinchGestureRecognizer = UIKit.UIPinchGestureRecognizer
+public typealias NSUIRotationGestureRecognizer = UIKit.UIRotationGestureRecognizer
+@objc(ChartLegendEntry) open class LegendEntry : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc public init(label: Swift.String?, form: Charts.Legend.Form, formSize: CoreGraphics.CGFloat, formLineWidth: CoreGraphics.CGFloat, formLineDashPhase: CoreGraphics.CGFloat, formLineDashLengths: [CoreGraphics.CGFloat]?, formColor: Charts.NSUIColor?)
+  @objc open var label: Swift.String?
+  @objc open var form: Charts.Legend.Form
+  @objc open var formSize: CoreGraphics.CGFloat
+  @objc open var formLineWidth: CoreGraphics.CGFloat
+  @objc open var formLineDashPhase: CoreGraphics.CGFloat
+  @objc open var formLineDashLengths: [CoreGraphics.CGFloat]?
+  @objc open var formColor: Charts.NSUIColor?
+  @objc deinit
+}
+@objc(ChartMarkerImage) open class MarkerImage : ObjectiveC.NSObject, Charts.IMarker {
+  @objc open var image: Charts.NSUIImage?
+  @objc open var offset: CoreGraphics.CGPoint
+  @objc weak open var chartView: Charts.ChartViewBase?
+  @objc open var size: CoreGraphics.CGSize
+  @objc override dynamic public init()
+  @objc open func offsetForDrawing(atPoint point: CoreGraphics.CGPoint) -> CoreGraphics.CGPoint
+  @objc open func refreshContent(entry: Charts.ChartDataEntry, highlight: Charts.Highlight)
+  @objc open func draw(context: CoreGraphics.CGContext, point: CoreGraphics.CGPoint)
+  @objc deinit
+}
+@objc(ChartMarkerView) open class MarkerView : Charts.NSUIView, Charts.IMarker {
+  @objc open var offset: CoreGraphics.CGPoint
+  @objc weak open var chartView: Charts.ChartViewBase?
+  @objc open func offsetForDrawing(atPoint point: CoreGraphics.CGPoint) -> CoreGraphics.CGPoint
+  @objc open func refreshContent(entry: Charts.ChartDataEntry, highlight: Charts.Highlight)
+  @objc open func draw(context: CoreGraphics.CGContext, point: CoreGraphics.CGPoint)
+  @objc open class func viewFromXib(in bundle: Foundation.Bundle = .main) -> Charts.MarkerView?
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc(ChartXAxis) open class XAxis : Charts.AxisBase {
+  @objc(XAxisLabelPosition) public enum LabelPosition : Swift.Int {
+    case top
+    case bottom
+    case bothSided
+    case topInside
+    case bottomInside
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc open var labelWidth: CoreGraphics.CGFloat
+  @objc open var labelHeight: CoreGraphics.CGFloat
+  @objc open var labelRotatedWidth: CoreGraphics.CGFloat
+  @objc open var labelRotatedHeight: CoreGraphics.CGFloat
+  @objc open var labelRotationAngle: CoreGraphics.CGFloat
+  @objc open var avoidFirstLastClippingEnabled: Swift.Bool
+  @objc open var labelPosition: Charts.XAxis.LabelPosition
+  @objc open var wordWrapEnabled: Swift.Bool
+  @objc open var isWordWrapEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var wordWrapWidthPercent: CoreGraphics.CGFloat
+  @objc override dynamic public init()
+  @objc open var isAvoidFirstLastClippingEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+}
+@objc(ChartYAxis) open class YAxis : Charts.AxisBase {
+  @objc(YAxisLabelPosition) public enum LabelPosition : Swift.Int {
+    case outsideChart
+    case insideChart
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public enum AxisDependency : Swift.Int {
+    case left
+    case right
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc open var drawBottomYLabelEntryEnabled: Swift.Bool
+  @objc open var drawTopYLabelEntryEnabled: Swift.Bool
+  @objc open var inverted: Swift.Bool
+  @objc open var drawZeroLineEnabled: Swift.Bool
+  @objc open var zeroLineColor: Charts.NSUIColor?
+  @objc open var zeroLineWidth: CoreGraphics.CGFloat
+  @objc open var zeroLineDashPhase: CoreGraphics.CGFloat
+  @objc open var zeroLineDashLengths: [CoreGraphics.CGFloat]?
+  @objc open var spaceTop: CoreGraphics.CGFloat
+  @objc open var spaceBottom: CoreGraphics.CGFloat
+  @objc open var labelPosition: Charts.YAxis.LabelPosition
+  @objc open var labelAlignment: UIKit.NSTextAlignment
+  @objc open var labelXOffset: CoreGraphics.CGFloat
+  @objc open var minWidth: CoreGraphics.CGFloat
+  @objc open var maxWidth: CoreGraphics.CGFloat
+  @objc override dynamic public init()
+  @objc public init(position: Charts.YAxis.AxisDependency)
+  @objc open var axisDependency: Charts.YAxis.AxisDependency {
+    @objc get
+  }
+  @objc open func requiredSize() -> CoreGraphics.CGSize
+  @objc open func getRequiredHeightSpace() -> CoreGraphics.CGFloat
+  @objc open var needsOffset: Swift.Bool {
+    @objc get
+  }
+  @objc open var isInverted: Swift.Bool {
+    @objc get
+  }
+  @objc override open func calculate(min dataMin: Swift.Double, max dataMax: Swift.Double)
+  @objc open var isDrawBottomYLabelEntryEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var isDrawTopYLabelEntryEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+}
+@objc open class ChartBaseDataSet : ObjectiveC.NSObject, Charts.IChartDataSet, Foundation.NSCopying {
+  @objc required override dynamic public init()
+  @objc public init(label: Swift.String?)
+  @objc open func notifyDataSetChanged()
+  @objc open func calcMinMax()
+  @objc open func calcMinMaxY(fromX: Swift.Double, toX: Swift.Double)
+  @objc open var yMin: Swift.Double {
+    @objc get
+  }
+  @objc open var yMax: Swift.Double {
+    @objc get
+  }
+  @objc open var xMin: Swift.Double {
+    @objc get
+  }
+  @objc open var xMax: Swift.Double {
+    @objc get
+  }
+  @objc open var entryCount: Swift.Int {
+    @objc get
+  }
+  @objc open func entryForIndex(_ i: Swift.Int) -> Charts.ChartDataEntry?
+  @objc open func entryForXValue(_ x: Swift.Double, closestToY y: Swift.Double, rounding: Charts.ChartDataSetRounding) -> Charts.ChartDataEntry?
+  @objc open func entryForXValue(_ x: Swift.Double, closestToY y: Swift.Double) -> Charts.ChartDataEntry?
+  @objc open func entriesForXValue(_ x: Swift.Double) -> [Charts.ChartDataEntry]
+  @objc open func entryIndex(x xValue: Swift.Double, closestToY y: Swift.Double, rounding: Charts.ChartDataSetRounding) -> Swift.Int
+  @objc open func entryIndex(entry e: Charts.ChartDataEntry) -> Swift.Int
+  @objc open func addEntry(_ e: Charts.ChartDataEntry) -> Swift.Bool
+  @objc open func addEntryOrdered(_ e: Charts.ChartDataEntry) -> Swift.Bool
+  @discardableResult
+  @objc open func removeEntry(_ entry: Charts.ChartDataEntry) -> Swift.Bool
+  @discardableResult
+  @objc open func removeEntry(index: Swift.Int) -> Swift.Bool
+  @discardableResult
+  @objc open func removeEntry(x: Swift.Double) -> Swift.Bool
+  @discardableResult
+  @objc open func removeFirst() -> Swift.Bool
+  @discardableResult
+  @objc open func removeLast() -> Swift.Bool
+  @objc open func contains(_ e: Charts.ChartDataEntry) -> Swift.Bool
+  @objc open func clear()
+  @objc open var colors: [Charts.NSUIColor]
+  @objc open var valueColors: [Charts.NSUIColor]
+  @objc open var label: Swift.String?
+  @objc open var axisDependency: Charts.YAxis.AxisDependency
+  @objc open func color(atIndex index: Swift.Int) -> Charts.NSUIColor
+  @objc open func resetColors()
+  @objc open func addColor(_ color: Charts.NSUIColor)
+  @objc open func setColor(_ color: Charts.NSUIColor)
+  @objc open func setColor(_ color: Charts.NSUIColor, alpha: CoreGraphics.CGFloat)
+  @objc open func setColors(_ colors: [Charts.NSUIColor], alpha: CoreGraphics.CGFloat)
+  open func setColors(_ colors: Charts.NSUIColor...)
+  @objc open var highlightEnabled: Swift.Bool
+  @objc open var isHighlightEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var valueFormatter: Charts.IValueFormatter? {
+    @objc get
+    @objc set
+  }
+  @objc open var needsFormatter: Swift.Bool {
+    @objc get
+  }
+  @objc open var valueTextColor: Charts.NSUIColor {
+    @objc get
+    @objc set
+  }
+  @objc open func valueTextColorAt(_ index: Swift.Int) -> Charts.NSUIColor
+  @objc open var valueFont: Charts.NSUIFont
+  @objc open var form: Charts.Legend.Form
+  @objc open var formSize: CoreGraphics.CGFloat
+  @objc open var formLineWidth: CoreGraphics.CGFloat
+  @objc open var formLineDashPhase: CoreGraphics.CGFloat
+  @objc open var formLineDashLengths: [CoreGraphics.CGFloat]?
+  @objc open var drawValuesEnabled: Swift.Bool
+  @objc open var isDrawValuesEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var drawIconsEnabled: Swift.Bool
+  @objc open var isDrawIconsEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var iconsOffset: CoreGraphics.CGPoint
+  @objc open var visible: Swift.Bool
+  @objc open var isVisible: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic open var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic open var debugDescription: Swift.String {
+    @objc get
+  }
+  @objc open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc deinit
+}
+@objc open class BarChartData : Charts.BarLineScatterCandleBubbleChartData {
+  @objc override dynamic public init()
+  @objc override public init(dataSets: [Charts.IChartDataSet]?)
+  @objc open var barWidth: Swift.Double
+  @objc open func groupBars(fromX: Swift.Double, groupSpace: Swift.Double, barSpace: Swift.Double)
+  @objc open func groupWidth(groupSpace: Swift.Double, barSpace: Swift.Double) -> Swift.Double
+  @objc deinit
+}
+@objc open class BarChartDataEntry : Charts.ChartDataEntry {
+  @objc required dynamic public init()
+  @objc override public init(x: Swift.Double, y: Swift.Double)
+  @objc convenience public init(x: Swift.Double, y: Swift.Double, data: Any?)
+  @objc convenience public init(x: Swift.Double, y: Swift.Double, icon: Charts.NSUIImage?)
+  @objc convenience public init(x: Swift.Double, y: Swift.Double, icon: Charts.NSUIImage?, data: Any?)
+  @objc public init(x: Swift.Double, yValues: [Swift.Double])
+  @objc convenience public init(x: Swift.Double, yValues: [Swift.Double], icon: Charts.NSUIImage?)
+  @objc convenience public init(x: Swift.Double, yValues: [Swift.Double], data: Any?)
+  @objc convenience public init(x: Swift.Double, yValues: [Swift.Double], icon: Charts.NSUIImage?, data: Any?)
+  @objc open func sumBelow(stackIndex: Swift.Int) -> Swift.Double
+  @objc open var negativeSum: Swift.Double {
+    @objc get
+  }
+  @objc open var positiveSum: Swift.Double {
+    @objc get
+  }
+  @objc open func calcPosNegSum()
+  @objc open func calcRanges()
+  @objc open var isStacked: Swift.Bool {
+    @objc get
+  }
+  @objc open var yValues: [Swift.Double]? {
+    @objc get
+    @objc set
+  }
+  @objc open var ranges: [Charts.Range]? {
+    @objc get
+  }
+  @objc override open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc deinit
+}
+@objc open class BarChartDataSet : Charts.BarLineScatterCandleBubbleChartDataSet, Charts.IBarChartDataSet {
+  @objc required dynamic public init()
+  @objc override public init(entries: [Charts.ChartDataEntry]?, label: Swift.String?)
+  override open func calcMinMax(entry e: Charts.ChartDataEntry)
+  @objc open var stackSize: Swift.Int {
+    @objc get
+  }
+  @objc open var isStacked: Swift.Bool {
+    @objc get
+  }
+  @objc open var entryCountStacks: Swift.Int {
+    @objc get
+  }
+  @objc open var stackLabels: [Swift.String]
+  @objc open var barShadowColor: Charts.NSUIColor
+  @objc open var barBorderWidth: CoreGraphics.CGFloat
+  @objc open var barBorderColor: UIKit.UIColor
+  @objc open var highlightAlpha: CoreGraphics.CGFloat
+  @objc override open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc deinit
+}
+public typealias NSUIColor = UIKit.UIColor
+@objc open class BarLineScatterCandleBubbleChartData : Charts.ChartData {
+  @objc override dynamic public init()
+  @objc override public init(dataSets: [Charts.IChartDataSet]?)
+  @objc deinit
+}
+@objc open class BarLineScatterCandleBubbleChartDataSet : Charts.ChartDataSet, Charts.IBarLineScatterCandleBubbleChartDataSet {
+  @objc open var highlightColor: Charts.NSUIColor
+  @objc open var highlightLineWidth: CoreGraphics.CGFloat
+  @objc open var highlightLineDashPhase: CoreGraphics.CGFloat
+  @objc open var highlightLineDashLengths: [CoreGraphics.CGFloat]?
+  @objc override open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc override public init(entries: [Charts.ChartDataEntry]?, label: Swift.String?)
+  @objc deinit
+}
+@objc open class BubbleChartData : Charts.BarLineScatterCandleBubbleChartData {
+  @objc override dynamic public init()
+  @objc override public init(dataSets: [Charts.IChartDataSet]?)
+  @objc open func setHighlightCircleWidth(_ width: CoreGraphics.CGFloat)
+  @objc deinit
+}
+@objc open class BubbleChartDataEntry : Charts.ChartDataEntry {
+  @objc open var size: CoreGraphics.CGFloat
+  @objc required dynamic public init()
+  @objc public init(x: Swift.Double, y: Swift.Double, size: CoreGraphics.CGFloat)
+  @objc convenience public init(x: Swift.Double, y: Swift.Double, size: CoreGraphics.CGFloat, data: Any?)
+  @objc convenience public init(x: Swift.Double, y: Swift.Double, size: CoreGraphics.CGFloat, icon: Charts.NSUIImage?)
+  @objc convenience public init(x: Swift.Double, y: Swift.Double, size: CoreGraphics.CGFloat, icon: Charts.NSUIImage?, data: Any?)
+  @objc override open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc override public init(x: Swift.Double, y: Swift.Double)
+  @objc deinit
+}
+@objc open class BubbleChartDataSet : Charts.BarLineScatterCandleBubbleChartDataSet, Charts.IBubbleChartDataSet {
+  @objc open var maxSize: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var normalizeSizeEnabled: Swift.Bool
+  @objc open var isNormalizeSizeEnabled: Swift.Bool {
+    @objc get
+  }
+  override open func calcMinMax(entry e: Charts.ChartDataEntry)
+  @objc open var highlightCircleWidth: CoreGraphics.CGFloat
+  @objc override open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc override public init(entries: [Charts.ChartDataEntry]?, label: Swift.String?)
+  @objc deinit
+}
+@objc open class CandleChartData : Charts.BarLineScatterCandleBubbleChartData {
+  @objc override dynamic public init()
+  @objc override public init(dataSets: [Charts.IChartDataSet]?)
+  @objc deinit
+}
+@objc open class CandleChartDataEntry : Charts.ChartDataEntry {
+  @objc open var high: Swift.Double
+  @objc open var low: Swift.Double
+  @objc open var close: Swift.Double
+  @objc open var open: Swift.Double
+  @objc required dynamic public init()
+  @objc public init(x: Swift.Double, shadowH: Swift.Double, shadowL: Swift.Double, open: Swift.Double, close: Swift.Double)
+  @objc convenience public init(x: Swift.Double, shadowH: Swift.Double, shadowL: Swift.Double, open: Swift.Double, close: Swift.Double, icon: Charts.NSUIImage?)
+  @objc convenience public init(x: Swift.Double, shadowH: Swift.Double, shadowL: Swift.Double, open: Swift.Double, close: Swift.Double, data: Any?)
+  @objc convenience public init(x: Swift.Double, shadowH: Swift.Double, shadowL: Swift.Double, open: Swift.Double, close: Swift.Double, icon: Charts.NSUIImage?, data: Any?)
+  @objc open var shadowRange: Swift.Double {
+    @objc get
+  }
+  @objc open var bodyRange: Swift.Double {
+    @objc get
+  }
+  @objc override open var y: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc override open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc override public init(x: Swift.Double, y: Swift.Double)
+  @objc deinit
+}
+@objc open class CandleChartDataSet : Charts.LineScatterCandleRadarChartDataSet, Charts.ICandleChartDataSet {
+  @objc required dynamic public init()
+  @objc override public init(entries: [Charts.ChartDataEntry]?, label: Swift.String?)
+  override open func calcMinMax(entry e: Charts.ChartDataEntry)
+  @objc override open func calcMinMaxY(entry e: Charts.ChartDataEntry)
+  @objc open var barSpace: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc open var showCandleBar: Swift.Bool
+  @objc open var shadowWidth: CoreGraphics.CGFloat
+  @objc open var shadowColor: Charts.NSUIColor?
+  @objc open var shadowColorSameAsCandle: Swift.Bool
+  @objc open var isShadowColorSameAsCandle: Swift.Bool {
+    @objc get
+  }
+  @objc open var neutralColor: Charts.NSUIColor?
+  @objc open var increasingColor: Charts.NSUIColor?
+  @objc open var decreasingColor: Charts.NSUIColor?
+  @objc open var increasingFilled: Swift.Bool
+  @objc open var isIncreasingFilled: Swift.Bool {
+    @objc get
+  }
+  @objc open var decreasingFilled: Swift.Bool
+  @objc open var isDecreasingFilled: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+}
+@objc open class ChartData : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc public init(dataSets: [Charts.IChartDataSet]?)
+  @objc convenience public init(dataSet: Charts.IChartDataSet?)
+  @objc open func notifyDataChanged()
+  @objc open func calcMinMaxY(fromX: Swift.Double, toX: Swift.Double)
+  @objc open func calcMinMax()
+  @objc open func calcMinMax(entry e: Charts.ChartDataEntry, axis: Charts.YAxis.AxisDependency)
+  @objc open func calcMinMax(dataSet d: Charts.IChartDataSet)
+  @objc open var dataSetCount: Swift.Int {
+    @objc get
+  }
+  @objc open var yMin: Swift.Double {
+    @objc get
+  }
+  @nonobjc open func getYMin() -> Swift.Double
+  @objc open func getYMin(axis: Charts.YAxis.AxisDependency) -> Swift.Double
+  @objc open var yMax: Swift.Double {
+    @objc get
+  }
+  @nonobjc open func getYMax() -> Swift.Double
+  @objc open func getYMax(axis: Charts.YAxis.AxisDependency) -> Swift.Double
+  @objc open var xMin: Swift.Double {
+    @objc get
+  }
+  @objc open var xMax: Swift.Double {
+    @objc get
+  }
+  @objc open var dataSets: [Charts.IChartDataSet] {
+    @objc get
+    @objc set
+  }
+  @objc open func entryForHighlight(_ highlight: Charts.Highlight) -> Charts.ChartDataEntry?
+  @objc open func getDataSetByLabel(_ label: Swift.String, ignorecase: Swift.Bool) -> Charts.IChartDataSet?
+  @objc open func getDataSetByIndex(_ index: Swift.Int) -> Charts.IChartDataSet!
+  @objc open func addDataSet(_ dataSet: Charts.IChartDataSet!)
+  @discardableResult
+  @objc open func removeDataSet(_ dataSet: Charts.IChartDataSet) -> Swift.Bool
+  @discardableResult
+  @objc open func removeDataSetByIndex(_ index: Swift.Int) -> Swift.Bool
+  @objc open func addEntry(_ e: Charts.ChartDataEntry, dataSetIndex: Swift.Int)
+  @discardableResult
+  @objc open func removeEntry(_ entry: Charts.ChartDataEntry, dataSetIndex: Swift.Int) -> Swift.Bool
+  @discardableResult
+  @objc open func removeEntry(xValue: Swift.Double, dataSetIndex: Swift.Int) -> Swift.Bool
+  @objc open func getDataSetForEntry(_ e: Charts.ChartDataEntry) -> Charts.IChartDataSet?
+  @objc open func indexOfDataSet(_ dataSet: Charts.IChartDataSet) -> Swift.Int
+  @objc open func getFirstLeft(dataSets: [Charts.IChartDataSet]) -> Charts.IChartDataSet?
+  @objc open func getFirstRight(dataSets: [Charts.IChartDataSet]) -> Charts.IChartDataSet?
+  @objc open func getColors() -> [Charts.NSUIColor]?
+  @objc open func setValueFormatter(_ formatter: Charts.IValueFormatter)
+  @objc open func setValueTextColor(_ color: Charts.NSUIColor)
+  @objc open func setValueFont(_ font: Charts.NSUIFont)
+  @objc open func setDrawValues(_ enabled: Swift.Bool)
+  @objc open var highlightEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isHighlightEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open func clearValues()
+  @objc open func contains(dataSet: Charts.IChartDataSet) -> Swift.Bool
+  @objc open var entryCount: Swift.Int {
+    @objc get
+  }
+  @objc open var maxEntryCountSet: Charts.IChartDataSet? {
+    @objc get
+  }
+  @objc open var accessibilityEntryLabelPrefix: Swift.String?
+  @objc open var accessibilityEntryLabelSuffix: Swift.String?
+  @objc open var accessibilityEntryLabelSuffixIsCount: Swift.Bool
+  @objc deinit
+}
+@objc open class ChartDataEntry : Charts.ChartDataEntryBase, Foundation.NSCopying {
+  @objc open var x: Swift.Double
+  @objc required dynamic public init()
+  @objc public init(x: Swift.Double, y: Swift.Double)
+  @objc convenience public init(x: Swift.Double, y: Swift.Double, data: Any?)
+  @objc convenience public init(x: Swift.Double, y: Swift.Double, icon: Charts.NSUIImage?)
+  @objc convenience public init(x: Swift.Double, y: Swift.Double, icon: Charts.NSUIImage?, data: Any?)
+  @objc override dynamic open var description: Swift.String {
+    @objc get
+  }
+  @objc open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc override public init(y: Swift.Double)
+  @objc deinit
+}
+extension ChartDataEntry {
+  @objc override dynamic open func isEqual(_ object: Any?) -> Swift.Bool
+}
+@objc open class ChartDataEntryBase : ObjectiveC.NSObject {
+  @objc open var y: Swift.Double
+  @objc open var data: Any?
+  @objc open var icon: Charts.NSUIImage?
+  @objc override required dynamic public init()
+  @objc public init(y: Swift.Double)
+  @objc convenience public init(y: Swift.Double, data: Any?)
+  @objc convenience public init(y: Swift.Double, icon: Charts.NSUIImage?)
+  @objc convenience public init(y: Swift.Double, icon: Charts.NSUIImage?, data: Any?)
+  @objc override dynamic open var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+extension ChartDataEntryBase {
+  @objc override dynamic open func isEqual(_ object: Any?) -> Swift.Bool
+}
+@objc public enum ChartDataSetRounding : Swift.Int {
+  case up = 0
+  case down = 1
+  case closest = 2
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc open class ChartDataSet : Charts.ChartBaseDataSet {
+  @objc required dynamic public init()
+  @objc override convenience public init(label: Swift.String?)
+  @objc public init(entries: [Charts.ChartDataEntry]?, label: Swift.String?)
+  @objc convenience public init(entries: [Charts.ChartDataEntry]?)
+  @available(*, unavailable, renamed: "entries")
+  @objc open var values: [Charts.ChartDataEntry] {
+    @objc get
+  }
+  @objc open var entries: [Charts.ChartDataEntry] {
+    get
+    }
+  @objc public func replaceEntries(_ entries: [Charts.ChartDataEntry])
+  @objc override open func calcMinMax()
+  @objc override open func calcMinMaxY(fromX: Swift.Double, toX: Swift.Double)
+  @objc open func calcMinMaxX(entry e: Charts.ChartDataEntry)
+  @objc open func calcMinMaxY(entry e: Charts.ChartDataEntry)
+  @objc override open var yMin: Swift.Double {
+    @objc get
+  }
+  @objc override open var yMax: Swift.Double {
+    @objc get
+  }
+  @objc override open var xMin: Swift.Double {
+    @objc get
+  }
+  @objc override open var xMax: Swift.Double {
+    @objc get
+  }
+  @available(*, deprecated, message: "Use `count` instead")
+  @objc override open var entryCount: Swift.Int {
+    @objc get
+  }
+  @available(*, deprecated, message: "Use `subscript(index:)` instead.")
+  @objc override open func entryForIndex(_ i: Swift.Int) -> Charts.ChartDataEntry?
+  @objc override open func entryForXValue(_ xValue: Swift.Double, closestToY yValue: Swift.Double, rounding: Charts.ChartDataSetRounding) -> Charts.ChartDataEntry?
+  @objc override open func entryForXValue(_ xValue: Swift.Double, closestToY yValue: Swift.Double) -> Charts.ChartDataEntry?
+  @objc override open func entriesForXValue(_ xValue: Swift.Double) -> [Charts.ChartDataEntry]
+  @objc override open func entryIndex(x xValue: Swift.Double, closestToY yValue: Swift.Double, rounding: Charts.ChartDataSetRounding) -> Swift.Int
+  @available(*, deprecated, message: "Use `firstIndex(of:)` or `lastIndex(of:)`")
+  @objc override open func entryIndex(entry e: Charts.ChartDataEntry) -> Swift.Int
+  @available(*, deprecated, message: "Use `append(_:)` instead")
+  @objc override open func addEntry(_ e: Charts.ChartDataEntry) -> Swift.Bool
+  @objc override open func addEntryOrdered(_ e: Charts.ChartDataEntry) -> Swift.Bool
+  @available(*, renamed: "remove(_:)")
+  @objc override open func removeEntry(_ entry: Charts.ChartDataEntry) -> Swift.Bool
+  open func remove(_ entry: Charts.ChartDataEntry) -> Swift.Bool
+  @available(*, deprecated, message: "Use `func removeFirst() -> ChartDataEntry` instead.")
+  @objc override open func removeFirst() -> Swift.Bool
+  @available(*, deprecated, message: "Use `func removeLast() -> ChartDataEntry` instead.")
+  @objc override open func removeLast() -> Swift.Bool
+  @available(*, deprecated, message: "Use `removeAll(keepingCapacity:)` instead.")
+  @objc override open func clear()
+  @objc override open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc deinit
+}
+extension ChartDataSet : Swift.MutableCollection {
+  public typealias Index = Swift.Int
+  public typealias Element = Charts.ChartDataEntry
+  public var startIndex: Charts.ChartDataSet.Index {
+    get
+  }
+  public var endIndex: Charts.ChartDataSet.Index {
+    get
+  }
+  public func index(after: Charts.ChartDataSet.Index) -> Charts.ChartDataSet.Index
+  @objc dynamic public subscript(position: Charts.ChartDataSet.Index) -> Charts.ChartDataSet.Element {
+    @objc get
+    @objc set
+  }
+  public typealias Iterator = Swift.IndexingIterator<Charts.ChartDataSet>
+  public typealias Indices = Swift.Range<Charts.ChartDataSet.Index>
+}
+extension ChartDataSet : Swift.RandomAccessCollection {
+  public func index(before: Charts.ChartDataSet.Index) -> Charts.ChartDataSet.Index
+}
+extension ChartDataSet : Swift.RangeReplaceableCollection {
+  public func append(_ newElement: Charts.ChartDataSet.Element)
+  public func remove(at position: Charts.ChartDataSet.Index) -> Charts.ChartDataSet.Element
+  public func removeFirst() -> Charts.ChartDataSet.Element
+  public func removeFirst(_ n: Swift.Int)
+  public func removeLast() -> Charts.ChartDataSet.Element
+  public func removeLast(_ n: Swift.Int)
+  public func removeSubrange<R>(_ bounds: R) where R : Swift.RangeExpression, R.Bound == Charts.ChartDataSet.Index
+  @objc dynamic public func removeAll(keepingCapacity keepCapacity: Swift.Bool)
+  public typealias SubSequence = Swift.Slice<Charts.ChartDataSet>
+}
+@objc open class CombinedChartData : Charts.BarLineScatterCandleBubbleChartData {
+  @objc override dynamic public init()
+  @objc override public init(dataSets: [Charts.IChartDataSet]?)
+  @objc open var lineData: Charts.LineChartData! {
+    @objc get
+    @objc set
+  }
+  @objc open var barData: Charts.BarChartData! {
+    @objc get
+    @objc set
+  }
+  @objc open var scatterData: Charts.ScatterChartData! {
+    @objc get
+    @objc set
+  }
+  @objc open var candleData: Charts.CandleChartData! {
+    @objc get
+    @objc set
+  }
+  @objc open var bubbleData: Charts.BubbleChartData! {
+    @objc get
+    @objc set
+  }
+  @objc override open func calcMinMax()
+  @objc open var allData: [Charts.ChartData] {
+    @objc get
+  }
+  @objc open func dataByIndex(_ index: Swift.Int) -> Charts.ChartData
+  open func dataIndex(_ data: Charts.ChartData) -> Swift.Int?
+  @objc override open func removeDataSet(_ dataSet: Charts.IChartDataSet) -> Swift.Bool
+  @objc override open func removeDataSetByIndex(_ index: Swift.Int) -> Swift.Bool
+  @objc override open func removeEntry(_ entry: Charts.ChartDataEntry, dataSetIndex: Swift.Int) -> Swift.Bool
+  @objc override open func removeEntry(xValue: Swift.Double, dataSetIndex: Swift.Int) -> Swift.Bool
+  @objc override open func notifyDataChanged()
+  @objc override open func entryForHighlight(_ highlight: Charts.Highlight) -> Charts.ChartDataEntry?
+  @objc open func getDataSetByHighlight(_ highlight: Charts.Highlight) -> Charts.IChartDataSet!
+  @objc deinit
+}
+@objc open class LineChartData : Charts.ChartData {
+  @objc override dynamic public init()
+  @objc override public init(dataSets: [Charts.IChartDataSet]?)
+  @objc deinit
+}
+@objc open class LineChartDataSet : Charts.LineRadarChartDataSet, Charts.ILineChartDataSet {
+  @objc(LineChartMode) public enum Mode : Swift.Int {
+    case linear
+    case stepped
+    case cubicBezier
+    case horizontalBezier
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc required dynamic public init()
+  @objc override public init(entries: [Charts.ChartDataEntry]?, label: Swift.String?)
+  @objc open var mode: Charts.LineChartDataSet.Mode
+  @objc open var cubicIntensity: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc open var circleRadius: CoreGraphics.CGFloat
+  @objc open var circleHoleRadius: CoreGraphics.CGFloat
+  @objc open var circleColors: [Charts.NSUIColor]
+  @objc open func getCircleColor(atIndex index: Swift.Int) -> Charts.NSUIColor?
+  @objc open func setCircleColor(_ color: Charts.NSUIColor)
+  open func setCircleColors(_ colors: Charts.NSUIColor...)
+  @objc open func resetCircleColors(_ index: Swift.Int)
+  @objc open var drawCirclesEnabled: Swift.Bool
+  @objc open var isDrawCirclesEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var circleHoleColor: Charts.NSUIColor?
+  @objc open var drawCircleHoleEnabled: Swift.Bool
+  @objc open var isDrawCircleHoleEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var lineDashPhase: CoreGraphics.CGFloat
+  @objc open var lineDashLengths: [CoreGraphics.CGFloat]?
+  @objc open var lineCapType: CoreGraphics.CGLineCap
+  @objc open var fillFormatter: Charts.IFillFormatter? {
+    @objc get
+    @objc set
+  }
+  @objc open var HighlightActiveDistance: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc override open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc deinit
+}
+@objc open class LineRadarChartDataSet : Charts.LineScatterCandleRadarChartDataSet, Charts.ILineRadarChartDataSet {
+  @objc open var fillColor: Charts.NSUIColor {
+    @objc get
+    @objc set
+  }
+  @objc open var fill: Charts.Fill?
+  @objc open var fillAlpha: CoreGraphics.CGFloat
+  @objc open var lineWidth: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc open var drawFilledEnabled: Swift.Bool
+  @objc open var isDrawFilledEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc override open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc override public init(entries: [Charts.ChartDataEntry]?, label: Swift.String?)
+  @objc deinit
+}
+@objc open class LineScatterCandleRadarChartDataSet : Charts.BarLineScatterCandleBubbleChartDataSet, Charts.ILineScatterCandleRadarChartDataSet {
+  @objc open var drawHorizontalHighlightIndicatorEnabled: Swift.Bool
+  @objc open var drawVerticalHighlightIndicatorEnabled: Swift.Bool
+  @objc open var isHorizontalHighlightIndicatorEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var isVerticalHighlightIndicatorEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open func setDrawHighlightIndicators(_ enabled: Swift.Bool)
+  @objc override open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc override public init(entries: [Charts.ChartDataEntry]?, label: Swift.String?)
+  @objc deinit
+}
+@objc open class PieChartData : Charts.ChartData {
+  @objc override dynamic public init()
+  @objc override public init(dataSets: [Charts.IChartDataSet]?)
+  @objc override open var dataSets: [Charts.IChartDataSet] {
+    @objc get
+    @objc set
+  }
+  @objc override open func getDataSetByIndex(_ index: Swift.Int) -> Charts.IChartDataSet?
+  @objc override open func getDataSetByLabel(_ label: Swift.String, ignorecase: Swift.Bool) -> Charts.IChartDataSet?
+  @objc override open func entryForHighlight(_ highlight: Charts.Highlight) -> Charts.ChartDataEntry?
+  @objc override open func addDataSet(_ d: Charts.IChartDataSet!)
+  @objc override open func removeDataSetByIndex(_ index: Swift.Int) -> Swift.Bool
+  @objc open var yValueSum: Swift.Double {
+    @objc get
+  }
+  @objc deinit
+}
+@objc open class PieChartDataEntry : Charts.ChartDataEntry {
+  @objc required dynamic public init()
+  @objc public init(value: Swift.Double)
+  @objc convenience public init(value: Swift.Double, label: Swift.String?)
+  @objc convenience public init(value: Swift.Double, label: Swift.String?, data: Any?)
+  @objc convenience public init(value: Swift.Double, label: Swift.String?, icon: Charts.NSUIImage?)
+  @objc convenience public init(value: Swift.Double, label: Swift.String?, icon: Charts.NSUIImage?, data: Any?)
+  @objc convenience public init(value: Swift.Double, data: Any?)
+  @objc convenience public init(value: Swift.Double, icon: Charts.NSUIImage?)
+  @objc convenience public init(value: Swift.Double, icon: Charts.NSUIImage?, data: Any?)
+  @objc open var label: Swift.String?
+  @objc open var value: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc override open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc override public init(x: Swift.Double, y: Swift.Double)
+  @objc deinit
+}
+@objc open class PieChartDataSet : Charts.ChartDataSet, Charts.IPieChartDataSet {
+  @objc(PieChartValuePosition) public enum ValuePosition : Swift.Int {
+    case insideSlice
+    case outsideSlice
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc required dynamic public init()
+  @objc override public init(entries: [Charts.ChartDataEntry]?, label: Swift.String?)
+  @objc open var sliceSpace: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc open var automaticallyDisableSliceSpacing: Swift.Bool
+  @objc open var selectionShift: CoreGraphics.CGFloat
+  @objc open var xValuePosition: Charts.PieChartDataSet.ValuePosition
+  @objc open var yValuePosition: Charts.PieChartDataSet.ValuePosition
+  @objc open var valueLineColor: Charts.NSUIColor?
+  @objc open var useValueColorForLine: Swift.Bool
+  @objc open var valueLineWidth: CoreGraphics.CGFloat
+  @objc open var valueLinePart1OffsetPercentage: CoreGraphics.CGFloat
+  @objc open var valueLinePart1Length: CoreGraphics.CGFloat
+  @objc open var valueLinePart2Length: CoreGraphics.CGFloat
+  @objc open var valueLineVariableLength: Swift.Bool
+  @objc open var entryLabelFont: Charts.NSUIFont?
+  @objc open var entryLabelColor: Charts.NSUIColor?
+  @objc open var highlightColor: Charts.NSUIColor?
+  @objc override open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc deinit
+}
+@objc open class RadarChartData : Charts.ChartData {
+  @objc open var highlightColor: Charts.NSUIColor
+  @objc open var highlightLineWidth: CoreGraphics.CGFloat
+  @objc open var highlightLineDashPhase: CoreGraphics.CGFloat
+  @objc open var highlightLineDashLengths: [CoreGraphics.CGFloat]?
+  @objc open var labels: [Swift.String]
+  open func setLabels(_ labels: Swift.String...)
+  @objc override dynamic public init()
+  @objc override public init(dataSets: [Charts.IChartDataSet]?)
+  @objc override open func entryForHighlight(_ highlight: Charts.Highlight) -> Charts.ChartDataEntry?
+  @objc deinit
+}
+@objc open class RadarChartDataEntry : Charts.ChartDataEntry {
+  @objc required dynamic public init()
+  @objc public init(value: Swift.Double)
+  @objc convenience public init(value: Swift.Double, data: Any?)
+  @objc open var value: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc override open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc override public init(x: Swift.Double, y: Swift.Double)
+  @objc deinit
+}
+@objc open class RadarChartDataSet : Charts.LineRadarChartDataSet, Charts.IRadarChartDataSet {
+  @objc required dynamic public init()
+  @objc required override public init(entries: [Charts.ChartDataEntry]?, label: Swift.String?)
+  @objc open var drawHighlightCircleEnabled: Swift.Bool
+  @objc open var isDrawHighlightCircleEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var highlightCircleFillColor: Charts.NSUIColor?
+  @objc open var highlightCircleStrokeColor: Charts.NSUIColor?
+  @objc open var highlightCircleStrokeAlpha: CoreGraphics.CGFloat
+  @objc open var highlightCircleInnerRadius: CoreGraphics.CGFloat
+  @objc open var highlightCircleOuterRadius: CoreGraphics.CGFloat
+  @objc open var highlightCircleStrokeWidth: CoreGraphics.CGFloat
+  @objc deinit
+}
+extension DataApproximator {
+  @objc dynamic open class func reduceWithDouglasPeukerN(_ points: [CoreGraphics.CGPoint], resultCount: Swift.Int) -> [CoreGraphics.CGPoint]
+}
+@objc open class ScatterChartData : Charts.BarLineScatterCandleBubbleChartData {
+  @objc override dynamic public init()
+  @objc override public init(dataSets: [Charts.IChartDataSet]?)
+  @objc open func getGreatestShapeSize() -> CoreGraphics.CGFloat
+  @objc deinit
+}
+@objc open class ScatterChartDataSet : Charts.LineScatterCandleRadarChartDataSet, Charts.IScatterChartDataSet {
+  @objc(ScatterShape) public enum Shape : Swift.Int {
+    case square
+    case circle
+    case triangle
+    case cross
+    case x
+    case chevronUp
+    case chevronDown
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc open var scatterShapeSize: CoreGraphics.CGFloat
+  @objc open var scatterShapeHoleRadius: CoreGraphics.CGFloat
+  @objc open var scatterShapeHoleColor: Charts.NSUIColor?
+  @objc open func setScatterShape(_ shape: Charts.ScatterChartDataSet.Shape)
+  @objc open var shapeRenderer: Charts.IShapeRenderer?
+  @objc open class func renderer(forShape shape: Charts.ScatterChartDataSet.Shape) -> Charts.IShapeRenderer
+  @objc override open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc override public init(entries: [Charts.ChartDataEntry]?, label: Swift.String?)
+  @objc deinit
+}
+@objc public protocol IBarChartDataSet : Charts.IBarLineScatterCandleBubbleChartDataSet {
+  @objc var isStacked: Swift.Bool { get }
+  @objc var stackSize: Swift.Int { get }
+  @objc var barShadowColor: Charts.NSUIColor { get set }
+  @objc var barBorderWidth: CoreGraphics.CGFloat { get set }
+  @objc var barBorderColor: Charts.NSUIColor { get set }
+  @objc var highlightAlpha: CoreGraphics.CGFloat { get set }
+  @objc var stackLabels: [Swift.String] { get set }
+}
+@objc public protocol IBarLineScatterCandleBubbleChartDataSet : Charts.IChartDataSet {
+  @objc var highlightColor: Charts.NSUIColor { get set }
+  @objc var highlightLineWidth: CoreGraphics.CGFloat { get set }
+  @objc var highlightLineDashPhase: CoreGraphics.CGFloat { get set }
+  @objc var highlightLineDashLengths: [CoreGraphics.CGFloat]? { get set }
+}
+@objc public protocol IBubbleChartDataSet : Charts.IBarLineScatterCandleBubbleChartDataSet {
+  @objc var maxSize: CoreGraphics.CGFloat { get }
+  @objc var isNormalizeSizeEnabled: Swift.Bool { get }
+  @objc var highlightCircleWidth: CoreGraphics.CGFloat { get set }
+}
+@objc public protocol ICandleChartDataSet : Charts.ILineScatterCandleRadarChartDataSet {
+  @objc var barSpace: CoreGraphics.CGFloat { get set }
+  @objc var showCandleBar: Swift.Bool { get set }
+  @objc var shadowWidth: CoreGraphics.CGFloat { get set }
+  @objc var shadowColor: Charts.NSUIColor? { get set }
+  @objc var shadowColorSameAsCandle: Swift.Bool { get set }
+  @objc var isShadowColorSameAsCandle: Swift.Bool { get }
+  @objc var neutralColor: Charts.NSUIColor? { get set }
+  @objc var increasingColor: Charts.NSUIColor? { get set }
+  @objc var decreasingColor: Charts.NSUIColor? { get set }
+  @objc var increasingFilled: Swift.Bool { get set }
+  @objc var isIncreasingFilled: Swift.Bool { get }
+  @objc var decreasingFilled: Swift.Bool { get set }
+  @objc var isDecreasingFilled: Swift.Bool { get }
+}
+@objc public protocol IChartDataSet {
+  @objc func notifyDataSetChanged()
+  @objc func calcMinMax()
+  @objc func calcMinMaxY(fromX: Swift.Double, toX: Swift.Double)
+  @objc var yMin: Swift.Double { get }
+  @objc var yMax: Swift.Double { get }
+  @objc var xMin: Swift.Double { get }
+  @objc var xMax: Swift.Double { get }
+  @objc var entryCount: Swift.Int { get }
+  @objc func entryForIndex(_ i: Swift.Int) -> Charts.ChartDataEntry?
+  @objc func entryForXValue(_ xValue: Swift.Double, closestToY yValue: Swift.Double, rounding: Charts.ChartDataSetRounding) -> Charts.ChartDataEntry?
+  @objc func entryForXValue(_ xValue: Swift.Double, closestToY yValue: Swift.Double) -> Charts.ChartDataEntry?
+  @objc func entriesForXValue(_ xValue: Swift.Double) -> [Charts.ChartDataEntry]
+  @objc func entryIndex(x xValue: Swift.Double, closestToY yValue: Swift.Double, rounding: Charts.ChartDataSetRounding) -> Swift.Int
+  @objc func entryIndex(entry e: Charts.ChartDataEntry) -> Swift.Int
+  @objc func addEntry(_ e: Charts.ChartDataEntry) -> Swift.Bool
+  @objc func addEntryOrdered(_ e: Charts.ChartDataEntry) -> Swift.Bool
+  @objc func removeEntry(_ entry: Charts.ChartDataEntry) -> Swift.Bool
+  @objc func removeEntry(index: Swift.Int) -> Swift.Bool
+  @objc func removeEntry(x: Swift.Double) -> Swift.Bool
+  @objc func removeFirst() -> Swift.Bool
+  @objc func removeLast() -> Swift.Bool
+  @objc func contains(_ e: Charts.ChartDataEntry) -> Swift.Bool
+  @objc func clear()
+  @objc var label: Swift.String? { get }
+  @objc var axisDependency: Charts.YAxis.AxisDependency { get }
+  @objc var valueColors: [Charts.NSUIColor] { get }
+  @objc var colors: [Charts.NSUIColor] { get }
+  @objc func color(atIndex: Swift.Int) -> Charts.NSUIColor
+  @objc func resetColors()
+  @objc func addColor(_ color: Charts.NSUIColor)
+  @objc func setColor(_ color: Charts.NSUIColor)
+  @objc var highlightEnabled: Swift.Bool { get set }
+  @objc var isHighlightEnabled: Swift.Bool { get }
+  @objc var valueFormatter: Charts.IValueFormatter? { get set }
+  @objc var needsFormatter: Swift.Bool { get }
+  @objc var valueTextColor: Charts.NSUIColor { get set }
+  @objc func valueTextColorAt(_ index: Swift.Int) -> Charts.NSUIColor
+  @objc var valueFont: Charts.NSUIFont { get set }
+  @objc var form: Charts.Legend.Form { get }
+  @objc var formSize: CoreGraphics.CGFloat { get }
+  @objc var formLineWidth: CoreGraphics.CGFloat { get }
+  @objc var formLineDashPhase: CoreGraphics.CGFloat { get }
+  @objc var formLineDashLengths: [CoreGraphics.CGFloat]? { get }
+  @objc var drawValuesEnabled: Swift.Bool { get set }
+  @objc var isDrawValuesEnabled: Swift.Bool { get }
+  @objc var drawIconsEnabled: Swift.Bool { get set }
+  @objc var isDrawIconsEnabled: Swift.Bool { get }
+  @objc var iconsOffset: CoreGraphics.CGPoint { get set }
+  @objc var visible: Swift.Bool { get set }
+  @objc var isVisible: Swift.Bool { get }
+}
+@objc public protocol ILineChartDataSet : Charts.ILineRadarChartDataSet {
+  @objc var mode: Charts.LineChartDataSet.Mode { get set }
+  @objc var cubicIntensity: CoreGraphics.CGFloat { get set }
+  @objc var circleRadius: CoreGraphics.CGFloat { get set }
+  @objc var circleHoleRadius: CoreGraphics.CGFloat { get set }
+  @objc var circleColors: [Charts.NSUIColor] { get set }
+  @objc func getCircleColor(atIndex: Swift.Int) -> Charts.NSUIColor?
+  @objc func setCircleColor(_ color: Charts.NSUIColor)
+  @objc func resetCircleColors(_ index: Swift.Int)
+  @objc var drawCirclesEnabled: Swift.Bool { get set }
+  @objc var isDrawCirclesEnabled: Swift.Bool { get }
+  @objc var circleHoleColor: Charts.NSUIColor? { get set }
+  @objc var drawCircleHoleEnabled: Swift.Bool { get set }
+  @objc var isDrawCircleHoleEnabled: Swift.Bool { get }
+  @objc var lineDashPhase: CoreGraphics.CGFloat { get }
+  @objc var lineDashLengths: [CoreGraphics.CGFloat]? { get set }
+  @objc var lineCapType: CoreGraphics.CGLineCap { get set }
+  @objc var fillFormatter: Charts.IFillFormatter? { get set }
+  @objc var HighlightActiveDistance: CoreGraphics.CGFloat { get set }
+}
+@objc public protocol ILineRadarChartDataSet : Charts.ILineScatterCandleRadarChartDataSet {
+  @objc var fillColor: Charts.NSUIColor { get set }
+  @objc var fill: Charts.Fill? { get set }
+  @objc var fillAlpha: CoreGraphics.CGFloat { get set }
+  @objc var lineWidth: CoreGraphics.CGFloat { get set }
+  @objc var drawFilledEnabled: Swift.Bool { get set }
+  @objc var isDrawFilledEnabled: Swift.Bool { get }
+}
+@objc public protocol ILineScatterCandleRadarChartDataSet : Charts.IBarLineScatterCandleBubbleChartDataSet {
+  @objc var drawHorizontalHighlightIndicatorEnabled: Swift.Bool { get set }
+  @objc var drawVerticalHighlightIndicatorEnabled: Swift.Bool { get set }
+  @objc var isHorizontalHighlightIndicatorEnabled: Swift.Bool { get }
+  @objc var isVerticalHighlightIndicatorEnabled: Swift.Bool { get }
+  @objc func setDrawHighlightIndicators(_ enabled: Swift.Bool)
+}
+@objc public protocol IPieChartDataSet : Charts.IChartDataSet {
+  @objc var sliceSpace: CoreGraphics.CGFloat { get set }
+  @objc var automaticallyDisableSliceSpacing: Swift.Bool { get set }
+  @objc var selectionShift: CoreGraphics.CGFloat { get set }
+  @objc var xValuePosition: Charts.PieChartDataSet.ValuePosition { get set }
+  @objc var yValuePosition: Charts.PieChartDataSet.ValuePosition { get set }
+  @objc var valueLineColor: Charts.NSUIColor? { get set }
+  @objc var useValueColorForLine: Swift.Bool { get set }
+  @objc var valueLineWidth: CoreGraphics.CGFloat { get set }
+  @objc var valueLinePart1OffsetPercentage: CoreGraphics.CGFloat { get set }
+  @objc var valueLinePart1Length: CoreGraphics.CGFloat { get set }
+  @objc var valueLinePart2Length: CoreGraphics.CGFloat { get set }
+  @objc var valueLineVariableLength: Swift.Bool { get set }
+  @objc var entryLabelFont: Charts.NSUIFont? { get set }
+  @objc var entryLabelColor: Charts.NSUIColor? { get set }
+  @objc var highlightColor: Charts.NSUIColor? { get set }
+}
+@objc public protocol IRadarChartDataSet : Charts.ILineRadarChartDataSet {
+  @objc var drawHighlightCircleEnabled: Swift.Bool { get set }
+  @objc var isDrawHighlightCircleEnabled: Swift.Bool { get }
+  @objc var highlightCircleFillColor: Charts.NSUIColor? { get set }
+  @objc var highlightCircleStrokeColor: Charts.NSUIColor? { get set }
+  @objc var highlightCircleStrokeAlpha: CoreGraphics.CGFloat { get set }
+  @objc var highlightCircleInnerRadius: CoreGraphics.CGFloat { get set }
+  @objc var highlightCircleOuterRadius: CoreGraphics.CGFloat { get set }
+  @objc var highlightCircleStrokeWidth: CoreGraphics.CGFloat { get set }
+}
+@objc public protocol IScatterChartDataSet : Charts.ILineScatterCandleRadarChartDataSet {
+  @objc var scatterShapeSize: CoreGraphics.CGFloat { get }
+  @objc var scatterShapeHoleRadius: CoreGraphics.CGFloat { get }
+  @objc var scatterShapeHoleColor: Charts.NSUIColor? { get }
+  @objc var shapeRenderer: Charts.IShapeRenderer? { get }
+}
+@objc(ChartDataApproximator) open class DataApproximator : ObjectiveC.NSObject {
+  @objc open class func reduceWithDouglasPeuker(_ points: [CoreGraphics.CGPoint], tolerance: CoreGraphics.CGFloat) -> [CoreGraphics.CGPoint]
+  open class func reduceWithDouglasPeuker(points: [CoreGraphics.CGPoint], tolerance: CoreGraphics.CGFloat, start: Swift.Int, end: Swift.Int, keep: inout [Swift.Bool])
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(ChartDefaultAxisValueFormatter) open class DefaultAxisValueFormatter : ObjectiveC.NSObject, Charts.IAxisValueFormatter {
+  public typealias Block = (Swift.Double, Charts.AxisBase?) -> Swift.String
+  @objc open var block: Charts.DefaultAxisValueFormatter.Block?
+  @objc open var hasAutoDecimals: Swift.Bool
+  @objc open var formatter: Foundation.NumberFormatter? {
+    @objc get
+    @objc set
+  }
+  open var decimals: Swift.Int? {
+    get
+    set
+  }
+  @objc override dynamic public init()
+  @objc public init(formatter: Foundation.NumberFormatter)
+  @objc public init(decimals: Swift.Int)
+  @objc public init(block: @escaping Charts.DefaultAxisValueFormatter.Block)
+  @objc public static func with(block: @escaping Charts.DefaultAxisValueFormatter.Block) -> Charts.DefaultAxisValueFormatter?
+  @objc open func stringForValue(_ value: Swift.Double, axis: Charts.AxisBase?) -> Swift.String
+  @objc deinit
+}
+@objc(ChartDefaultFillFormatter) open class DefaultFillFormatter : ObjectiveC.NSObject, Charts.IFillFormatter {
+  public typealias Block = (Charts.ILineChartDataSet, Charts.LineChartDataProvider) -> CoreGraphics.CGFloat
+  @objc open var block: Charts.DefaultFillFormatter.Block?
+  @objc override dynamic public init()
+  @objc public init(block: @escaping Charts.DefaultFillFormatter.Block)
+  @objc public static func with(block: @escaping Charts.DefaultFillFormatter.Block) -> Charts.DefaultFillFormatter?
+  @objc open func getFillLinePosition(dataSet: Charts.ILineChartDataSet, dataProvider: Charts.LineChartDataProvider) -> CoreGraphics.CGFloat
+  @objc deinit
+}
+@objc(ChartDefaultValueFormatter) open class DefaultValueFormatter : ObjectiveC.NSObject, Charts.IValueFormatter {
+  public typealias Block = (Swift.Double, Charts.ChartDataEntry, Swift.Int, Charts.ViewPortHandler?) -> Swift.String
+  @objc open var block: Charts.DefaultValueFormatter.Block?
+  @objc open var hasAutoDecimals: Swift.Bool
+  @objc open var formatter: Foundation.NumberFormatter? {
+    @objc get
+    @objc set
+  }
+  open var decimals: Swift.Int? {
+    get
+    set
+  }
+  @objc override dynamic public init()
+  @objc public init(formatter: Foundation.NumberFormatter)
+  @objc public init(decimals: Swift.Int)
+  @objc public init(block: @escaping Charts.DefaultValueFormatter.Block)
+  @objc public static func with(block: @escaping Charts.DefaultValueFormatter.Block) -> Charts.DefaultValueFormatter?
+  @objc open func stringForValue(_ value: Swift.Double, entry: Charts.ChartDataEntry, dataSetIndex: Swift.Int, viewPortHandler: Charts.ViewPortHandler?) -> Swift.String
+  @objc deinit
+}
+@objc(IChartAxisValueFormatter) public protocol IAxisValueFormatter : AnyObject {
+  @objc func stringForValue(_ value: Swift.Double, axis: Charts.AxisBase?) -> Swift.String
+}
+@objc(IChartFillFormatter) public protocol IFillFormatter {
+  @objc func getFillLinePosition(dataSet: Charts.ILineChartDataSet, dataProvider: Charts.LineChartDataProvider) -> CoreGraphics.CGFloat
+}
+@objc(ChartIndexAxisValueFormatter) open class IndexAxisValueFormatter : ObjectiveC.NSObject, Charts.IAxisValueFormatter {
+  @objc public var values: [Swift.String] {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic public init()
+  @objc public init(values: [Swift.String])
+  @objc public static func with(values: [Swift.String]) -> Charts.IndexAxisValueFormatter?
+  @objc open func stringForValue(_ value: Swift.Double, axis: Charts.AxisBase?) -> Swift.String
+  @objc deinit
+}
+@objc(IChartValueFormatter) public protocol IValueFormatter : AnyObject {
+  @objc func stringForValue(_ value: Swift.Double, entry: Charts.ChartDataEntry, dataSetIndex: Swift.Int, viewPortHandler: Charts.ViewPortHandler?) -> Swift.String
+}
+@objc(BarChartHighlighter) open class BarHighlighter : Charts.ChartHighlighter {
+  @objc override open func getHighlight(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> Charts.Highlight?
+  @objc open func getStackedHighlight(high: Charts.Highlight, set: Charts.IBarChartDataSet, xValue: Swift.Double, yValue: Swift.Double) -> Charts.Highlight?
+  @objc open func getClosestStackIndex(ranges: [Charts.Range]?, value: Swift.Double) -> Swift.Int
+  @objc override public init(chart: Charts.ChartDataProvider)
+  @objc deinit
+}
+@objc open class ChartHighlighter : ObjectiveC.NSObject, Charts.IHighlighter {
+  @objc weak open var chart: Charts.ChartDataProvider?
+  @objc public init(chart: Charts.ChartDataProvider)
+  @objc open func getHighlight(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> Charts.Highlight?
+  @objc open func getValsForTouch(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> CoreGraphics.CGPoint
+  @objc open func getHighlight(xValue xVal: Swift.Double, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> Charts.Highlight?
+  @objc open func getHighlights(xValue: Swift.Double, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> [Charts.Highlight]
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(CombinedChartHighlighter) open class CombinedHighlighter : Charts.ChartHighlighter {
+  @objc public init(chart: Charts.CombinedChartDataProvider, barDataProvider: Charts.BarChartDataProvider)
+  @objc override open func getHighlights(xValue: Swift.Double, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> [Charts.Highlight]
+  @objc override public init(chart: Charts.ChartDataProvider)
+  @objc deinit
+}
+@objc(ChartHighlight) open class Highlight : ObjectiveC.NSObject {
+  @objc open var dataIndex: Swift.Int
+  @objc open var drawX: CoreGraphics.CGFloat
+  @objc open var drawY: CoreGraphics.CGFloat
+  @objc override dynamic public init()
+  @objc public init(x: Swift.Double, y: Swift.Double, xPx: CoreGraphics.CGFloat, yPx: CoreGraphics.CGFloat, dataIndex: Swift.Int, dataSetIndex: Swift.Int, stackIndex: Swift.Int, axis: Charts.YAxis.AxisDependency)
+  @objc convenience public init(x: Swift.Double, y: Swift.Double, xPx: CoreGraphics.CGFloat, yPx: CoreGraphics.CGFloat, dataSetIndex: Swift.Int, stackIndex: Swift.Int, axis: Charts.YAxis.AxisDependency)
+  @objc public init(x: Swift.Double, y: Swift.Double, xPx: CoreGraphics.CGFloat, yPx: CoreGraphics.CGFloat, dataSetIndex: Swift.Int, axis: Charts.YAxis.AxisDependency)
+  @objc public init(x: Swift.Double, y: Swift.Double, dataSetIndex: Swift.Int, dataIndex: Swift.Int = -1)
+  @objc convenience public init(x: Swift.Double, dataSetIndex: Swift.Int, stackIndex: Swift.Int)
+  @objc open var x: Swift.Double {
+    @objc get
+  }
+  @objc open var y: Swift.Double {
+    @objc get
+  }
+  @objc open var xPx: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var yPx: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var dataSetIndex: Swift.Int {
+    @objc get
+  }
+  @objc open var stackIndex: Swift.Int {
+    @objc get
+  }
+  @objc open var axis: Charts.YAxis.AxisDependency {
+    @objc get
+  }
+  @objc open var isStacked: Swift.Bool {
+    @objc get
+  }
+  @objc open func setDraw(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat)
+  @objc open func setDraw(pt: CoreGraphics.CGPoint)
+  @objc override dynamic open var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+extension Highlight {
+  @objc override dynamic open func isEqual(_ object: Any?) -> Swift.Bool
+}
+@objc(HorizontalBarChartHighlighter) open class HorizontalBarHighlighter : Charts.BarHighlighter {
+  @objc override open func getHighlight(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> Charts.Highlight?
+  @objc override public init(chart: Charts.ChartDataProvider)
+  @objc deinit
+}
+@objc(IChartHighlighter) public protocol IHighlighter : AnyObject {
+  @objc func getHighlight(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> Charts.Highlight?
+}
+@objc(PieChartHighlighter) open class PieHighlighter : Charts.PieRadarHighlighter {
+  @objc override open func closestHighlight(index: Swift.Int, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> Charts.Highlight?
+  @objc override public init(chart: Charts.ChartDataProvider)
+  @objc deinit
+}
+@objc(PieRadarChartHighlighter) open class PieRadarHighlighter : Charts.ChartHighlighter {
+  @objc override open func getHighlight(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> Charts.Highlight?
+  @objc open func closestHighlight(index: Swift.Int, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> Charts.Highlight?
+  @objc override public init(chart: Charts.ChartDataProvider)
+  @objc deinit
+}
+@objc(RadarChartHighlighter) open class RadarHighlighter : Charts.PieRadarHighlighter {
+  @objc override open func closestHighlight(index: Swift.Int, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> Charts.Highlight?
+  @objc override public init(chart: Charts.ChartDataProvider)
+  @objc deinit
+}
+@objc(ChartRange) open class Range : ObjectiveC.NSObject {
+  @objc open var from: Swift.Double
+  @objc open var to: Swift.Double
+  @objc public init(from: Swift.Double, to: Swift.Double)
+  @objc open func contains(_ value: Swift.Double) -> Swift.Bool
+  @objc open func isLarger(_ value: Swift.Double) -> Swift.Bool
+  @objc open func isSmaller(_ value: Swift.Double) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public protocol BarChartDataProvider : Charts.BarLineScatterCandleBubbleChartDataProvider {
+  @objc var barData: Charts.BarChartData? { get }
+  @objc var isDrawBarShadowEnabled: Swift.Bool { get }
+  @objc var isDrawValueAboveBarEnabled: Swift.Bool { get }
+  @objc var isHighlightFullBarEnabled: Swift.Bool { get }
+}
+@objc public protocol BarLineScatterCandleBubbleChartDataProvider : Charts.ChartDataProvider {
+  @objc func getTransformer(forAxis: Charts.YAxis.AxisDependency) -> Charts.Transformer
+  @objc func isInverted(axis: Charts.YAxis.AxisDependency) -> Swift.Bool
+  @objc var lowestVisibleX: Swift.Double { get }
+  @objc var highestVisibleX: Swift.Double { get }
+}
+@objc public protocol BubbleChartDataProvider : Charts.BarLineScatterCandleBubbleChartDataProvider {
+  @objc var bubbleData: Charts.BubbleChartData? { get }
+}
+@objc public protocol CandleChartDataProvider : Charts.BarLineScatterCandleBubbleChartDataProvider {
+  @objc var candleData: Charts.CandleChartData? { get }
+}
+@objc public protocol ChartDataProvider {
+  @objc var chartXMin: Swift.Double { get }
+  @objc var chartXMax: Swift.Double { get }
+  @objc var chartYMin: Swift.Double { get }
+  @objc var chartYMax: Swift.Double { get }
+  @objc var maxHighlightDistance: CoreGraphics.CGFloat { get }
+  @objc var xRange: Swift.Double { get }
+  @objc var centerOffsets: CoreGraphics.CGPoint { get }
+  @objc var data: Charts.ChartData? { get }
+  @objc var maxVisibleCount: Swift.Int { get }
+}
+public typealias NSUIEvent = UIKit.UIEvent
+public typealias NSUITouch = UIKit.UITouch
+@objc extension NSUIView {
+  @objc final override public func touchesBegan(_ touches: Swift.Set<Charts.NSUITouch>, with event: Charts.NSUIEvent?)
+  @objc final override public func touchesMoved(_ touches: Swift.Set<Charts.NSUITouch>, with event: Charts.NSUIEvent?)
+  @objc final override public func touchesEnded(_ touches: Swift.Set<Charts.NSUITouch>, with event: Charts.NSUIEvent?)
+  @objc final override public func touchesCancelled(_ touches: Swift.Set<Charts.NSUITouch>, with event: Charts.NSUIEvent?)
+  @objc dynamic open func nsuiTouchesBegan(_ touches: Swift.Set<Charts.NSUITouch>, withEvent event: Charts.NSUIEvent?)
+  @objc dynamic open func nsuiTouchesMoved(_ touches: Swift.Set<Charts.NSUITouch>, withEvent event: Charts.NSUIEvent?)
+  @objc dynamic open func nsuiTouchesEnded(_ touches: Swift.Set<Charts.NSUITouch>, withEvent event: Charts.NSUIEvent?)
+  @objc dynamic open func nsuiTouchesCancelled(_ touches: Swift.Set<Charts.NSUITouch>?, withEvent event: Charts.NSUIEvent?)
+}
+@objc public protocol CombinedChartDataProvider : Charts.BarChartDataProvider, Charts.BubbleChartDataProvider, Charts.CandleChartDataProvider, Charts.LineChartDataProvider, Charts.ScatterChartDataProvider {
+  @objc var combinedData: Charts.CombinedChartData? { get }
+}
+@objc public protocol LineChartDataProvider : Charts.BarLineScatterCandleBubbleChartDataProvider {
+  @objc var lineData: Charts.LineChartData? { get }
+  @objc func getAxis(_ axis: Charts.YAxis.AxisDependency) -> Charts.YAxis
+}
+@objc public protocol ScatterChartDataProvider : Charts.BarLineScatterCandleBubbleChartDataProvider {
+  @objc var scatterData: Charts.ScatterChartData? { get }
+}
+@objc open class AnimatedMoveViewJob : Charts.AnimatedViewPortJob {
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler, xValue: Swift.Double, yValue: Swift.Double, transformer: Charts.Transformer, view: Charts.ChartViewBase, xOrigin: CoreGraphics.CGFloat, yOrigin: CoreGraphics.CGFloat, duration: Foundation.TimeInterval, easing: Charts.ChartEasingFunctionBlock?)
+  @objc deinit
+}
+@objc open class AnimatedViewPortJob : Charts.ViewPortJob {
+  @objc public init(viewPortHandler: Charts.ViewPortHandler, xValue: Swift.Double, yValue: Swift.Double, transformer: Charts.Transformer, view: Charts.ChartViewBase, xOrigin: CoreGraphics.CGFloat, yOrigin: CoreGraphics.CGFloat, duration: Foundation.TimeInterval, easing: Charts.ChartEasingFunctionBlock?)
+  @objc deinit
+  @objc override open func doJob()
+  @objc open func start()
+  @objc open func stop(finish: Swift.Bool)
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler, xValue: Swift.Double, yValue: Swift.Double, transformer: Charts.Transformer, view: Charts.ChartViewBase)
+}
+@objc open class AnimatedZoomViewJob : Charts.AnimatedViewPortJob {
+  @objc public init(viewPortHandler: Charts.ViewPortHandler, transformer: Charts.Transformer, view: Charts.ChartViewBase, yAxis: Charts.YAxis, xAxisRange: Swift.Double, scaleX: CoreGraphics.CGFloat, scaleY: CoreGraphics.CGFloat, xOrigin: CoreGraphics.CGFloat, yOrigin: CoreGraphics.CGFloat, zoomCenterX: CoreGraphics.CGFloat, zoomCenterY: CoreGraphics.CGFloat, zoomOriginX: CoreGraphics.CGFloat, zoomOriginY: CoreGraphics.CGFloat, duration: Foundation.TimeInterval, easing: Charts.ChartEasingFunctionBlock?)
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler, xValue: Swift.Double, yValue: Swift.Double, transformer: Charts.Transformer, view: Charts.ChartViewBase, xOrigin: CoreGraphics.CGFloat, yOrigin: CoreGraphics.CGFloat, duration: Foundation.TimeInterval, easing: Charts.ChartEasingFunctionBlock?)
+  @objc deinit
+}
+@objc(MoveChartViewJob) open class MoveViewJob : Charts.ViewPortJob {
+  @objc override open func doJob()
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler, xValue: Swift.Double, yValue: Swift.Double, transformer: Charts.Transformer, view: Charts.ChartViewBase)
+  @objc deinit
+}
+@objc(ChartViewPortJob) open class ViewPortJob : ObjectiveC.NSObject {
+  @objc public init(viewPortHandler: Charts.ViewPortHandler, xValue: Swift.Double, yValue: Swift.Double, transformer: Charts.Transformer, view: Charts.ChartViewBase)
+  @objc open func doJob()
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(ZoomChartViewJob) open class ZoomViewJob : Charts.ViewPortJob {
+  @objc public init(viewPortHandler: Charts.ViewPortHandler, scaleX: CoreGraphics.CGFloat, scaleY: CoreGraphics.CGFloat, xValue: Swift.Double, yValue: Swift.Double, transformer: Charts.Transformer, axis: Charts.YAxis.AxisDependency, view: Charts.ChartViewBase)
+  @objc override open func doJob()
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler, xValue: Swift.Double, yValue: Swift.Double, transformer: Charts.Transformer, view: Charts.ChartViewBase)
+  @objc deinit
+}
+@objc(ChartAxisRendererBase) open class AxisRendererBase : Charts.Renderer {
+  @objc open var axis: Charts.AxisBase?
+  @objc open var transformer: Charts.Transformer?
+  @objc public init(viewPortHandler: Charts.ViewPortHandler, transformer: Charts.Transformer?, axis: Charts.AxisBase?)
+  @objc open func renderAxisLabels(context: CoreGraphics.CGContext)
+  @objc open func renderGridLines(context: CoreGraphics.CGContext)
+  @objc open func renderAxisLine(context: CoreGraphics.CGContext)
+  @objc open func renderLimitLines(context: CoreGraphics.CGContext)
+  @objc open func computeAxis(min: Swift.Double, max: Swift.Double, inverted: Swift.Bool)
+  @objc open func computeAxisValues(min: Swift.Double, max: Swift.Double)
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler)
+  @objc deinit
+}
+@objc open class BarChartRenderer : Charts.BarLineScatterCandleBubbleRenderer {
+  @objc weak open var dataProvider: Charts.BarChartDataProvider?
+  @objc public init(dataProvider: Charts.BarChartDataProvider, animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc override open func initBuffers()
+  @objc override open func drawData(context: CoreGraphics.CGContext)
+  @objc open func drawDataSet(context: CoreGraphics.CGContext, dataSet: Charts.IBarChartDataSet, index: Swift.Int)
+  open func prepareBarHighlight(x: Swift.Double, y1: Swift.Double, y2: Swift.Double, barWidthHalf: Swift.Double, trans: Charts.Transformer, rect: inout CoreGraphics.CGRect)
+  @objc override open func drawValues(context: CoreGraphics.CGContext)
+  @objc open func drawValue(context: CoreGraphics.CGContext, value: Swift.String, xPos: CoreGraphics.CGFloat, yPos: CoreGraphics.CGFloat, font: Charts.NSUIFont, align: UIKit.NSTextAlignment, color: Charts.NSUIColor)
+  @objc override open func drawExtras(context: CoreGraphics.CGContext)
+  @objc override open func drawHighlighted(context: CoreGraphics.CGContext, indices: [Charts.Highlight])
+  @objc override public init(animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc deinit
+}
+@objc(BarLineScatterCandleBubbleChartRenderer) open class BarLineScatterCandleBubbleRenderer : Charts.DataRenderer {
+  @objc override public init(animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  open class XBounds {
+    open var min: Swift.Int
+    open var max: Swift.Int
+    open var range: Swift.Int
+    public init()
+    public init(chart: Charts.BarLineScatterCandleBubbleChartDataProvider, dataSet: Charts.IBarLineScatterCandleBubbleChartDataSet, animator: Charts.Animator?)
+    open func set(chart: Charts.BarLineScatterCandleBubbleChartDataProvider, dataSet: Charts.IBarLineScatterCandleBubbleChartDataSet, animator: Charts.Animator?)
+    @objc deinit
+  }
+  @objc deinit
+}
+extension BarLineScatterCandleBubbleRenderer.XBounds : Swift.RangeExpression {
+  public func relative<C>(to collection: C) -> Swift.Range<Swift.Int> where C : Swift.Collection, C.Index == Swift.Int
+  public func contains(_ element: Swift.Int) -> Swift.Bool
+  public typealias Bound = Swift.Int
+}
+extension BarLineScatterCandleBubbleRenderer.XBounds : Swift.Sequence {
+  public struct Iterator : Swift.IteratorProtocol {
+    mutating public func next() -> Swift.Int?
+    public typealias Element = Swift.Int
+  }
+  public func makeIterator() -> Charts.BarLineScatterCandleBubbleRenderer.XBounds.Iterator
+  public typealias Element = Swift.Int
+}
+extension BarLineScatterCandleBubbleRenderer.XBounds : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+@objc open class BubbleChartRenderer : Charts.BarLineScatterCandleBubbleRenderer {
+  @objc weak open var dataProvider: Charts.BubbleChartDataProvider?
+  @objc public init(dataProvider: Charts.BubbleChartDataProvider, animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc override open func drawData(context: CoreGraphics.CGContext)
+  @objc open func drawDataSet(context: CoreGraphics.CGContext, dataSet: Charts.IBubbleChartDataSet, dataSetIndex: Swift.Int)
+  @objc override open func drawValues(context: CoreGraphics.CGContext)
+  @objc override open func drawExtras(context: CoreGraphics.CGContext)
+  @objc override open func drawHighlighted(context: CoreGraphics.CGContext, indices: [Charts.Highlight])
+  @objc override public init(animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc deinit
+}
+@objc open class CandleStickChartRenderer : Charts.LineScatterCandleRadarRenderer {
+  @objc weak open var dataProvider: Charts.CandleChartDataProvider?
+  @objc public init(dataProvider: Charts.CandleChartDataProvider, animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc override open func drawData(context: CoreGraphics.CGContext)
+  @objc open func drawDataSet(context: CoreGraphics.CGContext, dataSet: Charts.ICandleChartDataSet)
+  @objc override open func drawValues(context: CoreGraphics.CGContext)
+  @objc override open func drawExtras(context: CoreGraphics.CGContext)
+  @objc override open func drawHighlighted(context: CoreGraphics.CGContext, indices: [Charts.Highlight])
+  @objc override public init(animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc deinit
+}
+@objc(ChartDataRendererBase) open class DataRenderer : Charts.Renderer {
+  @objc final public let animator: Charts.Animator
+  @objc public init(animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc open func drawData(context: CoreGraphics.CGContext)
+  @objc open func drawValues(context: CoreGraphics.CGContext)
+  @objc open func drawExtras(context: CoreGraphics.CGContext)
+  @objc open func drawHighlighted(context: CoreGraphics.CGContext, indices: [Charts.Highlight])
+  @objc open func initBuffers()
+  @objc open func isDrawingValuesAllowed(dataProvider: Charts.ChartDataProvider?) -> Swift.Bool
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler)
+  @objc deinit
+}
+@objc open class CombinedChartRenderer : Charts.DataRenderer {
+  @objc weak open var chart: Charts.CombinedChartView?
+  @objc open var drawValueAboveBarEnabled: Swift.Bool
+  @objc open var drawBarShadowEnabled: Swift.Bool
+  @objc public init(chart: Charts.CombinedChartView, animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc override open func initBuffers()
+  @objc override open func drawData(context: CoreGraphics.CGContext)
+  @objc override open func drawValues(context: CoreGraphics.CGContext)
+  @objc override open func drawExtras(context: CoreGraphics.CGContext)
+  @objc override open func drawHighlighted(context: CoreGraphics.CGContext, indices: [Charts.Highlight])
+  @objc open func getSubRenderer(index: Swift.Int) -> Charts.DataRenderer?
+  @objc open var subRenderers: [Charts.DataRenderer] {
+    @objc get
+    @objc set
+  }
+  @objc open var isDrawValueAboveBarEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc open var isDrawBarShadowEnabled: Swift.Bool {
+    @objc get
+  }
+  open var drawOrder: [Charts.CombinedChartView.DrawOrder] {
+    get
+    set
+  }
+  @objc override public init(animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc deinit
+}
+@objc open class HorizontalBarChartRenderer : Charts.BarChartRenderer {
+  @objc override public init(dataProvider: Charts.BarChartDataProvider, animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc override open func initBuffers()
+  @objc override open func drawDataSet(context: CoreGraphics.CGContext, dataSet: Charts.IBarChartDataSet, index: Swift.Int)
+  override open func prepareBarHighlight(x: Swift.Double, y1: Swift.Double, y2: Swift.Double, barWidthHalf: Swift.Double, trans: Charts.Transformer, rect: inout CoreGraphics.CGRect)
+  @objc override open func drawValues(context: CoreGraphics.CGContext)
+  @objc override open func isDrawingValuesAllowed(dataProvider: Charts.ChartDataProvider?) -> Swift.Bool
+  @objc deinit
+}
+@objc(ChartLegendRenderer) open class LegendRenderer : Charts.Renderer {
+  @objc open var legend: Charts.Legend?
+  @objc public init(viewPortHandler: Charts.ViewPortHandler, legend: Charts.Legend?)
+  @objc open func computeLegend(data: Charts.ChartData)
+  @objc open func renderLegend(context: CoreGraphics.CGContext)
+  @objc open func drawForm(context: CoreGraphics.CGContext, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat, entry: Charts.LegendEntry, legend: Charts.Legend)
+  @objc open func drawLabel(context: CoreGraphics.CGContext, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat, label: Swift.String, font: Charts.NSUIFont, textColor: Charts.NSUIColor)
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler)
+  @objc deinit
+}
+@objc open class LineChartRenderer : Charts.LineRadarRenderer {
+  @objc weak open var dataProvider: Charts.LineChartDataProvider?
+  @objc public init(dataProvider: Charts.LineChartDataProvider, animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc override open func drawData(context: CoreGraphics.CGContext)
+  @objc open func drawDataSet(context: CoreGraphics.CGContext, dataSet: Charts.ILineChartDataSet)
+  @objc open func drawCubicBezier(context: CoreGraphics.CGContext, dataSet: Charts.ILineChartDataSet)
+  @objc open func drawHorizontalBezier(context: CoreGraphics.CGContext, dataSet: Charts.ILineChartDataSet)
+  open func drawCubicFill(context: CoreGraphics.CGContext, dataSet: Charts.ILineChartDataSet, spline: CoreGraphics.CGMutablePath, matrix: CoreGraphics.CGAffineTransform, bounds: Charts.BarLineScatterCandleBubbleRenderer.XBounds)
+  @objc open func drawLinear(context: CoreGraphics.CGContext, dataSet: Charts.ILineChartDataSet)
+  open func drawLinearFill(context: CoreGraphics.CGContext, dataSet: Charts.ILineChartDataSet, trans: Charts.Transformer, bounds: Charts.BarLineScatterCandleBubbleRenderer.XBounds)
+  @objc override open func drawValues(context: CoreGraphics.CGContext)
+  @objc override open func drawExtras(context: CoreGraphics.CGContext)
+  @objc override open func drawHighlighted(context: CoreGraphics.CGContext, indices: [Charts.Highlight])
+  @objc override public init(animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc deinit
+}
+@objc(LineRadarChartRenderer) open class LineRadarRenderer : Charts.LineScatterCandleRadarRenderer {
+  @objc override public init(animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc open func drawFilledPath(context: CoreGraphics.CGContext, path: CoreGraphics.CGPath, fill: Charts.Fill, fillAlpha: CoreGraphics.CGFloat)
+  @objc open func drawFilledPath(context: CoreGraphics.CGContext, path: CoreGraphics.CGPath, fillColor: Charts.NSUIColor, fillAlpha: CoreGraphics.CGFloat)
+  @objc deinit
+}
+@objc(LineScatterCandleRadarChartRenderer) open class LineScatterCandleRadarRenderer : Charts.BarLineScatterCandleBubbleRenderer {
+  @objc override public init(animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc open func drawHighlightLines(context: CoreGraphics.CGContext, point: CoreGraphics.CGPoint, set: Charts.ILineScatterCandleRadarChartDataSet)
+  @objc deinit
+}
+@objc open class PieChartRenderer : Charts.DataRenderer {
+  @objc weak open var chart: Charts.PieChartView?
+  @objc public init(chart: Charts.PieChartView, animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc override open func drawData(context: CoreGraphics.CGContext)
+  @objc open func calculateMinimumRadiusForSpacedSlice(center: CoreGraphics.CGPoint, radius: CoreGraphics.CGFloat, angle: CoreGraphics.CGFloat, arcStartPointX: CoreGraphics.CGFloat, arcStartPointY: CoreGraphics.CGFloat, startAngle: CoreGraphics.CGFloat, sweepAngle: CoreGraphics.CGFloat) -> CoreGraphics.CGFloat
+  @objc open func getSliceSpace(dataSet: Charts.IPieChartDataSet) -> CoreGraphics.CGFloat
+  @objc open func drawDataSet(context: CoreGraphics.CGContext, dataSet: Charts.IPieChartDataSet)
+  @objc override open func drawValues(context: CoreGraphics.CGContext)
+  @objc override open func drawExtras(context: CoreGraphics.CGContext)
+  @objc override open func drawHighlighted(context: CoreGraphics.CGContext, indices: [Charts.Highlight])
+  @objc override public init(animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc deinit
+}
+@objc open class NSUIAccessibilityElement : UIKit.UIAccessibilityElement {
+  @objc override dynamic public init(accessibilityContainer container: Any)
+  @objc override dynamic open var accessibilityFrame: CoreGraphics.CGRect {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension NSUIView {
+  @objc dynamic open func accessibilityChildren() -> [Any]?
+  @objc final override public var isAccessibilityElement: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open func accessibilityElementCount() -> Swift.Int
+  @objc override dynamic open func accessibilityElement(at index: Swift.Int) -> Any?
+  @objc override dynamic open func index(ofAccessibilityElement element: Any) -> Swift.Int
+}
+@objc open class RadarChartRenderer : Charts.LineRadarRenderer {
+  @objc weak open var chart: Charts.RadarChartView?
+  @objc public init(chart: Charts.RadarChartView, animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc override open func drawData(context: CoreGraphics.CGContext)
+  @objc override open func drawValues(context: CoreGraphics.CGContext)
+  @objc override open func drawExtras(context: CoreGraphics.CGContext)
+  @objc open func drawWeb(context: CoreGraphics.CGContext)
+  @objc override open func drawHighlighted(context: CoreGraphics.CGContext, indices: [Charts.Highlight])
+  @objc override public init(animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc deinit
+}
+@objc(ChartRenderer) open class Renderer : ObjectiveC.NSObject {
+  @objc final public let viewPortHandler: Charts.ViewPortHandler
+  @objc public init(viewPortHandler: Charts.ViewPortHandler)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc open class ChevronDownShapeRenderer : ObjectiveC.NSObject, Charts.IShapeRenderer {
+  @objc open func renderShape(context: CoreGraphics.CGContext, dataSet: Charts.IScatterChartDataSet, viewPortHandler: Charts.ViewPortHandler, point: CoreGraphics.CGPoint, color: Charts.NSUIColor)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc open class ChevronUpShapeRenderer : ObjectiveC.NSObject, Charts.IShapeRenderer {
+  @objc open func renderShape(context: CoreGraphics.CGContext, dataSet: Charts.IScatterChartDataSet, viewPortHandler: Charts.ViewPortHandler, point: CoreGraphics.CGPoint, color: Charts.NSUIColor)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc open class CircleShapeRenderer : ObjectiveC.NSObject, Charts.IShapeRenderer {
+  @objc open func renderShape(context: CoreGraphics.CGContext, dataSet: Charts.IScatterChartDataSet, viewPortHandler: Charts.ViewPortHandler, point: CoreGraphics.CGPoint, color: Charts.NSUIColor)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc open class CrossShapeRenderer : ObjectiveC.NSObject, Charts.IShapeRenderer {
+  @objc open func renderShape(context: CoreGraphics.CGContext, dataSet: Charts.IScatterChartDataSet, viewPortHandler: Charts.ViewPortHandler, point: CoreGraphics.CGPoint, color: Charts.NSUIColor)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public protocol IShapeRenderer : AnyObject {
+  @objc func renderShape(context: CoreGraphics.CGContext, dataSet: Charts.IScatterChartDataSet, viewPortHandler: Charts.ViewPortHandler, point: CoreGraphics.CGPoint, color: Charts.NSUIColor)
+}
+@objc open class SquareShapeRenderer : ObjectiveC.NSObject, Charts.IShapeRenderer {
+  @objc open func renderShape(context: CoreGraphics.CGContext, dataSet: Charts.IScatterChartDataSet, viewPortHandler: Charts.ViewPortHandler, point: CoreGraphics.CGPoint, color: Charts.NSUIColor)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc open class TriangleShapeRenderer : ObjectiveC.NSObject, Charts.IShapeRenderer {
+  @objc open func renderShape(context: CoreGraphics.CGContext, dataSet: Charts.IScatterChartDataSet, viewPortHandler: Charts.ViewPortHandler, point: CoreGraphics.CGPoint, color: Charts.NSUIColor)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc open class XShapeRenderer : ObjectiveC.NSObject, Charts.IShapeRenderer {
+  @objc open func renderShape(context: CoreGraphics.CGContext, dataSet: Charts.IScatterChartDataSet, viewPortHandler: Charts.ViewPortHandler, point: CoreGraphics.CGPoint, color: Charts.NSUIColor)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc open class ScatterChartRenderer : Charts.LineScatterCandleRadarRenderer {
+  @objc weak open var dataProvider: Charts.ScatterChartDataProvider?
+  @objc public init(dataProvider: Charts.ScatterChartDataProvider, animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc override open func drawData(context: CoreGraphics.CGContext)
+  @objc open func drawDataSet(context: CoreGraphics.CGContext, dataSet: Charts.IScatterChartDataSet)
+  @objc override open func drawValues(context: CoreGraphics.CGContext)
+  @objc override open func drawExtras(context: CoreGraphics.CGContext)
+  @objc override open func drawHighlighted(context: CoreGraphics.CGContext, indices: [Charts.Highlight])
+  @objc override public init(animator: Charts.Animator, viewPortHandler: Charts.ViewPortHandler)
+  @objc deinit
+}
+@objc(ChartXAxisRenderer) open class XAxisRenderer : Charts.AxisRendererBase {
+  @objc public init(viewPortHandler: Charts.ViewPortHandler, xAxis: Charts.XAxis?, transformer: Charts.Transformer?)
+  @objc override open func computeAxis(min: Swift.Double, max: Swift.Double, inverted: Swift.Bool)
+  @objc override open func computeAxisValues(min: Swift.Double, max: Swift.Double)
+  @objc open func computeSize()
+  @objc override open func renderAxisLabels(context: CoreGraphics.CGContext)
+  @objc override open func renderAxisLine(context: CoreGraphics.CGContext)
+  @objc open func drawLabels(context: CoreGraphics.CGContext, pos: CoreGraphics.CGFloat, anchor: CoreGraphics.CGPoint)
+  @objc open func drawLabel(context: CoreGraphics.CGContext, formattedLabel: Swift.String, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat, attributes: [Foundation.NSAttributedString.Key : Any], constrainedToSize: CoreGraphics.CGSize, anchor: CoreGraphics.CGPoint, angleRadians: CoreGraphics.CGFloat)
+  @objc override open func renderGridLines(context: CoreGraphics.CGContext)
+  @objc open var gridClippingRect: CoreGraphics.CGRect {
+    @objc get
+  }
+  @objc open func drawGridLine(context: CoreGraphics.CGContext, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat)
+  @objc override open func renderLimitLines(context: CoreGraphics.CGContext)
+  @objc open func renderLimitLineLine(context: CoreGraphics.CGContext, limitLine: Charts.ChartLimitLine, position: CoreGraphics.CGPoint)
+  @objc open func renderLimitLineLabel(context: CoreGraphics.CGContext, limitLine: Charts.ChartLimitLine, position: CoreGraphics.CGPoint, yOffset: CoreGraphics.CGFloat)
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler, transformer: Charts.Transformer?, axis: Charts.AxisBase?)
+  @objc deinit
+}
+@objc open class XAxisRendererHorizontalBarChart : Charts.XAxisRenderer {
+  @objc public init(viewPortHandler: Charts.ViewPortHandler, xAxis: Charts.XAxis?, transformer: Charts.Transformer?, chart: Charts.BarChartView)
+  @objc override open func computeAxis(min: Swift.Double, max: Swift.Double, inverted: Swift.Bool)
+  @objc override open func computeSize()
+  @objc override open func renderAxisLabels(context: CoreGraphics.CGContext)
+  @objc override open func drawLabels(context: CoreGraphics.CGContext, pos: CoreGraphics.CGFloat, anchor: CoreGraphics.CGPoint)
+  @objc open func drawLabel(context: CoreGraphics.CGContext, formattedLabel: Swift.String, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat, attributes: [Foundation.NSAttributedString.Key : Any], anchor: CoreGraphics.CGPoint, angleRadians: CoreGraphics.CGFloat)
+  @objc override open var gridClippingRect: CoreGraphics.CGRect {
+    @objc get
+  }
+  @objc override open func drawGridLine(context: CoreGraphics.CGContext, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat)
+  @objc override open func renderAxisLine(context: CoreGraphics.CGContext)
+  @objc override open func renderLimitLines(context: CoreGraphics.CGContext)
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler, xAxis: Charts.XAxis?, transformer: Charts.Transformer?)
+  @objc deinit
+}
+@objc open class XAxisRendererRadarChart : Charts.XAxisRenderer {
+  @objc weak open var chart: Charts.RadarChartView?
+  @objc public init(viewPortHandler: Charts.ViewPortHandler, xAxis: Charts.XAxis?, chart: Charts.RadarChartView)
+  @objc override open func renderAxisLabels(context: CoreGraphics.CGContext)
+  @objc open func drawLabel(context: CoreGraphics.CGContext, formattedLabel: Swift.String, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat, attributes: [Foundation.NSAttributedString.Key : Any], anchor: CoreGraphics.CGPoint, angleRadians: CoreGraphics.CGFloat)
+  @objc override open func renderLimitLines(context: CoreGraphics.CGContext)
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler, xAxis: Charts.XAxis?, transformer: Charts.Transformer?)
+  @objc deinit
+}
+@objc(ChartYAxisRenderer) open class YAxisRenderer : Charts.AxisRendererBase {
+  @objc public init(viewPortHandler: Charts.ViewPortHandler, yAxis: Charts.YAxis?, transformer: Charts.Transformer?)
+  @objc override open func renderAxisLabels(context: CoreGraphics.CGContext)
+  @objc override open func renderAxisLine(context: CoreGraphics.CGContext)
+  open func drawYLabels(context: CoreGraphics.CGContext, fixedPosition: CoreGraphics.CGFloat, positions: [CoreGraphics.CGPoint], offset: CoreGraphics.CGFloat, textAlign: UIKit.NSTextAlignment)
+  @objc override open func renderGridLines(context: CoreGraphics.CGContext)
+  @objc open var gridClippingRect: CoreGraphics.CGRect {
+    @objc get
+  }
+  @objc open func drawGridLine(context: CoreGraphics.CGContext, position: CoreGraphics.CGPoint)
+  @objc open func transformedPositions() -> [CoreGraphics.CGPoint]
+  @objc open func drawZeroLine(context: CoreGraphics.CGContext)
+  @objc override open func renderLimitLines(context: CoreGraphics.CGContext)
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler, transformer: Charts.Transformer?, axis: Charts.AxisBase?)
+  @objc deinit
+}
+@objc open class YAxisRendererHorizontalBarChart : Charts.YAxisRenderer {
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler, yAxis: Charts.YAxis?, transformer: Charts.Transformer?)
+  @objc override open func computeAxis(min: Swift.Double, max: Swift.Double, inverted: Swift.Bool)
+  @objc override open func renderAxisLabels(context: CoreGraphics.CGContext)
+  @objc override open func renderAxisLine(context: CoreGraphics.CGContext)
+  @objc open func drawYLabels(context: CoreGraphics.CGContext, fixedPosition: CoreGraphics.CGFloat, positions: [CoreGraphics.CGPoint], offset: CoreGraphics.CGFloat)
+  @objc override open var gridClippingRect: CoreGraphics.CGRect {
+    @objc get
+  }
+  @objc override open func drawGridLine(context: CoreGraphics.CGContext, position: CoreGraphics.CGPoint)
+  @objc override open func transformedPositions() -> [CoreGraphics.CGPoint]
+  @objc override open func drawZeroLine(context: CoreGraphics.CGContext)
+  @objc override open func renderLimitLines(context: CoreGraphics.CGContext)
+  @objc deinit
+}
+@objc open class YAxisRendererRadarChart : Charts.YAxisRenderer {
+  @objc public init(viewPortHandler: Charts.ViewPortHandler, yAxis: Charts.YAxis?, chart: Charts.RadarChartView)
+  @objc override open func computeAxisValues(min yMin: Swift.Double, max yMax: Swift.Double)
+  @objc override open func renderAxisLabels(context: CoreGraphics.CGContext)
+  @objc override open func renderLimitLines(context: CoreGraphics.CGContext)
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler, yAxis: Charts.YAxis?, transformer: Charts.Transformer?)
+  @objc deinit
+}
+@objc open class ChartColorTemplates : ObjectiveC.NSObject {
+  @objc open class func liberty() -> [Charts.NSUIColor]
+  @objc open class func joyful() -> [Charts.NSUIColor]
+  @objc open class func pastel() -> [Charts.NSUIColor]
+  @objc open class func colorful() -> [Charts.NSUIColor]
+  @objc open class func vordiplom() -> [Charts.NSUIColor]
+  @objc open class func material() -> [Charts.NSUIColor]
+  @objc open class func colorFromString(_ colorString: Swift.String) -> Charts.NSUIColor
+  @objc override dynamic public init()
+  @objc deinit
+}
+open class ChartUtils {
+  open class func drawImage(context: CoreGraphics.CGContext, image: Charts.NSUIImage, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat, size: CoreGraphics.CGSize)
+  open class func drawText(context: CoreGraphics.CGContext, text: Swift.String, point: CoreGraphics.CGPoint, align: UIKit.NSTextAlignment, attributes: [Foundation.NSAttributedString.Key : Any]?)
+  open class func drawText(context: CoreGraphics.CGContext, text: Swift.String, point: CoreGraphics.CGPoint, attributes: [Foundation.NSAttributedString.Key : Any]?, anchor: CoreGraphics.CGPoint, angleRadians: CoreGraphics.CGFloat)
+  open class func defaultValueFormatter() -> Charts.IValueFormatter
+  @objc deinit
+}
+@objc(ChartFillType) public enum FillType : Swift.Int {
+  case empty
+  case color
+  case linearGradient
+  case radialGradient
+  case image
+  case tiledImage
+  case layer
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(ChartFill) open class Fill : ObjectiveC.NSObject {
+  @objc open var type: Charts.FillType {
+    @objc get
+  }
+  @objc open var color: CoreGraphics.CGColor? {
+    @objc get
+  }
+  @objc open var gradient: CoreGraphics.CGGradient? {
+    @objc get
+  }
+  @objc open var gradientAngle: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var gradientStartOffsetPercent: CoreGraphics.CGPoint {
+    @objc get
+  }
+  @objc open var gradientStartRadiusPercent: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var gradientEndOffsetPercent: CoreGraphics.CGPoint {
+    @objc get
+  }
+  @objc open var gradientEndRadiusPercent: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var image: CoreGraphics.CGImage? {
+    @objc get
+  }
+  @objc open var layer: CoreGraphics.CGLayer? {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc public init(CGColor: CoreGraphics.CGColor)
+  @objc convenience public init(color: Charts.NSUIColor)
+  @objc public init(linearGradient: CoreGraphics.CGGradient, angle: CoreGraphics.CGFloat)
+  @objc public init(radialGradient: CoreGraphics.CGGradient, startOffsetPercent: CoreGraphics.CGPoint, startRadiusPercent: CoreGraphics.CGFloat, endOffsetPercent: CoreGraphics.CGPoint, endRadiusPercent: CoreGraphics.CGFloat)
+  @objc convenience public init(radialGradient: CoreGraphics.CGGradient)
+  @objc public init(CGImage: CoreGraphics.CGImage, tiled: Swift.Bool)
+  @objc convenience public init(image: Charts.NSUIImage, tiled: Swift.Bool)
+  @objc convenience public init(CGImage: CoreGraphics.CGImage)
+  @objc convenience public init(image: Charts.NSUIImage)
+  @objc public init(CGLayer: CoreGraphics.CGLayer)
+  @objc open class func fillWithCGColor(_ CGColor: CoreGraphics.CGColor) -> Charts.Fill
+  @objc open class func fillWithColor(_ color: Charts.NSUIColor) -> Charts.Fill
+  @objc open class func fillWithLinearGradient(_ linearGradient: CoreGraphics.CGGradient, angle: CoreGraphics.CGFloat) -> Charts.Fill
+  @objc open class func fillWithRadialGradient(_ radialGradient: CoreGraphics.CGGradient, startOffsetPercent: CoreGraphics.CGPoint, startRadiusPercent: CoreGraphics.CGFloat, endOffsetPercent: CoreGraphics.CGPoint, endRadiusPercent: CoreGraphics.CGFloat) -> Charts.Fill
+  @objc open class func fillWithRadialGradient(_ radialGradient: CoreGraphics.CGGradient) -> Charts.Fill
+  @objc open class func fillWithCGImage(_ CGImage: CoreGraphics.CGImage, tiled: Swift.Bool) -> Charts.Fill
+  @objc open class func fillWithImage(_ image: Charts.NSUIImage, tiled: Swift.Bool) -> Charts.Fill
+  @objc open class func fillWithCGImage(_ CGImage: CoreGraphics.CGImage) -> Charts.Fill
+  @objc open class func fillWithImage(_ image: Charts.NSUIImage) -> Charts.Fill
+  @objc open class func fillWithCGLayer(_ CGLayer: CoreGraphics.CGLayer) -> Charts.Fill
+  @objc open func fillPath(context: CoreGraphics.CGContext, rect: CoreGraphics.CGRect)
+  @objc deinit
+}
+public typealias NSUIFont = UIKit.UIFont
+public typealias NSUIImage = UIKit.UIImage
+public typealias NSUIScrollView = UIKit.UIScrollView
+public typealias NSUIScreen = UIKit.UIScreen
+public typealias NSUIDisplayLink = QuartzCore.CADisplayLink
+@objc open class NSUIView : UIKit.UIView {
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc(ChartTransformer) open class Transformer : ObjectiveC.NSObject {
+  @objc public init(viewPortHandler: Charts.ViewPortHandler)
+  @objc open func prepareMatrixValuePx(chartXMin: Swift.Double, deltaX: CoreGraphics.CGFloat, deltaY: CoreGraphics.CGFloat, chartYMin: Swift.Double)
+  @objc open func prepareMatrixOffset(inverted: Swift.Bool)
+  open func pointValuesToPixel(_ points: inout [CoreGraphics.CGPoint])
+  open func pointValueToPixel(_ point: inout CoreGraphics.CGPoint)
+  @objc open func pixelForValues(x: Swift.Double, y: Swift.Double) -> CoreGraphics.CGPoint
+  open func rectValueToPixel(_ r: inout CoreGraphics.CGRect)
+  open func rectValueToPixel(_ r: inout CoreGraphics.CGRect, phaseY: Swift.Double)
+  open func rectValueToPixelHorizontal(_ r: inout CoreGraphics.CGRect)
+  open func rectValueToPixelHorizontal(_ r: inout CoreGraphics.CGRect, phaseY: Swift.Double)
+  open func rectValuesToPixel(_ rects: inout [CoreGraphics.CGRect])
+  open func pixelsToValues(_ pixels: inout [CoreGraphics.CGPoint])
+  open func pixelToValues(_ pixel: inout CoreGraphics.CGPoint)
+  @objc open func valueForTouchPoint(_ point: CoreGraphics.CGPoint) -> CoreGraphics.CGPoint
+  @objc open func valueForTouchPoint(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> CoreGraphics.CGPoint
+  @objc open var valueToPixelMatrix: CoreGraphics.CGAffineTransform {
+    @objc get
+  }
+  @objc open var pixelToValueMatrix: CoreGraphics.CGAffineTransform {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(ChartTransformerHorizontalBarChart) open class TransformerHorizontalBarChart : Charts.Transformer {
+  @objc override open func prepareMatrixOffset(inverted: Swift.Bool)
+  @objc override public init(viewPortHandler: Charts.ViewPortHandler)
+  @objc deinit
+}
+@objc(ChartViewPortHandler) open class ViewPortHandler : ObjectiveC.NSObject {
+  @objc public init(width: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat)
+  @objc open func setChartDimens(width: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat)
+  @objc open var hasChartDimens: Swift.Bool {
+    @objc get
+  }
+  @objc open func restrainViewPort(offsetLeft: CoreGraphics.CGFloat, offsetTop: CoreGraphics.CGFloat, offsetRight: CoreGraphics.CGFloat, offsetBottom: CoreGraphics.CGFloat)
+  @objc open var offsetLeft: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var offsetRight: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var offsetTop: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var offsetBottom: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var contentTop: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var contentLeft: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var contentRight: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var contentBottom: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var contentWidth: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var contentHeight: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var contentRect: CoreGraphics.CGRect {
+    @objc get
+  }
+  @objc open var contentCenter: CoreGraphics.CGPoint {
+    @objc get
+  }
+  @objc open var chartHeight: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var chartWidth: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open func zoom(scaleX: CoreGraphics.CGFloat, scaleY: CoreGraphics.CGFloat) -> CoreGraphics.CGAffineTransform
+  @objc open func zoom(scaleX: CoreGraphics.CGFloat, scaleY: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> CoreGraphics.CGAffineTransform
+  @objc open func zoomIn(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> CoreGraphics.CGAffineTransform
+  @objc open func zoomOut(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> CoreGraphics.CGAffineTransform
+  @objc open func resetZoom() -> CoreGraphics.CGAffineTransform
+  @objc open func setZoom(scaleX: CoreGraphics.CGFloat, scaleY: CoreGraphics.CGFloat) -> CoreGraphics.CGAffineTransform
+  @objc open func setZoom(scaleX: CoreGraphics.CGFloat, scaleY: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> CoreGraphics.CGAffineTransform
+  @objc open func fitScreen() -> CoreGraphics.CGAffineTransform
+  @objc open func translate(pt: CoreGraphics.CGPoint) -> CoreGraphics.CGAffineTransform
+  @objc open func centerViewPort(pt: CoreGraphics.CGPoint, chart: Charts.ChartViewBase)
+  @discardableResult
+  @objc open func refresh(newMatrix: CoreGraphics.CGAffineTransform, chart: Charts.ChartViewBase, invalidate: Swift.Bool) -> CoreGraphics.CGAffineTransform
+  @objc open func setMinimumScaleX(_ xScale: CoreGraphics.CGFloat)
+  @objc open func setMaximumScaleX(_ xScale: CoreGraphics.CGFloat)
+  @objc open func setMinMaxScaleX(minScaleX: CoreGraphics.CGFloat, maxScaleX: CoreGraphics.CGFloat)
+  @objc open func setMinimumScaleY(_ yScale: CoreGraphics.CGFloat)
+  @objc open func setMaximumScaleY(_ yScale: CoreGraphics.CGFloat)
+  @objc open func setMinMaxScaleY(minScaleY: CoreGraphics.CGFloat, maxScaleY: CoreGraphics.CGFloat)
+  @objc open var touchMatrix: CoreGraphics.CGAffineTransform {
+    @objc get
+  }
+  @objc open func isInBoundsX(_ x: CoreGraphics.CGFloat) -> Swift.Bool
+  @objc open func isInBoundsY(_ y: CoreGraphics.CGFloat) -> Swift.Bool
+  @objc open func isInBounds(point: CoreGraphics.CGPoint) -> Swift.Bool
+  @objc open func isInBounds(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -> Swift.Bool
+  @objc open func isInBoundsLeft(_ x: CoreGraphics.CGFloat) -> Swift.Bool
+  @objc open func isInBoundsRight(_ x: CoreGraphics.CGFloat) -> Swift.Bool
+  @objc open func isInBoundsTop(_ y: CoreGraphics.CGFloat) -> Swift.Bool
+  @objc open func isInBoundsBottom(_ y: CoreGraphics.CGFloat) -> Swift.Bool
+  @objc open func isIntersectingLine(from startPoint: CoreGraphics.CGPoint, to endPoint: CoreGraphics.CGPoint) -> Swift.Bool
+  @objc open var scaleX: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var scaleY: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var minScaleX: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var minScaleY: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var maxScaleX: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var maxScaleY: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var transX: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var transY: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc open var isFullyZoomedOut: Swift.Bool {
+    @objc get
+  }
+  @objc open var isFullyZoomedOutY: Swift.Bool {
+    @objc get
+  }
+  @objc open var isFullyZoomedOutX: Swift.Bool {
+    @objc get
+  }
+  @objc open func setDragOffsetX(_ offset: CoreGraphics.CGFloat)
+  @objc open func setDragOffsetY(_ offset: CoreGraphics.CGFloat)
+  @objc open var hasNoDragOffset: Swift.Bool {
+    @objc get
+  }
+  @objc open var canZoomOutMoreX: Swift.Bool {
+    @objc get
+  }
+  @objc open var canZoomInMoreX: Swift.Bool {
+    @objc get
+  }
+  @objc open var canZoomOutMoreY: Swift.Bool {
+    @objc get
+  }
+  @objc open var canZoomInMoreY: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension Charts.ChartEasingOption : Swift.Equatable {}
+extension Charts.ChartEasingOption : Swift.Hashable {}
+extension Charts.ChartEasingOption : Swift.RawRepresentable {}
+extension Charts.ChartViewBase.ImageFormat : Swift.Equatable {}
+extension Charts.ChartViewBase.ImageFormat : Swift.Hashable {}
+extension Charts.CombinedChartView.DrawOrder : Swift.Equatable {}
+extension Charts.CombinedChartView.DrawOrder : Swift.Hashable {}
+extension Charts.CombinedChartView.DrawOrder : Swift.RawRepresentable {}
+extension Charts.ChartLimitLine.LabelPosition : Swift.Equatable {}
+extension Charts.ChartLimitLine.LabelPosition : Swift.Hashable {}
+extension Charts.ChartLimitLine.LabelPosition : Swift.RawRepresentable {}
+extension Charts.Legend.Form : Swift.Equatable {}
+extension Charts.Legend.Form : Swift.Hashable {}
+extension Charts.Legend.Form : Swift.RawRepresentable {}
+extension Charts.Legend.HorizontalAlignment : Swift.Hashable {}
+extension Charts.Legend.HorizontalAlignment : Swift.RawRepresentable {}
+extension Charts.Legend.VerticalAlignment : Swift.Hashable {}
+extension Charts.Legend.VerticalAlignment : Swift.RawRepresentable {}
+extension Charts.Legend.Orientation : Swift.Equatable {}
+extension Charts.Legend.Orientation : Swift.Hashable {}
+extension Charts.Legend.Orientation : Swift.RawRepresentable {}
+extension Charts.Legend.Direction : Swift.Equatable {}
+extension Charts.Legend.Direction : Swift.Hashable {}
+extension Charts.Legend.Direction : Swift.RawRepresentable {}
+extension Charts.XAxis.LabelPosition : Swift.Hashable {}
+extension Charts.XAxis.LabelPosition : Swift.RawRepresentable {}
+extension Charts.YAxis.LabelPosition : Swift.Equatable {}
+extension Charts.YAxis.LabelPosition : Swift.Hashable {}
+extension Charts.YAxis.LabelPosition : Swift.RawRepresentable {}
+extension Charts.YAxis.AxisDependency : Swift.Hashable {}
+extension Charts.YAxis.AxisDependency : Swift.RawRepresentable {}
+extension Charts.ChartDataSetRounding : Swift.Equatable {}
+extension Charts.ChartDataSetRounding : Swift.Hashable {}
+extension Charts.ChartDataSetRounding : Swift.RawRepresentable {}
+extension Charts.LineChartDataSet.Mode : Swift.Equatable {}
+extension Charts.LineChartDataSet.Mode : Swift.Hashable {}
+extension Charts.LineChartDataSet.Mode : Swift.RawRepresentable {}
+extension Charts.PieChartDataSet.ValuePosition : Swift.Equatable {}
+extension Charts.PieChartDataSet.ValuePosition : Swift.Hashable {}
+extension Charts.PieChartDataSet.ValuePosition : Swift.RawRepresentable {}
+extension Charts.ScatterChartDataSet.Shape : Swift.Equatable {}
+extension Charts.ScatterChartDataSet.Shape : Swift.Hashable {}
+extension Charts.ScatterChartDataSet.Shape : Swift.RawRepresentable {}
+extension Charts.FillType : Swift.Equatable {}
+extension Charts.FillType : Swift.Hashable {}
+extension Charts.FillType : Swift.RawRepresentable {}
