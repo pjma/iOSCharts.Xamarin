@@ -4215,6 +4215,11 @@ namespace iOSCharts
         [Abstract]
         [NullAllowed, Export("fillFormatter", ArgumentSemantic.Strong)]
         IInterfaceChartFillFormatter FillFormatter { get; set; }
+
+        // @required @property (nonatomic) CGFloat HighlightActiveDistance;
+        [Abstract]
+        [Export("HighlightActiveDistance")]
+        nfloat HighlightActiveDistance { get; set; }
     }
 
     interface IInterfaceChartMarker { }
@@ -4764,6 +4769,9 @@ namespace iOSCharts
         [NullAllowed, Export("fillFormatter", ArgumentSemantic.Strong)]
         IInterfaceChartFillFormatter FillFormatter { get; set; }
 
+        // @property (nonatomic) CGFloat HighlightActiveDistance;
+        [Export("HighlightActiveDistance")]
+        nfloat HighlightActiveDistance { get; set; }
         //u-n-safe NSObject CopyWithZone([NullAllowed] _NSZone* zone);
     }
 
